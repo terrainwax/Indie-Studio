@@ -8,6 +8,7 @@ SRC		=	Src/
 
 SRCS		=			\
 			$(SRC)Main.cpp	\
+			$(SRC)Clock.cpp	\
 
 OBJS		=	$(SRCS:.cpp=.o)
 
