@@ -37,17 +37,11 @@ bool ActionManager::isKeyUp(irr::EKEY_CODE key)
 	return !_currentState[key];
 }
 
-void ActionManager::flush()
-{
-	for (int i = irr::KEY_LBUTTON; i < irr::KEY_KEY_CODES_COUNT; i++) {
-		//_previousState[i] = _currentState[i];
-		//_currentState[key] = _input->isKeyDown(key);
-	}
-}
-
 bool ActionManager::OnEvent(const irr::SEvent &e)
 {
-	 if (e.EventType == irr::EET_KEY_INPUT_EVENT)
-            _currentState[e.KeyInput.Key] = e.KeyInput.PressedDown;
+	if (e.EventType == irr::EET_KEY_INPUT_EVENT) {
+		_previousState[e.KeyInput.Key] = _currentState[e.KeyInput.Key];
+           	_currentState[e.KeyInput.Key] = e.KeyInput.PressedDown;
+	}
 	return false;
 }

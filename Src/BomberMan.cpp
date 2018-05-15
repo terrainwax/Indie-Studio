@@ -23,5 +23,5 @@ bool BomberMan::run()
 {
 	if (_device->run() == false)
 		return false;
-	return !_action.isKeyPressed(irr::KEY_KEY_Q);
+	return !_action.isKeyReleased(irr::KEY_KEY_Q);
 }

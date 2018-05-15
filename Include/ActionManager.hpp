@@ -23,7 +23,6 @@ public:
 	bool isKeyPressed(irr::EKEY_CODE key);
 	bool isKeyReleased(irr::EKEY_CODE key);
 	virtual bool OnEvent(const irr::SEvent& event) override;
-	void flush();
 private:
 	bool _currentState[irr::KEY_KEY_CODES_COUNT];
 	bool _previousState[irr::KEY_KEY_CODES_COUNT];
