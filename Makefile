@@ -6,9 +6,11 @@ RED		=	"\033[0;31m"
 
 SRC		=	Src/
 
-SRCS		=			\
-			$(SRC)Main.cpp	\
-			$(SRC)Clock.cpp	\
+SRCS		=				\
+			$(SRC)Main.cpp		\
+			$(SRC)Clock.cpp		\
+			$(SRC)BomberMan.cpp	\
+			$(SRC)ActionManager.cpp	\
 
 OBJS		=	$(SRCS:.cpp=.o)
 
@@ -19,6 +21,14 @@ CPPFLAGS	+= 	-Wextra
 CPPFLAGS	+= 	-std=c++11
 CPPFLAGS	+= 	-IInclude/
 
+LDFLAGS 	+=	-lIrrlicht
+LDFLAGS 	+=	-lXxf86vm
+LDFLAGS 	+=	-lGL
+LDFLAGS 	+=	-lXext
+LDFLAGS 	+=	-lX11
+LDFLAGS 	+=	-lXcursor
+
+
 CC		=	g++
 
 all:			$(NAME)
@@ -27,7 +37,7 @@ $(NAME):		$(OBJS)
 			$(CC) $(OBJS) $(LDFLAGS) -o $(NAME)
 
 debug:
-			$(CC) -g $(CPPFLAGS) $(SRCS) $(SRC_MA) -o $(NAME)
+			$(CC) -g $(CPPFLAGS) $(SRCS) $(LDFLAGS) -o $(NAME)
 
 clean:
 			$(RM) $(OBJS) $(OBJ_MA) $(OBJ_UT)

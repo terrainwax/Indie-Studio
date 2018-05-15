@@ -13,8 +13,6 @@
 #include <IEventReceiver.h>
 #pragma GCC diagnostic warning "-Wunused-parameter"
 
-#include "driverChoice.h"
-
 class ActionManager final : public irr::IEventReceiver {
 public:
 	ActionManager();
