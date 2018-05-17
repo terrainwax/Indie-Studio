@@ -15,11 +15,18 @@
 
 #include <string>
 
+#ifndef DFL_VECTOR
+# define DFL_VECTOR irr::core::vector3df(0, 0 , 0)
+#endif
+
 class Cube {
 public:
-	Cube(irr::core::vector3df pos = irr::core::vector3df(0, 0 , 0), std::string texture = "");
+	Cube(irr::core::vector3df pos = DFL_VECTOR,
+		irr::core::vector3df rotation = DFL_VECTOR,
+		std::string texture = "");
 	~Cube();
 
 	std::string texture;
 	irr::core::vector3df pos;
+	irr::core::vector3df rotation;
 };

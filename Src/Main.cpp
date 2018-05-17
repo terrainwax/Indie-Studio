@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 	(void)argc;
 	ActionManager action;
 	GraphicManager graphic(action);	
-	Cube cube(irr::core::vector3df(0,0,30));
+	Cube cube(irr::core::vector3df(0,0,30), irr::core::vector3df(30,30,30), "/home/reimua/irrlicht-1.8.4/media/irrlichtlogoalpha2.tga");
 
 	while(1) {
 		graphic.drawCube(cube);

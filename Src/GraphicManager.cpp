@@ -27,6 +27,7 @@ irr::scene::ISceneNode *GraphicManager::drawCube(const Cube &cube)
 	if (node == nullptr)
 		return nullptr;
 	node->setPosition(cube.pos);
+	node->setRotation(cube.rotation);
 	node->setMaterialTexture(0, _driver->getTexture(&cube.texture[0]));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	_smgr->addToDeletionQueue(node);

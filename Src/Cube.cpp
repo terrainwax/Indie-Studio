@@ -7,9 +7,12 @@
 
 #include "Cube.hpp"
 
-Cube::Cube(irr::core::vector3df pos_, std::string texture_) :
+Cube::Cube(irr::core::vector3df pos_,
+	irr::core::vector3df rotation_,
+	std::string texture_) :
 texture(texture_),
-pos(pos_)
+pos(pos_),
+rotation(rotation_)
 {
 }
 
