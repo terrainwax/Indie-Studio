@@ -8,26 +8,27 @@
 #pragma once
 
 #include <stdexcept>
+
 #pragma GCC diagnostic ignored "-Wunused-parameter"
-#pragma GCC diagnostic ignored "-Wunused-function"
 #include <irrlicht.h>
 #include <Keycodes.h>
 #include <IEventReceiver.h>
-#pragma GCC diagnostic warning "-Wunused-function"
 #pragma GCC diagnostic warning "-Wunused-parameter"
 
+#include "Cube.hpp"
 #include "ActionManager.hpp"
 
-class BomberMan final {
-public:
-	BomberMan();
-	~BomberMan();
-
-	bool run();
+class GraphicManager final {
 private:
-	ActionManager _action;
 	irr::IrrlichtDevice *_device;
 	irr::video::E_DRIVER_TYPE _driverType;
 	irr::scene::ISceneManager *_smgr;
-	irr::video::IVideoDriver *_driver;
+	irr::video::IVideoDriver *_driver;	
+public:
+	GraphicManager(ActionManager &actionMgr);
+	~GraphicManager();
+
+	void render();
+	bool isActive();
+	irr::scene::ISceneNode *drawCube(const Cube &cube);
 };

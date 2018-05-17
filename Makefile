@@ -6,11 +6,13 @@ RED		=	"\033[0;31m"
 
 SRC		=	Src/
 
-SRCS		=				\
-			$(SRC)Main.cpp		\
-			$(SRC)Clock.cpp		\
-			$(SRC)BomberMan.cpp	\
-			$(SRC)ActionManager.cpp	\
+SRCS		=					\
+			$(SRC)Cube.cpp			\
+			$(SRC)Main.cpp			\
+			$(SRC)Clock.cpp			\
+			$(SRC)BomberMan.cpp		\
+			$(SRC)ActionManager.cpp		\
+			$(SRC)GraphicManager.cpp	\
 
 OBJS		=	$(SRCS:.cpp=.o)
 

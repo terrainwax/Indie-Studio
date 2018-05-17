@@ -7,27 +7,19 @@
 
 #pragma once
 
-#include <stdexcept>
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #pragma GCC diagnostic ignored "-Wunused-function"
 #include <irrlicht.h>
-#include <Keycodes.h>
-#include <IEventReceiver.h>
 #pragma GCC diagnostic warning "-Wunused-function"
 #pragma GCC diagnostic warning "-Wunused-parameter"
 
-#include "ActionManager.hpp"
+#include <string>
 
-class BomberMan final {
+class Cube {
 public:
-	BomberMan();
-	~BomberMan();
+	Cube(irr::core::vector3df pos = irr::core::vector3df(0, 0 , 0), std::string texture = "");
+	~Cube();
 
-	bool run();
-private:
-	ActionManager _action;
-	irr::IrrlichtDevice *_device;
-	irr::video::E_DRIVER_TYPE _driverType;
-	irr::scene::ISceneManager *_smgr;
-	irr::video::IVideoDriver *_driver;
+	std::string texture;
+	irr::core::vector3df pos;
 };

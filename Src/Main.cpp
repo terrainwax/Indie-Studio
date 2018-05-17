@@ -5,14 +5,19 @@
 **    <------->
 */
 
+#include "GraphicManager.hpp"
 #include "BomberMan.hpp"
 
 int main(int argc, char **argv)
 {
-	(void)argc;
 	(void)argv;
-	BomberMan bomber;
+	(void)argc;
+	ActionManager action;
+	GraphicManager graphic(action);	
+	Cube cube(irr::core::vector3df(0,0,30));
 
-	while (bomber.run());
+	graphic.drawCube(cube);
+	graphic.render();
+	while(1);
 	return 0;
 }
