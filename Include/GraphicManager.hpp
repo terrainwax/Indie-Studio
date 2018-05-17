@@ -24,13 +24,16 @@ private:
 	irr::IrrlichtDevice *_device;
 	irr::video::E_DRIVER_TYPE _driverType;
 	irr::scene::ISceneManager *_smgr;
-	irr::video::IVideoDriver *_driver;	
+	irr::video::IVideoDriver *_driver;
+	irr::scene::ICameraSceneNode *_camera;
 public:
 	GraphicManager(ActionManager &actionMgr);
 	~GraphicManager();
 
 	void render();
 	bool isActive();
+	void setCameraPosition(const irr::core::vector3df &pos);
+	void setCameraRotation(const irr::core::vector3df &pos);
 	irr::scene::ISceneNode *drawCube(const Cube &cube);
 	irr::scene::ISceneNode *drawSphere(const Sphere &sphere);
 };

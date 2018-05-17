@@ -10,11 +10,11 @@
 GraphicManager::GraphicManager(ActionManager &action):
 _device(irr::createDevice(irr::video::EDT_OPENGL, irr::core::dimension2d<irr::u32>(640, 480), 16, false, false, false, &action)),
 _smgr(_device->getSceneManager()),
-_driver(_device->getVideoDriver())
+_driver(_device->getVideoDriver()),
+_camera(_smgr->addCameraSceneNodeFPS())
 {
 	if (_device == nullptr)
 		throw std::runtime_error("Cannot get driver");
-	_smgr->addCameraSceneNodeFPS();
 }
 
 GraphicManager::~GraphicManager()
@@ -45,6 +45,16 @@ irr::scene::ISceneNode *GraphicManager::drawSphere(const Sphere &sphere)
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	_smgr->addToDeletionQueue(node);
 	return node;
+}
+
+void GraphicManager::setCameraPosition(const irr::core::vector3df &pos)
+{
+	_camera->setPosition(pos);
+}
+
+void GraphicManager::setCameraRotation(const irr::core::vector3df &pos)
+{
+	_camera->setRotation(pos);
 }
 
 void GraphicManager::render()
