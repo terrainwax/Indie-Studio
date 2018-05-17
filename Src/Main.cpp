@@ -16,8 +16,9 @@ int main(int argc, char **argv)
 	GraphicManager graphic(action);	
 	Cube cube(irr::core::vector3df(0,0,30));
 
-	graphic.drawCube(cube);
-	graphic.render();
-	while(1);
+	while(1) {
+		graphic.drawCube(cube);
+		graphic.render();
+	}
 	return 0;
 }

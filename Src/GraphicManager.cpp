@@ -23,12 +23,13 @@ GraphicManager::~GraphicManager()
 
 irr::scene::ISceneNode *GraphicManager::drawCube(const Cube &cube)
 {
-	irr::scene::ISceneNode *node = _smgr->addSphereSceneNode();
+	irr::scene::ISceneNode *node = _smgr->addCubeSceneNode();
 	if (node == nullptr)
 		return nullptr;
 	node->setPosition(cube.pos);
 	node->setMaterialTexture(0, _driver->getTexture(&cube.texture[0]));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+	_smgr->addToDeletionQueue(node);
 	return node;
 }
 
