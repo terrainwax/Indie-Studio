@@ -16,6 +16,7 @@
 #pragma GCC diagnostic warning "-Wunused-parameter"
 
 #include "Cube.hpp"
+#include "Sphere.hpp"
 #include "ActionManager.hpp"
 
 class GraphicManager final {
@@ -31,4 +32,5 @@ public:
 	void render();
 	bool isActive();
 	irr::scene::ISceneNode *drawCube(const Cube &cube);
+	irr::scene::ISceneNode *drawSphere(const Sphere &sphere);
 };

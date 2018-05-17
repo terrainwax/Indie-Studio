@@ -34,6 +34,19 @@ irr::scene::ISceneNode *GraphicManager::drawCube(const Cube &cube)
 	return node;
 }
 
+irr::scene::ISceneNode *GraphicManager::drawSphere(const Sphere &sphere)
+{
+	irr::scene::ISceneNode *node = _smgr->addSphereSceneNode();
+	if (node == nullptr)
+		return nullptr;
+	node->setPosition(sphere.pos);
+	node->setRotation(sphere.rotation);
+	node->setMaterialTexture(0, _driver->getTexture(&sphere.texture[0]));
+	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+	_smgr->addToDeletionQueue(node);
+	return node;
+}
+
 void GraphicManager::render()
 {
 	_driver->beginScene(true, true, irr::video::SColor(255,113,113,133));
