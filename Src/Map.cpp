@@ -35,9 +35,25 @@ std::string Map::makeLine(int size, int lineIdx)
 	s[s.size() - 1] = '#';
 	if (lineIdx % 2 == 1)
 		return s;
-	for (int j = 0; j < size; j++) {
+	for (int j = 0; j < size; j++)
 		s[j] = j % 2 == 0 ? '#' : ' ';
-	}
 	s[s.size() - 1] = '#';
 	return s;
+}
+
+void Map::renderMap(GraphicManager &graph)
+{
+	Cube grass(irr::core::vector3df(0,0,30), irr::core::vector3df( 0, 0, 0), TEXTURE("Grass.jpg"));
+	Cube wall(irr::core::vector3df(0,0,30), irr::core::vector3df( 0, 0, 0), TEXTURE("Wall.jpg"));
+
+	for (unsigned int i = 0; i < _map.size(); i++) {
+		for (unsigned int j = 0; j < _map[j].size(); j++) {
+			if (_map[i][j] == '#') {
+				wall.pos = irr::core::vector3df(i * 10, 10, j * 10);
+				graph.drawCube(wall);
+			}
+			grass.pos = irr::core::vector3df(i * 10, 0, j * 10); 
+			graph.drawCube(grass);
+		}
+	}
 }

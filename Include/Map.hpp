@@ -10,6 +10,8 @@
 #include <string>
 #include <vector>
 
+#include "GraphicManager.hpp"
+
 class Map final {
 private:
 	std::vector<std::string> _map;
@@ -19,4 +21,5 @@ public:
 	Map(int size);
 	~Map();
 
+	void renderMap(GraphicManager &graph);
 };

@@ -5,19 +5,23 @@
 **    <------->
 */
 
+#include "Map.hpp"
 #include "GraphicManager.hpp"
-#include "BomberMan.hpp"
 
 int main(int argc, char **argv)
 {
 	(void)argv;
 	(void)argc;
+	if (argc != 2)
+		return 84;
+	Map map(atoi(argv[1]));
 	ActionManager action;
 	GraphicManager graphic(action);	
-	Sphere cube(irr::core::vector3df(0,0,30), irr::core::vector3df(30,30,30), "/home/reimua/irrlicht-1.8.4/media/irrlichtlogoalpha2.tga");
 
+	graphic.setCameraPosition(irr::core::vector3df(40, 40, 0));
+	graphic.setCameraRotation(irr::core::vector3df(3.14 / 2, 3.14 / 2, 3.14 / 2));
 	while(1) {
-		graphic.drawSphere(cube);
+		map.renderMap(graphic);
 		graphic.render();
 	}
 	return 0;

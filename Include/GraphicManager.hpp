@@ -19,6 +19,10 @@
 #include "Sphere.hpp"
 #include "ActionManager.hpp"
 
+#ifndef TEXTURE
+# define TEXTURE(x) (std::string("./Assets/Textures/") + std::string(x))
+#endif 
+
 class GraphicManager final {
 private:
 	irr::IrrlichtDevice *_device;

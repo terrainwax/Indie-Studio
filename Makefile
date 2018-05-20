@@ -12,7 +12,6 @@ SRCS		=					\
 			$(SRC)Main.cpp			\
 			$(SRC)Clock.cpp			\
 			$(SRC)Sphere.cpp		\
-			$(SRC)BomberMan.cpp		\
 			$(SRC)ActionManager.cpp		\
 			$(SRC)GraphicManager.cpp	\
 
