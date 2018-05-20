@@ -52,9 +52,9 @@ void GraphicManager::setCameraPosition(const irr::core::vector3df &pos)
 	_camera->setPosition(pos);
 }
 
-void GraphicManager::setCameraRotation(const irr::core::vector3df &pos)
+void GraphicManager::setCameraTarget(const irr::core::vector3df &pos)
 {
-	_camera->setRotation(pos);
+	_camera->setTarget(pos);
 }
 
 void GraphicManager::render()

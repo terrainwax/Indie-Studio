@@ -36,8 +36,8 @@ public:
 
 	void render();
 	bool isActive();
+	void setCameraTarget(const irr::core::vector3df &pos);
 	void setCameraPosition(const irr::core::vector3df &pos);
-	void setCameraRotation(const irr::core::vector3df &pos);
 	irr::scene::ISceneNode *drawCube(const Cube &cube);
 	irr::scene::ISceneNode *drawSphere(const Sphere &sphere);
 };

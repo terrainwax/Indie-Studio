@@ -10,8 +10,6 @@
 
 int main(int argc, char **argv)
 {
-	(void)argv;
-	(void)argc;
 	if (argc != 2)
 		return 84;
 	Map map(atoi(argv[1]));
@@ -19,7 +17,7 @@ int main(int argc, char **argv)
 	GraphicManager graphic(action);	
 
 	graphic.setCameraPosition(irr::core::vector3df(40, 40, 0));
-	graphic.setCameraRotation(irr::core::vector3df(3.14 / 2, 3.14 / 2, 3.14 / 2));
+	graphic.setCameraTarget(irr::core::vector3df(40, 0, 40));
 	while(1) {
 		map.renderMap(graphic);
 		graphic.render();
