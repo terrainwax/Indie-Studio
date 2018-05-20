@@ -7,6 +7,7 @@ RED		=	"\033[0;31m"
 SRC		=	Src/
 
 SRCS		=					\
+			$(SRC)Map.cpp			\
 			$(SRC)Cube.cpp			\
 			$(SRC)Main.cpp			\
 			$(SRC)Clock.cpp			\
