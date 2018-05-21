@@ -19,6 +19,7 @@ _camera(_smgr->addCameraSceneNodeFPS()) //FPS for debug
 
 GraphicManager::~GraphicManager()
 {
+	_device->drop();
 }
 
 irr::scene::ISceneNode *GraphicManager::drawCube(const Cube &cube)
