@@ -43,8 +43,8 @@ std::string Map::makeLine(int size, int lineIdx)
 
 void Map::renderMap(GraphicManager &graph)
 {
-	Cube grass(irr::core::vector3df(0,0,30), irr::core::vector3df( 0, 0, 0), TEXTURE("Grass.jpg"));
-	Cube wall(irr::core::vector3df(0,0,30), irr::core::vector3df( 0, 0, 0), TEXTURE("Wall.jpg"));
+	Cube grass(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 0.1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("Grass.jpg"));
+	Cube wall(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("Wall.jpg"));
 
 	for (unsigned int i = 0; i < _map.size(); i++) {
 		for (unsigned int j = 0; j < _map[j].size(); j++) {

@@ -19,14 +19,20 @@
 # define DFL_VECTOR irr::core::vector3df(0, 0 , 0)
 #endif
 
+#ifndef DFL_SCALE
+# define DFL_SCALE irr::core::vector3df(1, 1, 1)
+#endif
+
 class Sphere {
 public:
 	Sphere(irr::core::vector3df pos = DFL_VECTOR,
+		irr::core::vector3df scale = DFL_SCALE,
 		irr::core::vector3df rotation = DFL_VECTOR,
 		std::string texture = "");
 	~Sphere();
 
 	std::string texture;
 	irr::core::vector3df pos;
+	irr::core::vector3df scale;
 	irr::core::vector3df rotation;
 };

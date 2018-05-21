@@ -26,6 +26,7 @@ irr::scene::ISceneNode *GraphicManager::drawCube(const Cube &cube)
 	irr::scene::ISceneNode *node = _smgr->addCubeSceneNode();
 	if (node == nullptr)
 		return nullptr;
+	node->setScale(cube.scale);
 	node->setPosition(cube.pos);
 	node->setRotation(cube.rotation);
 	node->setMaterialTexture(0, _driver->getTexture(&cube.texture[0]));
@@ -39,6 +40,7 @@ irr::scene::ISceneNode *GraphicManager::drawSphere(const Sphere &sphere)
 	irr::scene::ISceneNode *node = _smgr->addSphereSceneNode();
 	if (node == nullptr)
 		return nullptr;
+	node->setScale(sphere.scale);
 	node->setPosition(sphere.pos);
 	node->setRotation(sphere.rotation);
 	node->setMaterialTexture(0, _driver->getTexture(&sphere.texture[0]));
