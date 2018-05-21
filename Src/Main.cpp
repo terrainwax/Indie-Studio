@@ -18,8 +18,7 @@ int main(int argc, char **argv)
 
 	graphic.setCameraPosition(irr::core::vector3df(40, 40, 0));
 	graphic.setCameraTarget(irr::core::vector3df(40, 0, 40));
-	while (graphic.isActive() &&
-		action.isKeyPressed(irr::KEY_KEY_Q) != true) {
+	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_Q) != true) {
 		map.renderMap(graphic);
 		graphic.render();
 	}
