@@ -49,10 +49,10 @@ void Map::renderMap(GraphicManager &graph)
 	for (unsigned int i = 0; i < _map.size(); i++) {
 		for (unsigned int j = 0; j < _map[j].size(); j++) {
 			if (_map[i][j] == '#') {
-				wall.pos = irr::core::vector3df(i * 10, 10, j * 10);
+				wall.pos = irr::core::vector3df(i * 10, 0, j * 10);
 				graph.drawCube(wall);
 			}
-			grass.pos = irr::core::vector3df(i * 10, 0, j * 10); 
+			grass.pos = irr::core::vector3df(i * 10, 0 - 10 / 2, j * 10); 
 			graph.drawCube(grass);
 		}
 	}
