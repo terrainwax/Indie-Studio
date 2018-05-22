@@ -25,12 +25,19 @@ CPPFLAGS	+= 	-std=c++11
 CPPFLAGS	+= 	-IInclude/
 
 LDFLAGS 	+=	-lIrrlicht
-LDFLAGS 	+=	-lXxf86vm
-LDFLAGS 	+=	-lGL
-LDFLAGS 	+=	-lXext
-LDFLAGS 	+=	-lX11
-LDFLAGS 	+=	-lXcursor
+LDFLAGS 	+=	-std=c++17
 
+UNAME_S := $(shell uname -s)
+ifeq ($(UNAME_S),Darwin)
+	CPPFLAGS	+= -Wno-unused-private-field -I/usr/local/Cellar/irrlicht/1.8.4/include/irrlicht
+	LDFLAGS		+= -framework OpenGL -framework Cocoa -framework IOKit -framework CoreVideo
+else
+	LDFLAGS 	+=	-lXxf86vm
+	LDFLAGS 	+=	-lGL
+	LDFLAGS 	+=	-lXext
+	LDFLAGS 	+=	-lX11
+	LDFLAGS 	+=	-lXcursor
+endif
 
 CC		=	g++
 
