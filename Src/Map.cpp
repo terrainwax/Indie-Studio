@@ -9,12 +9,12 @@
 #include <stdexcept>
 #include "Map.hpp"
 
-Map::Map(int size)
+Map::Map(int size, int density)
 {
 	int lineNbr = size - 2;
-	int density = 40;
 	std::vector<irr::core::vector2di> breakableSpawn;
 
+	_mapSize = size;
 	if (size < 5)
 		throw std::invalid_argument("Map size is too small");
 	_map.push_back(std::string(size, Wall));
@@ -67,4 +67,31 @@ void Map::renderMap(GraphicManager &graph)
 			graph.drawCube(grass);
 		}
 	}
+}
+
+void Map::checkBound(irr::core::vector2di pos)
+{
+	if (pos.X < 0 || pos.Y < 0 || pos.X >= _mapSize || pos.Y >= _mapSize)
+		throw std::invalid_argument("Invalid x or y : Out of bound");	
+}
+
+Map::Cell Map::getCell(irr::core::vector2di pos)
+{
+	Map::Cell cell[] = {
+		Wall,
+		Empty,
+		Breakable,
+		DFL,
+	};
+	this->checkBound(pos);
+	for (int i = 0; cell[i] != DFL; i++)
+		if (_map[pos.Y][pos.X] == cell[i])
+			return cell[i];
+	return DFL;
+}
+
+void Map::setCell(irr::core::vector2di pos, Map::Cell cell)
+{
+	this->checkBound(pos);
+	_map[pos.Y][pos.X] = cell;
 }

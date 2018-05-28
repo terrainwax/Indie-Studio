@@ -37,10 +37,10 @@ ADD_EXECUTABLE(IrrlichtCMake WIN32 MACOSX_BUNDLE
         Include/Sphere.hpp
         Src/ActionManager.cpp
         Src/Clock.cpp
-        Src/Cube.cpp
         Src/GraphicManager.cpp
         Src/Main.cpp
         Src/Map.cpp
-        Src/Sphere.cpp)
+        Src/Obj/Cube.cpp
+        Src/Obj/Sphere.cpp)
 TARGET_LINK_LIBRARIES(IrrlichtCMake ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})
