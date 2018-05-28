@@ -5,6 +5,7 @@
 **    <------->
 */
 
+#include <ctime>
 #include "Map.hpp"
 #include "GraphicManager.hpp"
 
@@ -12,6 +13,7 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 		return 84;
+	srand(time(NULL));
 	Map map(atoi(argv[1]));
 	ActionManager action;
 	GraphicManager graphic(action);	

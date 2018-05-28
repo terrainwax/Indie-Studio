@@ -22,4 +22,10 @@ public:
 	~Map();
 
 	void renderMap(GraphicManager &graph);
+
+	enum Cell {
+		Wall = '#',
+		Breakable = 'B',
+		Empty = ' ',
+	};
 };
