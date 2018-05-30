@@ -9,6 +9,7 @@
 #include "Map.hpp"
 #include "BombUp.hpp"
 #include "GraphicManager.hpp"
+#include "PowerUpFactory.hpp"
 
 int main(int argc, char **argv)
 {
@@ -19,6 +20,8 @@ int main(int argc, char **argv)
 	ActionManager action;
 	GraphicManager graphic(action);	
 
+	PowerUpFactory factory;
+	printf("%s\n", factory.createRandomPowerUp().get()->getName().c_str());
 	graphic.setCameraPosition(irr::core::vector3df(40, 40, 0));
 	graphic.setCameraTarget(irr::core::vector3df(40, 0, 40));
 	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_Q) != true) {
