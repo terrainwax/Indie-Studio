@@ -22,7 +22,20 @@ GraphicManager::~GraphicManager()
 	_device->drop();
 }
 
-irr::scene::ISceneNode *GraphicManager::drawCube(const Cube &cube)
+void GraphicManager::drawCube(const Cube &cube)
+{
+	irr::scene::ISceneNode *node = _smgr->addCubeSceneNode();
+	if (node == nullptr)
+		return;
+	node->setScale(cube.scale);
+	node->setPosition(cube.pos);
+	node->setRotation(cube.rotation);
+	node->setMaterialTexture(0, _driver->getTexture(&cube.texture[0]));
+	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+	_smgr->addToDeletionQueue(node);
+}
+
+irr::scene::ISceneNode *GraphicManager::makeCubeNode(const Cube &cube)
 {
 	irr::scene::ISceneNode *node = _smgr->addCubeSceneNode();
 	if (node == nullptr)
@@ -32,22 +45,20 @@ irr::scene::ISceneNode *GraphicManager::drawCube(const Cube &cube)
 	node->setRotation(cube.rotation);
 	node->setMaterialTexture(0, _driver->getTexture(&cube.texture[0]));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-	_smgr->addToDeletionQueue(node);
 	return node;
 }
 
-irr::scene::ISceneNode *GraphicManager::drawSphere(const Sphere &sphere)
+void GraphicManager::drawSphere(const Sphere &sphere)
 {
 	irr::scene::ISceneNode *node = _smgr->addSphereSceneNode();
 	if (node == nullptr)
-		return nullptr;
+		return;
 	node->setScale(sphere.scale);
 	node->setPosition(sphere.pos);
 	node->setRotation(sphere.rotation);
 	node->setMaterialTexture(0, _driver->getTexture(&sphere.texture[0]));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	_smgr->addToDeletionQueue(node);
-	return node;
 }
 
 void GraphicManager::setCameraPosition(const irr::core::vector3df &pos)
