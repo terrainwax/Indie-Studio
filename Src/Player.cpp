@@ -63,7 +63,8 @@ void		Player::setWallPass()
 	this->_wallPass = true;
 }
 
-void		Player::run()
+void		Player::update(ActionManager &actionManager, Map &map)
 {
-
+	(void)map;
+	(void)actionManager;
 }

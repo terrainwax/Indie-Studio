@@ -8,6 +8,8 @@
 #pragma once
 
 #include <string>
+#include "Map.hpp"
+#include "ActionManager.hpp"
 
 class Player {
 private:
@@ -40,5 +42,5 @@ public:
 	void		setYpos(float);
 	void		setNbBomb(char);
 
-	void		run();
+	void		update(ActionManager &actionManager, Map &map);
 };
