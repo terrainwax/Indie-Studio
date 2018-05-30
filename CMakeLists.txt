@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.9)
+cmake_minimum_required(VERSION 3.5)
 project(cpp_indie_studio)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -27,7 +27,7 @@ INCLUDE_DIRECTORIES(${IRRLICHT_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR})
 include_directories(Include)
 include_directories(Include/PowerUp)
 
-SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/Binaries)
 
 ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE
         Src/Map.cpp
