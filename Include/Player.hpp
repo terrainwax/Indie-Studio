@@ -36,7 +36,7 @@ public:
 
 	//setters
 	void		setFire(char);
-	void		setWallPass();
+	void		setWallPass(bool);
 	void		setXPos(float);
 	void		setSpeed(char);
 	void		setYpos(float);

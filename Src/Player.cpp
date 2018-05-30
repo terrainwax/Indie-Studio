@@ -58,9 +58,9 @@ void		Player::setFire(char fire)
 	_fire = fire;
 }
 
-void		Player::setWallPass()
+void		Player::setWallPass(bool wallPass)
 {
-	this->_wallPass = true;
+	this->_wallPass = wallPass;
 }
 
 void		Player::update(ActionManager &actionManager, Map &map)

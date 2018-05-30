@@ -25,6 +25,7 @@ SET(OSX_LIBRARIES ${XCURSOR_LIBRARY} ${XXF86VM_LIBRARY} ${XEXT_LIBRARY} ${X11_LI
 
 INCLUDE_DIRECTORIES(${IRRLICHT_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR})
 include_directories(Include)
+include_directories(Include/PowerUp)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
@@ -42,6 +43,10 @@ ADD_EXECUTABLE(IrrlichtCMake WIN32 MACOSX_BUNDLE
         Src/Obj/Cube.cpp
         Src/Obj/Sphere.cpp
         Src/ActionManager.cpp
-        Src/GraphicManager.cpp)
+        Src/PowerUp/BombUp.cpp
+        Src/PowerUp/FireUp.cpp
+        Src/GraphicManager.cpp
+        Src/PowerUp/SpeedUp.cpp
+        Src/PowerUp/WallPass.cpp)
 TARGET_LINK_LIBRARIES(IrrlichtCMake ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})

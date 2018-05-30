@@ -7,6 +7,7 @@
 
 #include <ctime>
 #include "Map.hpp"
+#include "BombUp.hpp"
 #include "GraphicManager.hpp"
 
 int main(int argc, char **argv)
