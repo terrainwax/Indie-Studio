@@ -63,7 +63,7 @@ void Map::renderMap(GraphicManager &graph)
 				breakable.pos = irr::core::vector3df(i * 10, 0, j * 10);
 				graph.drawCube(breakable);
 			}
-			grass.pos = irr::core::vector3df(i * 10, 0 - 10 / 2, j * 10);
+			grass.pos = irr::core::vector3df(i * 10, -5, j * 10);
 			graph.drawCube(grass);
 		}
 	}
@@ -94,4 +94,9 @@ void Map::setCell(irr::core::vector2di pos, Map::Cell cell)
 {
 	this->checkBound(pos);
 	_map[pos.Y][pos.X] = cell;
+}
+
+irr::core::vector3df Map::getCenter() const
+{
+	return irr::core::vector3df(_mapSize / 2 * 10 - 5, 0, _mapSize / 2 * 10 - 5);
 }

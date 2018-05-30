@@ -32,5 +32,6 @@ public:
 	Cell getCell(irr::core::vector2di pos);
 	void setCell(irr::core::vector2di pos, Cell cell);
 	void renderMap(GraphicManager &graph);
+	irr::core::vector3df getCenter() const;
 
 };
