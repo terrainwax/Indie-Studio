@@ -16,9 +16,9 @@
 #include "BombUp.hpp"
 #include "SpeedUp.hpp"
 #include "WallPass.hpp"
-#include "IPowerUp.hpp"
+#include "APowerUp.hpp"
 
-#define POWERUP_BUILDER std::function<IPowerUp *()>
+#define POWERUP_BUILDER std::function<APowerUp *()>
 #define FACTORY_BIND(x) std::bind(x, this)
 
 class PowerUpFactory {
@@ -26,14 +26,14 @@ private:
 	std::vector<POWERUP_BUILDER> _managerVector;
 	std::map<std::string, POWERUP_BUILDER> _managerMap;
 
-	IPowerUp *createFireUp() const noexcept;
-	IPowerUp *createBombUp() const noexcept;
-	IPowerUp *createSpeedUp() const noexcept;
-	IPowerUp *createWallPass() const noexcept;
+	APowerUp *createFireUp() const noexcept;
+	APowerUp *createBombUp() const noexcept;
+	APowerUp *createSpeedUp() const noexcept;
+	APowerUp *createWallPass() const noexcept;
 public:
 	PowerUpFactory();
 	~PowerUpFactory();
 
-	std::unique_ptr<IPowerUp> createRandomPowerUp();
-	std::unique_ptr<IPowerUp> createPowerUpFromName(const std::string &s);
+	std::unique_ptr<APowerUp> createRandomPowerUp();
+	std::unique_ptr<APowerUp> createPowerUpFromName(const std::string &s);
 };

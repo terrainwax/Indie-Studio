@@ -21,11 +21,12 @@ int main(int argc, char **argv)
 	GraphicManager graphic(action);	
 
 	PowerUpFactory factory;
-	printf("%s\n", factory.createRandomPowerUp().get()->getName().c_str());
+	std::unique_ptr<APowerUp> powerUp = factory.createRandomPowerUp();
 	graphic.setCameraPosition(irr::core::vector3df(40, 40, 0));
 	graphic.setCameraTarget(irr::core::vector3df(40, 0, 40));
 	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_Q) != true) {
 		map.renderMap(graphic);
+		powerUp.get()->renderPowerUp(graphic);
 		graphic.render();
 	}
 	return 0;

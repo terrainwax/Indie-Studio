@@ -25,38 +25,38 @@ PowerUpFactory::~PowerUpFactory()
 {
 }
 
-std::unique_ptr<IPowerUp>
+std::unique_ptr<APowerUp>
 PowerUpFactory::createRandomPowerUp()
 {
 	int i = rand() % _managerVector.size();
 
-	return std::unique_ptr<IPowerUp>(_managerVector[i]());
+	return std::unique_ptr<APowerUp>(_managerVector[i]());
 }
 
-std::unique_ptr<IPowerUp>
+std::unique_ptr<APowerUp>
 PowerUpFactory::createPowerUpFromName(const std::string &s)
 {
 	if (_managerMap.find(s) == _managerMap.end())
 		throw std::invalid_argument("Unknow PowerUp");
-	return std::unique_ptr<IPowerUp>(_managerMap[s]());
+	return std::unique_ptr<APowerUp>(_managerMap[s]());
 }
 
-IPowerUp *PowerUpFactory::createBombUp() const noexcept
+APowerUp *PowerUpFactory::createBombUp() const noexcept
 {
 	return new BombUp;
 }
 
-IPowerUp *PowerUpFactory::createFireUp() const noexcept
+APowerUp *PowerUpFactory::createFireUp() const noexcept
 {
 	return new FireUp;
 }
 
-IPowerUp *PowerUpFactory::createSpeedUp() const noexcept
+APowerUp *PowerUpFactory::createSpeedUp() const noexcept
 {
 	return new SpeedUp;
 }
 
-IPowerUp *PowerUpFactory::createWallPass() const noexcept
+APowerUp *PowerUpFactory::createWallPass() const noexcept
 {
 	return new WallPass;
 }

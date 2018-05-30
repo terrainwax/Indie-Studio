@@ -15,7 +15,6 @@ Player::Player(std::string name)
 
 Player::~Player()
 {
-	
 }
 
 std::string	Player::getName() const

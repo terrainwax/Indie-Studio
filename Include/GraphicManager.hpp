@@ -43,4 +43,5 @@ public:
 
 	void drawCube(const Cube &cube);
 	void drawSphere(const Sphere &sphere);
+	void addToDeletionQueue(irr::scene::ISceneNode *node);
 };

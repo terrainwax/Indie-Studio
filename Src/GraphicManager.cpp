@@ -78,6 +78,11 @@ void GraphicManager::render()
 	_driver->endScene();
 }
 
+void GraphicManager::addToDeletionQueue(irr::scene::ISceneNode *node)
+{
+	_smgr->addToDeletionQueue(node);
+}
+
 bool GraphicManager::isActive()
 {
 	return _device->run();

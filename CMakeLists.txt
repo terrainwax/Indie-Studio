@@ -41,6 +41,7 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE
         Src/PowerUp/FireUp.cpp
         Src/GraphicManager.cpp
         Src/PowerUp/SpeedUp.cpp
+        Src/PowerUp/APowerUp.cpp
         Src/PowerUp/WallPass.cpp
         Src/PowerUp/PowerUpFactory.cpp)
 TARGET_LINK_LIBRARIES(indie ${IRRLICHT_LIBRARY}

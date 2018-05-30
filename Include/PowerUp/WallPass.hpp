@@ -7,13 +7,13 @@
 
 #pragma once
 
-#include "IPowerUp.hpp"
+#include "APowerUp.hpp"
 
-class WallPass : public IPowerUp {
+class WallPass : public APowerUp {
+private:
 public:
 	WallPass();
 	virtual ~WallPass();
 
-	const std::string getName() override;
 	void onPickUp(Player &player) override;
 };
