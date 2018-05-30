@@ -26,7 +26,7 @@ Map::Map(int size, int density)
 			if (i > 1 && j > 1 && i < lineNbr && j < lineNbr && _map[i][j] != Wall)
 				breakableSpawn.push_back(irr::core::vector2di(i, j));
 	for (unsigned int i = 0; i < breakableSpawn.size(); i++)
-		if (rand() % 100 < density)
+		if (rand() % 100 <= density)
 			_map[breakableSpawn[i].X][breakableSpawn[i].Y] = Breakable;
 }
 
@@ -63,7 +63,7 @@ void Map::renderMap(GraphicManager &graph)
 				breakable.pos = irr::core::vector3df(i * 10, 0, j * 10);
 				graph.drawCube(breakable);
 			}
-			grass.pos = irr::core::vector3df(i * 10, 0 - 10 / 2, j * 10); 
+			grass.pos = irr::core::vector3df(i * 10, 0 - 10 / 2, j * 10);
 			graph.drawCube(grass);
 		}
 	}
@@ -72,7 +72,7 @@ void Map::renderMap(GraphicManager &graph)
 void Map::checkBound(irr::core::vector2di pos)
 {
 	if (pos.X < 0 || pos.Y < 0 || pos.X >= _mapSize || pos.Y >= _mapSize)
-		throw std::invalid_argument("Invalid x or y : Out of bound");	
+		throw std::invalid_argument("Invalid x or y : Out of bound");
 }
 
 Map::Cell Map::getCell(irr::core::vector2di pos)
