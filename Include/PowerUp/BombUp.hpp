@@ -14,5 +14,6 @@ public:
 	BombUp();
 	virtual ~BombUp();
 
+	const std::string getName() override;
 	void onPickUp(Player &player) override;
 };

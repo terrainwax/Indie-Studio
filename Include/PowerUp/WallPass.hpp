@@ -14,5 +14,6 @@ public:
 	WallPass();
 	virtual ~WallPass();
 
+	const std::string getName() override;
 	void onPickUp(Player &player) override;
 };

@@ -14,5 +14,6 @@ public:
 	FireUp();
 	virtual ~FireUp();
 
+	const std::string getName() override;
 	void onPickUp(Player &player) override;
 };
