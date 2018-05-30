@@ -5,11 +5,11 @@
 // player class
 //
 
-#ifndef __PLAYER__
-# define __PLAYER__
+#pragma once
 
-class Player
-{
+#include <string>
+
+class Player {
 private:
 	std::string	_name;
 	char		_speed;
@@ -33,20 +33,12 @@ public:
 	float		getYPos() const;
 
 	//setters
-	void		setSpeed(char);
-	void		incNbBomb();
-	void		incFire();
+	void		setFire(char);
 	void		setWallPass();
 	void		setXPos(float);
+	void		setSpeed(char);
 	void		setYpos(float);
+	void		setNbBomb(char);
 
 	void		run();
-
-private:
-	void		moveLeft(float);
-	void		moveRight(float);
-	void		moveUp(float);
-	void		moveDown(float);
 };
-
-#endif // __PLAYER__

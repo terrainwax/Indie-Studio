@@ -35,12 +35,13 @@ ADD_EXECUTABLE(IrrlichtCMake WIN32 MACOSX_BUNDLE
         Include/GraphicManager.hpp
         Include/Map.hpp
         Include/Sphere.hpp
-        Src/ActionManager.cpp
-        Src/Clock.cpp
-        Src/GraphicManager.cpp
-        Src/Main.cpp
         Src/Map.cpp
+        Src/Main.cpp
+        Src/Clock.cpp
+        Src/Player.cpp
         Src/Obj/Cube.cpp
-        Src/Obj/Sphere.cpp)
+        Src/Obj/Sphere.cpp
+        Src/ActionManager.cpp
+        Src/GraphicManager.cpp)
 TARGET_LINK_LIBRARIES(IrrlichtCMake ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})

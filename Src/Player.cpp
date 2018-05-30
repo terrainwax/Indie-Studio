@@ -48,14 +48,14 @@ void		Player::setSpeed(char speed)
 	this->_speed = speed;
 }
 
-void		Player::incNbBomb()
+void		Player::setNbBomb(char nbBomb)
 {
-	this->_nbBomb++;
+	_nbBomb = nbBomb;
 }
 
-void		Player::incFire()
+void		Player::setFire(char fire)
 {
-	this->_fire++;
+	_fire = fire;
 }
 
 void		Player::setWallPass()
@@ -66,24 +66,4 @@ void		Player::setWallPass()
 void		Player::run()
 {
 
-}
-
-void		Player::moveLeft(float decr)
-{
-	this->_xPos -= decr;
-}
-
-void		Player::moveRight(float incr)
-{
-	this->_xPos += incr;
-}
-
-void		Player::moveUp(float decr)
-{
-	this->yPos -= decr;
-}
-
-void		Player::moveDown(float incr)
-{
-	this->yPos += incr;
 }
