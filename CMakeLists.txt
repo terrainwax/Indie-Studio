@@ -29,13 +29,7 @@ include_directories(Include/PowerUp)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
 
-ADD_EXECUTABLE(IrrlichtCMake WIN32 MACOSX_BUNDLE
-        Include/ActionManager.hpp
-        Include/Clock.hpp
-        Include/Cube.hpp
-        Include/GraphicManager.hpp
-        Include/Map.hpp
-        Include/Sphere.hpp
+ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE
         Src/Map.cpp
         Src/Main.cpp
         Src/Clock.cpp
@@ -47,6 +41,7 @@ ADD_EXECUTABLE(IrrlichtCMake WIN32 MACOSX_BUNDLE
         Src/PowerUp/FireUp.cpp
         Src/GraphicManager.cpp
         Src/PowerUp/SpeedUp.cpp
-        Src/PowerUp/WallPass.cpp)
-TARGET_LINK_LIBRARIES(IrrlichtCMake ${IRRLICHT_LIBRARY}
+        Src/PowerUp/WallPass.cpp
+        Src/PowerUp/PowerUpFactory.cpp)
+TARGET_LINK_LIBRARIES(indie ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})
