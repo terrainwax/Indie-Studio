@@ -23,7 +23,6 @@ protected:
 	float		_yPos;
 	irr::scene::IAnimatedMeshSceneNode* _anode;
 	irr::scene::IAnimatedMesh* _mesh;
-	KeySet		_keySet;
 
 public:
 	APlayer(std::string name = "APlayer", int nbBomb = 1, int fire = 1, int speed = 1, bool wallPass = false);
