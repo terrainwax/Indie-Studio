@@ -21,7 +21,7 @@ public:
 	APowerUp(const std::string &name);
 	virtual ~APowerUp() = default;
 
-	virtual const std::string getName();
+	const std::string getName();
 	virtual void onPickUp(Player &player) = 0;
-	virtual void renderPowerUp(GraphicManager &graphicManager);
+	void renderPowerUp(GraphicManager &graphicManager);
 };
