@@ -12,7 +12,8 @@ _name(name),
 _nbBomb(nbBomb),
 _fire(fire),
 _speed(speed),
-_wallPass(wallPass)
+_wallPass(wallPass),
+_keySet()
 {
 }
 

@@ -31,6 +31,8 @@ SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/Binaries)
 
 ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE
         Src/Map.cpp
+        Src/Bomb.cpp
+        Src/Bomb.cpp
         Src/Main.cpp
         Src/Clock.cpp
         Src/KeySet.cpp
