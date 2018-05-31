@@ -12,9 +12,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b974d14-c717-406c-a88d-a396fc85deec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Player.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Player.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Models/0112.x" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Assets/Models/0112.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -28,13 +27,18 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Player.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Player.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/Player.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+            <state relative-caret-position="216">
+              <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0112.x" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/Assets/Models/0112.x">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="0122.xml" pinned="false" current-in-tab="false">
@@ -182,6 +186,13 @@
               <item name="cpp_indie_studio" type="462c0819:PsiDirectoryNode" />
               <item name="Binaries" type="462c0819:PsiDirectoryNode" />
               <item name="Assets" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cpp_indie_studio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpp_indie_studio" type="462c0819:PsiDirectoryNode" />
+              <item name="Binaries" type="462c0819:PsiDirectoryNode" />
+              <item name="Assets" type="462c0819:PsiDirectoryNode" />
               <item name="Textures" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -261,12 +272,12 @@
       <workItem from="1527503789452" duration="1865000" />
       <workItem from="1527600072199" duration="3926000" />
       <workItem from="1527720519897" duration="5665000" />
-      <workItem from="1527761405333" duration="539000" />
+      <workItem from="1527761405333" duration="979000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12599000" />
+    <option name="totallyTimeSpent" value="13039000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -281,14 +292,14 @@
     <frame x="0" y="29" width="1920" height="1051" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24986821" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.24986821" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32928178" />
       <window_info anchor="bottom" id="Messages" order="7" weight="0.32928178" />
       <window_info anchor="bottom" id="CMake" order="7" weight="0.32928178" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Version Control" order="7" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.32928178" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.32928178" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Terminal" order="7" weight="0.32928178" />
       <window_info id="Favorites" order="2" side_tool="true" />
@@ -578,10 +589,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/Src/Player.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="36" selection-start-line="20" selection-start-column="36" selection-end-line="20" selection-end-column="36" />
+        <state relative-caret-position="216">
+          <caret line="12" column="57" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="57" />
         </state>
       </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Models/0112.x">
+      <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
 </project>
