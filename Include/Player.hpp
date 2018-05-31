@@ -22,7 +22,7 @@ private:
 	float		_yPos;
 
 public:
-	Player(std::string name = "PlayerX");
+	Player(std::string name = "PlayerX", irr::scene::ISceneManager *_smgr = nullptr);
 	~Player();
 
 	//getters

@@ -61,6 +61,11 @@ void GraphicManager::drawSphere(const Sphere &sphere)
 	_smgr->addToDeletionQueue(node);
 }
 
+irr::scene::ISceneManager *GraphicManager::getSceneManager()
+{
+	return _smgr;
+}
+
 void GraphicManager::setCameraPosition(const irr::core::vector3df &pos)
 {
 	_camera->setPosition(pos);
