@@ -40,15 +40,15 @@ void	Player::update(ActionManager &actionManager, Map &map)
 		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
 		pos.Z += _speed;
 	}
-	if (actionManager.isKeyDown(irr::KEY_KEY_S)) {
+	else if (actionManager.isKeyDown(irr::KEY_KEY_S)) {
 		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
 		pos.Z -= _speed;
 	}
-	if (actionManager.isKeyDown(irr::KEY_KEY_Q)) {
+	else if (actionManager.isKeyDown(irr::KEY_KEY_Q)) {
 		_anode->setRotation(irr::core::vector3df(-90, 270, 0));
 		pos.X -= _speed;
 	}
-	if (actionManager.isKeyDown(irr::KEY_KEY_D)) {
+	else if (actionManager.isKeyDown(irr::KEY_KEY_D)) {
 		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += _speed;
 	}
