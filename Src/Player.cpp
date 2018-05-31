@@ -6,6 +6,7 @@
 //
 
 #include "Player.hpp"
+#include "GraphicManager.hpp"
 
 Player::Player(std::string name, irr::scene::ISceneManager *_smgr) : APlayer(name)
 {
@@ -32,4 +33,23 @@ void	Player::update(ActionManager &actionManager, Map &map)
 {
 	(void)map;
 	(void)actionManager;
+	irr::core::vector3df pos = _anode->getPosition();
+	if (actionManager.isKeyDown(irr::KEY_KEY_Z))
+		pos.Z += 2;
+	if (actionManager.isKeyDown(irr::KEY_KEY_S))
+		pos.Z -= 2;
+	if (actionManager.isKeyDown(irr::KEY_KEY_Q))
+		pos.X -= 2;
+	if (actionManager.isKeyDown(irr::KEY_KEY_D))
+		pos.X += 2;
+	_anode->setPosition(pos);
+}
+
+
+void Player::setCameraFocus(GraphicManager &graphicManager)
+{
+	irr::core::vector3df pos = _anode->getPosition();
+
+	graphicManager.setCameraTarget(pos);
+	graphicManager.setCameraPosition(irr::core::vector3df(pos.X, pos.Y + 40 , pos.Z - 40));
 }

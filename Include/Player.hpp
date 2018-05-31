@@ -18,5 +18,6 @@ public:
 	Player(std::string name = "PlayerX", irr::scene::ISceneManager *_smgr = nullptr);
 	~Player();
 
+	void 	setCameraFocus(GraphicManager &graphicManager);
 	virtual void update(ActionManager &actionManager, Map &map);
 };

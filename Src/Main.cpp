@@ -23,13 +23,12 @@ int main(int argc, char **argv)
 
 	PowerUpFactory factory;
 	std::unique_ptr<APowerUp> powerUp = factory.createRandomPowerUp();
-	Player *p = new Player("test", graphic.getSceneManager());
-	graphic.setCameraPosition(irr::core::vector3df(center.X, center.X * 1.6f, center.Z));
-	graphic.setCameraTarget(center);
-	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_Q) != true) {
+	Player player("test", graphic.getSceneManager());
+	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_A) != true) {
 		map.renderMap(graphic);
 		powerUp.get()->renderPowerUp(graphic);
-		p->update(action, map);
+		player.update(action, map);
+		player.setCameraFocus(graphic);
 		graphic.render();
 	}
 	return 0;
