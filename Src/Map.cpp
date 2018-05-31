@@ -26,7 +26,7 @@ Map::Map(int size, int density)
 			if (i > 1 && j > 1 && i < lineNbr && j < lineNbr && _map[i][j] != Wall)
 				breakableSpawn.push_back(irr::core::vector2di(i, j));
 	for (unsigned int i = 0; i < breakableSpawn.size(); i++)
-		if (rand() % 100 <= density)
+		if (rand() % 100 < density)
 			_map[breakableSpawn[i].X][breakableSpawn[i].Y] = Breakable;
 }
 
