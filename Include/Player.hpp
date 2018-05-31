@@ -20,6 +20,8 @@ private:
 	bool		_wallPass;
 	float		_xPos;
 	float		_yPos;
+	irr::scene::IAnimatedMeshSceneNode* _anode;
+	irr::scene::IAnimatedMesh* _mesh;
 
 public:
 	Player(std::string name = "PlayerX", irr::scene::ISceneManager *_smgr = nullptr);
