@@ -7,6 +7,7 @@
 
 #include "Player.hpp"
 #include "GraphicManager.hpp"
+#include <iostream>
 
 Player::Player(std::string name, irr::scene::ISceneManager *_smgr) : APlayer(name)
 {
@@ -34,6 +35,7 @@ void	Player::update(ActionManager &actionManager, Map &map)
 	(void)map;
 	(void)actionManager;
 	irr::core::vector3df pos = _anode->getPosition();
+
 	if (actionManager.isKeyDown(irr::KEY_KEY_Z)) {
 		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
 		pos.Z += _speed;
@@ -50,7 +52,8 @@ void	Player::update(ActionManager &actionManager, Map &map)
 		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += _speed;
 	}
-	_anode->setPosition(pos);
+	if (map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty)
+		_anode->setPosition(pos);
 }
 
 
