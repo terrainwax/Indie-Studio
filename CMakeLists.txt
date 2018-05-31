@@ -34,6 +34,7 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE
         Src/Main.cpp
         Src/Clock.cpp
         Src/Player.cpp
+	Src/Bomb.cpp
         Src/Obj/Cube.cpp
         Src/Obj/Sphere.cpp
         Src/ActionManager.cpp
