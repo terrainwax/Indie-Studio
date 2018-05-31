@@ -32,6 +32,9 @@ void GraphicManager::drawCube(const Cube &cube)
 	node->setRotation(cube.rotation);
 	node->setMaterialTexture(0, _driver->getTexture(&cube.texture[0]));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+	node->setMaterialFlag(irr::video::EMF_BILINEAR_FILTER, false);
+	//node->setMaterialFlag(irr::video::EMF_GOURAUD_SHADING, false);
+	//node->setMaterialFlag(irr::video::EMF_WIREFRAME, true);
 	_smgr->addToDeletionQueue(node);
 }
 
