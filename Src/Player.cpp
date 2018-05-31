@@ -34,14 +34,22 @@ void	Player::update(ActionManager &actionManager, Map &map)
 	(void)map;
 	(void)actionManager;
 	irr::core::vector3df pos = _anode->getPosition();
-	if (actionManager.isKeyDown(irr::KEY_KEY_Z))
+	if (actionManager.isKeyDown(irr::KEY_KEY_Z)) {
+		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
 		pos.Z += 2;
-	if (actionManager.isKeyDown(irr::KEY_KEY_S))
+	}
+	if (actionManager.isKeyDown(irr::KEY_KEY_S)) {
+		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
 		pos.Z -= 2;
-	if (actionManager.isKeyDown(irr::KEY_KEY_Q))
+	}
+	if (actionManager.isKeyDown(irr::KEY_KEY_Q)) {
+		_anode->setRotation(irr::core::vector3df(-90, 270, 0));
 		pos.X -= 2;
-	if (actionManager.isKeyDown(irr::KEY_KEY_D))
+	}
+	if (actionManager.isKeyDown(irr::KEY_KEY_D)) {
+		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += 2;
+	}
 	_anode->setPosition(pos);
 }
 
