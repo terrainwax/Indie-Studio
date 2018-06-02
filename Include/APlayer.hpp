@@ -15,7 +15,7 @@
 class APlayer {
 protected:
 	std::string	_name;
-	char		_speed;
+	float		_speed;
 	char		_nbBomb;
 	char		_fire;
 	bool		_wallPass;
@@ -25,12 +25,13 @@ protected:
 	irr::scene::IAnimatedMesh* _mesh;
 
 public:
-	APlayer(std::string name = "APlayer", int nbBomb = 1, int fire = 1, int speed = 1, bool wallPass = false);
+	APlayer(std::string name = "APlayer", int nbBomb = 1, int fire = 1,
+		float speed = 0.5, bool wallPass = false);
 	~APlayer();
 
 	//getters
 	std::string	getName() const;
-	char		getSpeed() const;
+	float		getSpeed() const;
 	char		getNbBomb() const;
 	char		getFire() const;
 	bool		getWallPass() const;
@@ -41,7 +42,7 @@ public:
 	void		setFire(char);
 	void		setWallPass(bool);
 	void		setXPos(float);
-	void		setSpeed(char);
+	void		setSpeed(float);
 	void		setYpos(float);
 	void		setNbBomb(char);
 

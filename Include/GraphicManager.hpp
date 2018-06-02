@@ -45,4 +45,5 @@ public:
 	void drawSphere(const Sphere &sphere);
 	void addToDeletionQueue(irr::scene::ISceneNode *node);
 	irr::scene::ISceneManager *getSceneManager();
+	irr::video::IVideoDriver  *getVideoDriver();
 };

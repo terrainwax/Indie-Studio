@@ -19,7 +19,6 @@ int main(int argc, char **argv)
 	Map map(atoi(argv[1]));
 	ActionManager action;
 	GraphicManager graphic(action);
-	irr::core::vector3df center = map.getCenter();
 
 	PowerUpFactory factory;
 	std::unique_ptr<APowerUp> powerUp = factory.createRandomPowerUp();

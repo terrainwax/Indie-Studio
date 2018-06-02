@@ -9,6 +9,7 @@
 # define __BOMB__
 
 #include "Clock.hpp"
+#include <irrlicht.h>
 
 class Map;
 
@@ -19,20 +20,23 @@ private:
 	char		_xMapPos;
 	char		_yMapPos;
 	Clock		_clock;
+	irr::scene::ISceneNode *node;
 
-public:
-	Bomb(char, char, char);
+	public:
+	Bomb(char, char, char, irr::scene::ISceneManager *);
 	~Bomb();
 
 	//getters
 	char		getRadius() const;
 	char		getXMapPos() const;
 	char		getYMapPos() const;
+	irr::scene::ISceneNode * getNode();
 
 	//setters
 	void		setRadius(const char);
 	void		setXMapPos(const char);
 	void		setYMappos(const char);
+
 
 	int		update();
 	void		explode(Map&);

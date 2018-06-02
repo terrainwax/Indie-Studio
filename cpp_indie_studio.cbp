@@ -74,13 +74,22 @@
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/APlayer.cpp">
+			<Option target="indie"/>
+		</Unit>
 		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/ActionManager.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Bomb.cpp">
 			<Option target="indie"/>
 		</Unit>
 		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Clock.cpp">
 			<Option target="indie"/>
 		</Unit>
 		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/GraphicManager.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/KeySet.cpp">
 			<Option target="indie"/>
 		</Unit>
 		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Main.cpp">

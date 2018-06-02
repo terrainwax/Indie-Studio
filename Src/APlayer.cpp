@@ -7,7 +7,7 @@
 
 #include "APlayer.hpp"
 
-APlayer::APlayer(std::string name, int nbBomb, int fire, int speed, bool wallPass) :
+APlayer::APlayer(std::string name, int nbBomb, int fire, float speed, bool wallPass) :
 _name(name),
 _nbBomb(nbBomb),
 _fire(fire),
@@ -25,7 +25,7 @@ std::string	APlayer::getName() const
 	return this->_name;
 }
 
-char		APlayer::getSpeed() const
+float		APlayer::getSpeed() const
 {
 	return this->_speed;
 }
@@ -45,7 +45,7 @@ bool		APlayer::getWallPass() const
 	return this->_wallPass;
 }
 
-void		APlayer::setSpeed(char speed)
+void		APlayer::setSpeed(float speed)
 {
 	this->_speed = speed;
 }
