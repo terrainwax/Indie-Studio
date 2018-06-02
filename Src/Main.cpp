@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_A) != true) {
 		map.renderMap(graphic);
 		powerUp.get()->renderPowerUp(graphic);
-		player.update(action, map);
+		player.update(action, map, graphic.getSceneManager(), graphic.getDevice());
 		player.setCameraFocus(graphic);
 		graphic.render();
 	}

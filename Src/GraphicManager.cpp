@@ -74,6 +74,11 @@ irr::video::IVideoDriver *GraphicManager::getVideoDriver()
 	return _driver;
 }
 
+irr::IrrlichtDevice *GraphicManager::getDevice()
+{
+	return _device;
+}
+
 void GraphicManager::setCameraPosition(const irr::core::vector3df &pos)
 {
 	_camera->setPosition(pos);

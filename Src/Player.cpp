@@ -24,14 +24,13 @@ Player::Player(std::string name, irr::scene::ISceneManager *_smgr) : APlayer(nam
 	_anode->setScale(irr::core::vector3df(0.008,0.008,0.008));
 	_anode->setFrameLoop(0, 90);
 	this->place = nullptr;
-	this->_smgr = _smgr;
 }
 
 Player::~Player()
 {
 }
 
-void	Player::update(ActionManager &actionManager, Map &map)
+void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device)
 {
 	(void)map;
 	(void)actionManager;
@@ -49,6 +48,19 @@ void	Player::update(ActionManager &actionManager, Map &map)
 		_anode->setFrameLoop(0, 90);
 		if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr)
 		{
+			if (env == nullptr)
+ 				env = device->getGUIEnvironment();
+			if (font == nullptr)
+				font = env->getFont("./Assets/Font/fonthaettenschweiler.bmp");
+			_nbBomb -= 1;
+			std::string result = "Bombe NB : ";
+			result = result + std::to_string(_nbBomb);
+			if (nodeText == nullptr)
+				nodeText = _smgr->addTextSceneNode(font, std::wstring(result.begin(), result.end()).c_str());
+			nodeText->setScale(irr::core::vector3df(2,2,2));
+			nodeText->setTextColor(irr::video::SColor(255, 255, 0, 0));
+			nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
+
 			place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10 ,_smgr);
 		}
 		else if (place != nullptr) {
@@ -56,6 +68,7 @@ void	Player::update(ActionManager &actionManager, Map &map)
 				place->explode(map);
 				_smgr->addToDeletionQueue(place->getNode());
 				place = nullptr;
+				_nbBomb += 1;
 			}
 		}
 		if (actionManager.isKeyDown(irr::KEY_KEY_Z)) {
@@ -73,8 +86,16 @@ void	Player::update(ActionManager &actionManager, Map &map)
 		}
 	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
 		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty) && (map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
-		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty))
+		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty)) {
 		_anode->setPosition(pos);
+		if (nodeText != nullptr) {
+			nodeText->setPosition(
+				irr::core::vector3df(pos.X, 10, pos.Z));
+			std::string result = "Bombe NB : ";
+			result = result + std::to_string(_nbBomb);
+			nodeText->setText(std::wstring(result.begin(), result.end()).c_str());
+		}
+	}
 }
 
 

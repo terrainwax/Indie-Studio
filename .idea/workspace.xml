@@ -12,18 +12,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b974d14-c717-406c-a88d-a396fc85deec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/CMakeLists.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/APlayer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/APlayer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Bomb.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Bomb.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/GraphicManager.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/GraphicManager.hpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Include/Player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Player.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/APlayer.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/APlayer.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Bomb.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Bomb.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/GraphicManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/GraphicManager.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Main.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Player.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cpp_indie_studio.cbp" beforeDir="false" afterPath="$PROJECT_DIR$/cpp_indie_studio.cbp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
     <ignored path="$PROJECT_DIR$/CMakeFiles/" />
@@ -37,25 +31,32 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="CMakeBuildProfile:Debug" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Player.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Player.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Src/Player.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="103">
-              <caret line="51" column="69" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="69" />
+            <state relative-caret-position="383">
+              <caret line="95" column="92" selection-start-line="95" selection-start-column="92" selection-end-line="95" selection-end-column="92" />
             </state>
           </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="BombUp.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/PowerUp/BombUp.cpp">
-          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="GraphicManager.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/GraphicManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="643">
-              <caret line="66" column="41" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="41" />
+            <state relative-caret-position="450">
+              <caret line="76" column="46" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="46" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ActionManager.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/ActionManager.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="91">
+              <caret line="10" selection-start-line="10" selection-end-line="12" selection-end-column="27" />
+              <folding>
+                <element signature="e#154#175#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -63,8 +64,8 @@
       <file leaf-file-name="Main.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/Main.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+            <state relative-caret-position="355">
+              <caret line="28" column="89" selection-start-line="28" selection-start-column="89" selection-end-line="28" selection-end-column="89" />
               <folding>
                 <element signature="e#88#104#0" expanded="true" />
               </folding>
@@ -75,8 +76,8 @@
       <file leaf-file-name="Player.hpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Include/Player.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="235">
-              <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
+            <state relative-caret-position="307">
+              <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
               <folding>
                 <element signature="e#99#121#0" expanded="true" />
               </folding>
@@ -84,11 +85,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bomb.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Bomb.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Src/Bomb.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="229">
-              <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
+            <state relative-caret-position="931">
+              <caret line="116" column="23" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
               <folding>
                 <element signature="e#83#101#0" expanded="true" />
               </folding>
@@ -96,11 +97,35 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Map.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Map.hpp">
+      <file leaf-file-name="APlayer.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/APlayer.hpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="22" column="15" selection-start-line="22" selection-start-column="15" selection-end-line="22" selection-end-column="15" />
+            <state relative-caret-position="379">
+              <caret line="48" column="132" selection-start-line="48" selection-start-column="132" selection-end-line="48" selection-end-column="132" />
+              <folding>
+                <element signature="e#100#117#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="APlayer.cpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Src/APlayer.cpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="184">
+              <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphicManager.hpp" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Include/GraphicManager.hpp">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="451">
+              <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+              <folding>
+                <element signature="e#176#197#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -110,30 +135,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="540">
               <caret line="59" column="70" selection-start-line="59" selection-start-column="68" selection-end-line="59" selection-end-column="70" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bomb.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/Bomb.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="217">
-              <caret line="32" column="43" selection-start-line="32" selection-start-column="43" selection-end-line="32" selection-end-column="43" />
-              <folding>
-                <element signature="e#119#139#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GraphicManager.hpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Include/GraphicManager.hpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="91">
-              <caret line="30" column="34" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="34" />
-              <folding>
-                <element signature="e#176#197#0" expanded="true" />
-              </folding>
             </state>
           </provider>
         </entry>
@@ -159,15 +160,15 @@
         <option value="$PROJECT_DIR$/Src/Cube.cpp" />
         <option value="$PROJECT_DIR$/Src/Obj/Player.cpp" />
         <option value="$PROJECT_DIR$/Src/APlayer.cpp" />
-        <option value="$PROJECT_DIR$/Include/APlayer.hpp" />
         <option value="$PROJECT_DIR$/CMakeLists.txt" />
+        <option value="$PROJECT_DIR$/Include/Bomb.hpp" />
+        <option value="$PROJECT_DIR$/Src/Bomb.cpp" />
         <option value="$PROJECT_DIR$/Src/GraphicManager.cpp" />
         <option value="$PROJECT_DIR$/Include/GraphicManager.hpp" />
-        <option value="$PROJECT_DIR$/Include/Player.hpp" />
-        <option value="$PROJECT_DIR$/Include/Bomb.hpp" />
         <option value="$PROJECT_DIR$/Src/Main.cpp" />
+        <option value="$PROJECT_DIR$/Include/APlayer.hpp" />
+        <option value="$PROJECT_DIR$/Include/Player.hpp" />
         <option value="$PROJECT_DIR$/Src/Player.cpp" />
-        <option value="$PROJECT_DIR$/Src/Bomb.cpp" />
       </list>
     </option>
   </component>
@@ -180,6 +181,7 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
+  <component name="OCFindUsagesOptions" text="true" ivars="false" properties="true" derivedClasses="false" />
   <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-37" />
     <option name="y" value="193" />
@@ -276,12 +278,12 @@
       <workItem from="1527600072199" duration="3926000" />
       <workItem from="1527720519897" duration="5665000" />
       <workItem from="1527761405333" duration="979000" />
-      <workItem from="1527874015316" duration="15932000" />
+      <workItem from="1527874015316" duration="18399000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37394000" />
+    <option name="totallyTimeSpent" value="39861000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -321,6 +323,11 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="1" />
+    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Include/GraphicManager.hpp">
@@ -549,26 +556,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Include/APlayer.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="28" column="33" selection-start-line="28" selection-start-column="33" selection-end-line="28" selection-end-column="33" />
-          <folding>
-            <element signature="e#100#117#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/ActionManager.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="179">
-          <caret line="10" selection-start-line="10" selection-end-line="10" selection-end-column="21" />
-          <folding>
-            <element signature="e#154#175#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Src/PowerUp/PowerUpFactory.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-635" />
@@ -602,40 +589,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/APlayer.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="543">
-          <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Src/GraphicManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="643">
-          <caret line="66" column="41" selection-start-line="66" selection-start-column="27" selection-end-line="66" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/GraphicManager.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="91">
-          <caret line="30" column="34" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="34" />
-          <folding>
-            <element signature="e#176#197#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Include/Player.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="235">
-          <caret line="16" column="41" selection-start-line="16" selection-start-column="41" selection-end-line="16" selection-end-column="41" />
-          <folding>
-            <element signature="e#99#121#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Src/PowerUp/BombUp.cpp">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -656,10 +609,47 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Bomb.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="931">
+          <caret line="116" column="23" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
+          <folding>
+            <element signature="e#83#101#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/ActionManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="91">
+          <caret line="10" selection-start-line="10" selection-end-line="12" selection-end-column="27" />
+          <folding>
+            <element signature="e#154#175#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/GraphicManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="450">
+          <caret line="76" column="46" selection-start-line="76" selection-start-column="37" selection-end-line="76" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/GraphicManager.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="451">
+          <caret line="47" column="29" selection-start-line="47" selection-start-column="29" selection-end-line="47" selection-end-column="29" />
+          <folding>
+            <element signature="e#176#197#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Src/Main.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="20" column="39" selection-start-line="20" selection-start-column="39" selection-end-line="20" selection-end-column="39" />
+        <state relative-caret-position="355">
+          <caret line="28" column="89" selection-start-line="28" selection-start-column="89" selection-end-line="28" selection-end-column="89" />
           <folding>
             <element signature="e#88#104#0" expanded="true" />
           </folding>
@@ -673,20 +663,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Player.cpp">
+    <entry file="file://$PROJECT_DIR$/Include/APlayer.hpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="103">
-          <caret line="51" column="69" selection-start-line="51" selection-start-column="44" selection-end-line="51" selection-end-column="69" />
+        <state relative-caret-position="379">
+          <caret line="48" column="132" selection-start-line="48" selection-start-column="132" selection-end-line="48" selection-end-column="132" />
+          <folding>
+            <element signature="e#100#117#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Src/Bomb.cpp">
+    <entry file="file://$PROJECT_DIR$/Src/APlayer.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="229">
-          <caret line="96" column="25" selection-start-line="96" selection-start-column="25" selection-end-line="96" selection-end-column="25" />
+        <state relative-caret-position="184">
+          <caret line="47" column="39" selection-start-line="47" selection-start-column="39" selection-end-line="47" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Include/Player.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="307">
+          <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
           <folding>
-            <element signature="e#83#101#0" expanded="true" />
+            <element signature="e#99#121#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Src/Player.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="383">
+          <caret line="95" column="92" selection-start-line="95" selection-start-column="92" selection-end-line="95" selection-end-column="92" />
         </state>
       </provider>
     </entry>

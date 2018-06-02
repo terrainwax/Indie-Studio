@@ -46,5 +46,5 @@ public:
 	void		setYpos(float);
 	void		setNbBomb(char);
 
-	virtual void	update(ActionManager &actionManager, Map &map) = 0;
+	virtual void	update(ActionManager &actionManager, Map &map ,irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device) = 0;
 };

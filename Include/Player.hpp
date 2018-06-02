@@ -14,13 +14,15 @@ class Player : public APlayer {
 private:
 	irr::scene::IAnimatedMeshSceneNode* _anode;
 	irr::scene::IAnimatedMesh* _mesh;
-	irr::scene::ISceneManager *_smgr;
 	Bomb *place;
+	irr::gui::IGUIEnvironment* env = nullptr;
+	irr::gui::IGUIFont* font = nullptr;
+	irr::scene::ITextSceneNode* nodeText = nullptr;
 
 public:
 	Player(std::string name = "PlayerX", irr::scene::ISceneManager *_smgr = nullptr);
 	~Player();
 
 	void 	setCameraFocus(GraphicManager &graphicManager);
-	virtual void update(ActionManager &actionManager, Map &map);
+	virtual void update(ActionManager &actionManager, Map &map, irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device);
 };
