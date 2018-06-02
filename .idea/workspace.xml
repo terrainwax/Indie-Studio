@@ -12,11 +12,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b974d14-c717-406c-a88d-a396fc85deec" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/Include/APlayer.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/APlayer.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/GraphicManager.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/GraphicManager.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Include/Player.hpp" beforeDir="false" afterPath="$PROJECT_DIR$/Include/Player.hpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/GraphicManager.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/GraphicManager.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Src/Main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Src/Player.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Src/Player.cpp" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/cmake-build-debug/" />
@@ -34,8 +30,17 @@
       <file leaf-file-name="Player.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Src/Player.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="383">
-              <caret line="95" column="92" selection-start-line="95" selection-start-column="92" selection-end-line="95" selection-end-column="92" />
+            <state relative-caret-position="396">
+              <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="0112.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/Assets/Models/0112.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="18">
+              <caret line="1" column="214" selection-start-line="1" selection-start-column="211" selection-end-line="1" selection-end-column="214" />
             </state>
           </provider>
         </entry>
@@ -80,18 +85,6 @@
               <caret line="19" column="54" selection-start-line="19" selection-start-column="54" selection-end-line="19" selection-end-column="54" />
               <folding>
                 <element signature="e#99#121#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Bomb.cpp" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Src/Bomb.cpp">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="931">
-              <caret line="116" column="23" selection-start-line="116" selection-start-column="23" selection-end-line="116" selection-end-column="23" />
-              <folding>
-                <element signature="e#83#101#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -204,6 +197,17 @@
             <path>
               <item name="cpp_indie_studio" type="b2602c69:ProjectViewProjectNode" />
               <item name="cpp_indie_studio" type="462c0819:PsiDirectoryNode" />
+              <item name="Assets" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cpp_indie_studio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpp_indie_studio" type="462c0819:PsiDirectoryNode" />
+              <item name="Assets" type="462c0819:PsiDirectoryNode" />
+              <item name="Models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="cpp_indie_studio" type="b2602c69:ProjectViewProjectNode" />
+              <item name="cpp_indie_studio" type="462c0819:PsiDirectoryNode" />
               <item name="Include" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -278,12 +282,12 @@
       <workItem from="1527600072199" duration="3926000" />
       <workItem from="1527720519897" duration="5665000" />
       <workItem from="1527761405333" duration="979000" />
-      <workItem from="1527874015316" duration="18399000" />
+      <workItem from="1527874015316" duration="19784000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39861000" />
+    <option name="totallyTimeSpent" value="41246000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -330,16 +334,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Include/GraphicManager.hpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="34" selection-start-line="30" selection-start-column="8" selection-end-line="30" selection-end-column="34" />
-          <folding>
-            <element signature="e#176#197#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Include/Bomb.hpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -690,10 +684,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Assets/Models/0112.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="18">
+          <caret line="1" column="214" selection-start-line="1" selection-start-column="211" selection-end-line="1" selection-end-column="214" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Src/Player.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="383">
-          <caret line="95" column="92" selection-start-line="95" selection-start-column="92" selection-end-line="95" selection-end-column="92" />
+        <state relative-caret-position="396">
+          <caret line="57" column="44" selection-start-line="57" selection-start-column="44" selection-end-line="57" selection-end-column="44" />
         </state>
       </provider>
     </entry>

@@ -41,11 +41,23 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 		actionManager.isKeyDown(irr::KEY_KEY_Q) ||
 		actionManager.isKeyDown(irr::KEY_KEY_D))
 	{
-		if (_anode->getStartFrame() != 100)
-		_anode->setFrameLoop(100, 140);
+		if (_anode->getFrameNr() < 250 && _anode->getEndFrame() == 258)
+		{
+
+		}
+		else if (_anode->getStartFrame() != 100) {
+			_anode->setAnimationSpeed(30);
+			_anode->setFrameLoop(100, 140);
+		}
 	}
 	else
+	if (_anode->getFrameNr() < 250 && _anode->getEndFrame() == 258)
+	{
+
+	}else {
+		_anode->setAnimationSpeed(30);
 		_anode->setFrameLoop(0, 90);
+	}
 		if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr)
 		{
 			if (env == nullptr)
@@ -60,7 +72,8 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 			nodeText->setScale(irr::core::vector3df(2,2,2));
 			nodeText->setTextColor(irr::video::SColor(255, 255, 0, 0));
 			nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
-
+			_anode->setAnimationSpeed(60);
+			_anode->setFrameLoop(200, 258);
 			place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10 ,_smgr);
 		}
 		else if (place != nullptr) {
