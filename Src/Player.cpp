@@ -58,8 +58,7 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 		_anode->setAnimationSpeed(30);
 		_anode->setFrameLoop(0, 90);
 	}
-		if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr)
-		{
+		if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr) {
 			if (env == nullptr)
  				env = device->getGUIEnvironment();
 			if (font == nullptr)

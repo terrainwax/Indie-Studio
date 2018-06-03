@@ -55,7 +55,7 @@ void Map::renderMap(GraphicManager &graph)
 	Cube breakable(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyBreakable.jpg"));
 
 	for (unsigned int i = 0; i < _map.size(); i++) {
-		for (unsigned int j = 0; j < _map[j].size(); j++) {
+		for (unsigned int j = 0; j < _map/*[j]*/.size(); j++) {
 			if (_map[i][j] == Wall) {
 				wall.pos = irr::core::vector3df(i * 10, 0, j * 10);
 				graph.drawCube(wall);

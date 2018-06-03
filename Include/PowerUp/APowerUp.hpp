@@ -24,4 +24,5 @@ public:
 	const std::string getName();
 	virtual void onPickUp(Player &player) = 0;
 	void renderPowerUp(GraphicManager &graphicManager);
+	void setPosition(irr::core::vector3df pos);
 };

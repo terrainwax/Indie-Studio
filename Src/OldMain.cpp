@@ -6,7 +6,6 @@
 */
 
 #include <ctime>
-#include "Game.hpp"
 #include "Map.hpp"
 #include "BombUp.hpp"
 #include "GraphicManager.hpp"
@@ -20,13 +19,15 @@ int main(int argc, char **argv)
 	Map map(atoi(argv[1]));
 	ActionManager action;
 	GraphicManager graphic(action);
-	Player *player = new Player("test", graphic.getSceneManager());
-	Game game(map);
 
-	game.addPlayer(player);
+	PowerUpFactory factory;
+	std::unique_ptr<APowerUp> powerUp = factory.createRandomPowerUp();
+	Player player("test", graphic.getSceneManager());
 	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_A) != true) {
-		game.display(graphic);
-		game.update(action, graphic);
+		map.renderMap(graphic);
+		powerUp.get()->renderPowerUp(graphic);
+		player.update(action, map, graphic.getSceneManager(), graphic.getDevice());
+		player.setCameraFocus(graphic);
 		graphic.render();
 	}
 	return 0;

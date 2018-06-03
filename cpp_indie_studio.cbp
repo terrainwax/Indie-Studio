@@ -8,127 +8,130 @@
 		<Option virtualFolders="CMake Files\;CMake Files\cmake\;"/>
 		<Build>
 			<Target title="all">
-				<Option working_dir="/home/terrainwax/Repo/cpp_indie_studio"/>
+				<Option working_dir="/home/leo/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="rebuild_cache">
-				<Option working_dir="/home/terrainwax/Repo/cpp_indie_studio"/>
+				<Option working_dir="/home/leo/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="edit_cache">
-				<Option working_dir="/home/terrainwax/Repo/cpp_indie_studio"/>
+				<Option working_dir="/home/leo/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="indie">
-				<Option output="/home/terrainwax/Repo/cpp_indie_studio/Binaries/indie" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/terrainwax/Repo/cpp_indie_studio/Binaries"/>
+				<Option output="/home/leo/cpp_indie_studio/Binaries/indie" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/leo/cpp_indie_studio/Binaries"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/irrlicht"/>
-					<Add directory="/home/terrainwax/Repo/cpp_indie_studio/Include"/>
-					<Add directory="/home/terrainwax/Repo/cpp_indie_studio/Include/PowerUp"/>
+					<Add directory="/home/leo/cpp_indie_studio/Include"/>
+					<Add directory="/home/leo/cpp_indie_studio/Include/PowerUp"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="indie/fast">
-				<Option output="/home/terrainwax/Repo/cpp_indie_studio/Binaries/indie" prefix_auto="0" extension_auto="0"/>
-				<Option working_dir="/home/terrainwax/Repo/cpp_indie_studio/Binaries"/>
+				<Option output="/home/leo/cpp_indie_studio/Binaries/indie" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/home/leo/cpp_indie_studio/Binaries"/>
 				<Option object_output="./"/>
 				<Option type="0"/>
 				<Option compiler="gcc"/>
 				<Compiler>
 					<Add directory="/usr/include/irrlicht"/>
-					<Add directory="/home/terrainwax/Repo/cpp_indie_studio/Include"/>
-					<Add directory="/home/terrainwax/Repo/cpp_indie_studio/Include/PowerUp"/>
+					<Add directory="/home/leo/cpp_indie_studio/Include"/>
+					<Add directory="/home/leo/cpp_indie_studio/Include/PowerUp"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/terrainwax/Repo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/APlayer.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/APlayer.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/ActionManager.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/ActionManager.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Bomb.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Bomb.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Clock.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Clock.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/GraphicManager.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Game.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/KeySet.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/GraphicManager.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Main.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/KeySet.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Map.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Main.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Obj/Cube.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Map.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Obj/Sphere.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Obj/Cube.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/Player.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Obj/Sphere.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/PowerUp/APowerUp.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Player.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/PowerUp/BombUp.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/APowerUp.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/PowerUp/FireUp.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/BombUp.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/PowerUp/PowerUpFactory.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/FireUp.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/PowerUp/SpeedUp.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/PowerUpFactory.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/Src/PowerUp/WallPass.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/SpeedUp.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/CMakeLists.txt">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/WallPass.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/CMakeLists.txt">
 			<Option virtualFolder="CMake Files\"/>
 		</Unit>
-		<Unit filename="/home/terrainwax/Repo/cpp_indie_studio/cmake/FindIrrlicht.cmake">
+		<Unit filename="/home/leo/cpp_indie_studio/cmake/FindIrrlicht.cmake">
 			<Option virtualFolder="CMake Files\cmake\"/>
 		</Unit>
 	</Project>

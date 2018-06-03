@@ -25,3 +25,8 @@ void APowerUp::renderPowerUp(GraphicManager &graphicManager)
 	_cube.rotation.Z += 2;
 	_cube.rotation.Y += 2;
 }
+
+void APowerUp::setPosition(irr::core::vector3df pos)
+{
+	_cube.pos = pos;
+}
