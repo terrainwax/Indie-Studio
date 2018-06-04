@@ -55,6 +55,8 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 	}
 	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty))
 		_anode->setPosition(pos);
+	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Breakable) && _wallPass)
+		_anode->setPosition(pos);
 	if (map.getCell(irr::core::vector2di((((oldPos.Z / 10) + 0.5)), (oldPos.X / 10) + 0.5)) == Map::Cell::Bomb &&
 		(map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty ||
 		map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Bomb))
