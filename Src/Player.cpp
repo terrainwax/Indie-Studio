@@ -5,9 +5,10 @@
 // player class implementation
 //
 
+#include <unistd.h>
+#include <iostream>
 #include "Player.hpp"
 #include "GraphicManager.hpp"
-#include <iostream>
 
 Player::Player(std::string name, irr::scene::ISceneManager *_smgr, KeySet keyset) :
 APlayer(name),
@@ -92,7 +93,7 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 
 	this->updatePos(actionManager, map);
 	this->updateAnimation(actionManager);
-	if (actionManager.isKeyDown(_keySet.bombKey) && _nbBomb != 0) {
+	if (actionManager.isKeyPressed(_keySet.bombKey) && _nbBomb != 0 && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5))) {
 		_nbBomb -= 1;
 		if (env == nullptr)
 			env = device->getGUIEnvironment();
@@ -107,16 +108,9 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
-		//map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
+		map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
 		bomb.push_back(new Bomb(*this, _smgr));
 	}
-	/*else if (place != nullptr) {
-		if (place->update()) {
-			place->explode(map);
-			delete place;
-			place = nullptr;
-		}
-	}*/
 	if (nodeText != nullptr) {
 		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
 		std::string result = "Bombe NB : ";
