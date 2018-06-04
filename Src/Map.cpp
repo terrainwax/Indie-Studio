@@ -55,7 +55,7 @@ void Map::renderMap(GraphicManager &graph)
 	Cube breakable(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyBreakable.jpg"));
 
 	for (unsigned int i = 0; i < _map.size(); i++) {
-		for (unsigned int j = 0; j < _map/*[j]*/.size(); j++) {
+		for (unsigned int j = 0; j < _map.size(); j++) {
 			if (_map[i][j] == Wall) {
 				wall.pos = irr::core::vector3df(i * 10, 0, j * 10);
 				graph.drawCube(wall);
@@ -81,6 +81,8 @@ Map::Cell Map::getCell(irr::core::vector2di pos)
 		Wall,
 		Empty,
 		Breakable,
+		PowerUp,
+		Fire,
 		DFL,
 	};
 	this->checkBound(pos);
@@ -99,4 +101,9 @@ void Map::setCell(irr::core::vector2di pos, Map::Cell cell)
 irr::core::vector3df Map::getCenter() const
 {
 	return irr::core::vector3df(_mapSize / 2 * 10 - 5, 0, _mapSize / 2 * 10 - 5);
+}
+
+int Map::getSize() const
+{
+	return _mapSize;
 }

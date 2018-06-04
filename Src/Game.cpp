@@ -9,6 +9,7 @@
 #include "Bomb.hpp"
 #include "Clock.hpp"
 #include "Map.hpp"
+#include <iostream>
 
 Game::Game(// ActionManager& _action, GraphicManager& _graph, 
 	   Map& map) : // _actionManager(_action), _graphManager(_graph),
@@ -45,10 +46,27 @@ void				Game::addPlayer(APlayer* player)
 	_players.push_back(player);
 }
 
+void				Game::updateMap()
+{
+	int size = _map.getSize();
+	
+	for (int i = 0; i < size; i++) {
+		for (int j = 0; j < size; j++) {
+			if (_map.getCell(irr::core::vector2di(i, j)) == Map::Cell::PowerUp) {
+				_map.setCell(irr::core::vector2di(i, j), Map::Cell::Empty);
+				if (rand() % 3 == 0)
+					addPowerUp(irr::core::vector3df(j * 10, 0, i * 10));
+			}
+		}
+	}
+}
+
 void				Game::update(ActionManager& _action, GraphicManager& _graph)
 {
 	for (int i = 0; i < _players.size(); i++)
-		_players[i++]->update(_action, _map, _graph.getSceneManager(), _graph.getDevice());
+		_players[i++]->update(_action, _map, _graph.getSceneManager(),
+				      _graph.getDevice());
+	updateMap();
 }
 
 void				Game::display(GraphicManager& _graph)
@@ -61,8 +79,9 @@ void				Game::display(GraphicManager& _graph)
 
 void                            Game::addPowerUp(irr::core::vector3df pos)
 {
-	auto powerUp = _powersUp.end();
-
-	*powerUp = _factory.createRandomPowerUp();
-	(*powerUp)->setPosition(pos);
+	std::unique_ptr<APowerUp> powerup;
+	
+	powerup = _factory.createRandomPowerUp();
+	powerup->setPosition(pos);
+	_powersUp.push_back(std::move(powerup));
 }

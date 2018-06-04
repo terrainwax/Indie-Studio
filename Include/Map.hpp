@@ -27,10 +27,13 @@ public:
 		Wall = '#',
 		Breakable = 'B',
 		Empty = ' ',
+		PowerUp = 'P',
+		Fire = 'F', 
 		Bomb = 'E',
 		DFL = 0
 	};
 	Cell getCell(irr::core::vector2di pos);
+	int getSize() const;
 	void setCell(irr::core::vector2di pos, Cell cell);
 	void renderMap(GraphicManager &graph);
 	irr::core::vector3df getCenter() const;

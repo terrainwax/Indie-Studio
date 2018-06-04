@@ -37,6 +37,7 @@ public:
 	void				addPlayer(APlayer*);
 	void				addPowerUp(irr::core::vector3df);
 	void				update(ActionManager&, GraphicManager&);
+	void				updateMap();
 	void				display(GraphicManager&);
 
 private:
