@@ -9,7 +9,9 @@
 #include "GraphicManager.hpp"
 #include <iostream>
 
-Player::Player(std::string name, irr::scene::ISceneManager *_smgr) : APlayer(name)
+Player::Player(std::string name, irr::scene::ISceneManager *_smgr, KeySet keyset) :
+APlayer(name),
+_keySet(keyset)
 {
 	_mesh = _smgr->getMesh("./Assets/Models/0112.x");
 
@@ -34,19 +36,19 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 {
 	irr::core::vector3df pos = _anode->getPosition();
 
-	if (actionManager.isKeyDown(irr::KEY_KEY_Z)) {
+	if (actionManager.isKeyDown(_keySet.upKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
 		pos.Z += _speed;
 	}
-	if (actionManager.isKeyDown(irr::KEY_KEY_S)) {
+	if (actionManager.isKeyDown(_keySet.downKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
 		pos.Z -= _speed;
 	}
-	if (actionManager.isKeyDown(irr::KEY_KEY_Q)) {
+	if (actionManager.isKeyDown(_keySet.leftKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 270, 0));
 		pos.X -= _speed;
 	}
-	if (actionManager.isKeyDown(irr::KEY_KEY_D)) {
+	if (actionManager.isKeyDown(_keySet.rightKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += _speed;
 	}
@@ -58,10 +60,10 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 
 void Player::updateAnimation(ActionManager &actionManager)
 {
-	if (actionManager.isKeyDown(irr::KEY_KEY_Z) ||
-		actionManager.isKeyDown(irr::KEY_KEY_S) ||
-		actionManager.isKeyDown(irr::KEY_KEY_Q) ||
-		actionManager.isKeyDown(irr::KEY_KEY_D))
+	if (actionManager.isKeyDown(_keySet.upKey) ||
+		actionManager.isKeyDown(_keySet.downKey) ||
+		actionManager.isKeyDown(_keySet.leftKey) ||
+		actionManager.isKeyDown(_keySet.rightKey))
 	{
 		if (_anode->getFrameNr() < 250 && _anode->getEndFrame() == 258)
 		{
@@ -83,14 +85,15 @@ void Player::updateAnimation(ActionManager &actionManager)
 	}
 }
 
-void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device)
+void	Player::update(ActionManager &actionManager, Map &map, irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device)
 {
 	(void)map;
 	(void)actionManager;
 	irr::core::vector3df pos = _anode->getPosition();
 
+	this->updatePos(actionManager, map);
 	this->updateAnimation(actionManager);
-	if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr) {
+	if (actionManager.isKeyDown(_keySet.bombKey) && place == nullptr) {
 		if (env == nullptr)
 			env = device->getGUIEnvironment();
 		if (font == nullptr)
@@ -105,8 +108,8 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
-		printf("%d %d\n", (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10);
-		place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10, _smgr);
+		//map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
+		place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10, (int)((pos.Z / 10) + 0.5) * 10, _smgr);
 	}
 	else if (place != nullptr) {
 		if (place->update()) {
@@ -116,7 +119,6 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 			_nbBomb += 1;
 		}
 	}
-	this->updatePos(actionManager, map);
 	if (nodeText != nullptr) {
 		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
 		std::string result = "Bombe NB : ";

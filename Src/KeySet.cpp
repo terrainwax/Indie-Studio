@@ -19,3 +19,19 @@ bombKey(bomb)
 KeySet::~KeySet()
 {
 }
+
+KeySet KeySetUtils::dflKeySet1 = {
+	.upKey = irr::KEY_UP,
+	.downKey = irr::KEY_DOWN,
+	.leftKey = irr::KEY_LEFT,
+	.rightKey = irr::KEY_RIGHT,
+	.bombKey = irr::KEY_SPACE,
+};
+
+KeySet KeySetUtils::dflKeySet2 = {
+	.upKey = irr::KEY_KEY_Z,
+	.downKey = irr::KEY_KEY_S,
+	.leftKey = irr::KEY_KEY_Q,
+	.rightKey = irr::KEY_KEY_D,
+	.bombKey = irr::KEY_KEY_E,
+};

@@ -24,3 +24,9 @@ public:
 	irr::EKEY_CODE rightKey;
 	irr::EKEY_CODE bombKey;
 };
+
+class KeySetUtils final {
+public:
+static KeySet dflKeySet1;
+static KeySet dflKeySet2;
+};

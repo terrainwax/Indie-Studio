@@ -27,7 +27,7 @@ public:
 		Wall = '#',
 		Breakable = 'B',
 		Empty = ' ',
-		Fire = 'F',
+		Bomb = 'E',
 		DFL = 0
 	};
 	Cell getCell(irr::core::vector2di pos);

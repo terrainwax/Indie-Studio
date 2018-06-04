@@ -87,7 +87,7 @@ void		Bomb::explode(Map &map)
 	bool zs = false;
 	bool xo = false;
 	bool xe = false;
-	std::cout <<  (_xMapPos / 10) << " " << (_yMapPos / 10) << std::endl;
+
 	for (int y = 0; y < 3 ; y++)
 	{
 		for(int x = 0 ;x < 3; x++)
