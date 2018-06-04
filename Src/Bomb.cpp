@@ -93,7 +93,7 @@ void Bomb::lineExplosion(Map &map, int incX, int incY)
 		posX += incX;
 		posY += incY;
 		if (map.getCell(irr::core::vector2di(posY, posX)) == Map::Cell::Breakable) {
-			map.setCell(irr::core::vector2di(posY, posX), Map::Cell::Empty);
+			map.setCell(irr::core::vector2di(posY, posX), Map::Cell::PowerUp);
 			return;
 		}
 		if (map.getCell(irr::core::vector2di(posY, posX)) != Map::Cell::Empty)
