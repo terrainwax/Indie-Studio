@@ -20,6 +20,7 @@ _radius(player.getFire()),
 _xMapPos((int)((player.getPos().X / 10) + 0.5) * 10),
 _yMapPos((int)((player.getPos().Z / 10) + 0.5) * 10)
 {
+	printf("%f %f\n", _xMapPos, _yMapPos);
 	_node = _smgr->addMeshSceneNode(_smgr->getMesh("./Assets/Models/bombtext.obj"));
 	_node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	_node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);

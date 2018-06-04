@@ -21,7 +21,9 @@ private:
 	PowerUpFactory		_factory;
 	std::vector<std::unique_ptr<APowerUp>> _powersUp;
 	std::vector<Bomb *> _bomb;
+
 	void pickUpBonus(APlayer &player);
+	void triggerBomb();
 
 public:
 	Game(Map&);

@@ -73,20 +73,25 @@ void	Game::pickUpBonus(APlayer &player)
 	}
 }
 
+void Game::triggerBomb()
+{
+	for (int i = 0; i < _bomb.size(); i++) {
+		if (_bomb[i]->update()) {
+			_map.setCell(irr::core::vector2di(_bomb[i]->getYMapPos() / 10, _bomb[i]->getXMapPos() / 10), Map::Cell::Empty);
+			_bomb[i]->explode(_map);
+			delete _bomb[i];
+			_bomb.erase(_bomb.begin() + i--);
+		}
+	}
+}
+
 void				Game::update(ActionManager& action, GraphicManager& graph)
 {
 	for (int i = 0; i < _players.size(); i++) {
 		_players[i]->update(action, graph, _map, _bomb);
 		this->pickUpBonus(*_players[i]);
 	}
-	for (int i = 0; i < _bomb.size(); i++) {
-			if (_bomb[i]->update()) {
-				_map.setCell(irr::core::vector2di(_bomb[i]->getYMapPos() / 10, _bomb[i]->getXMapPos() / 10), Map::Cell::Empty);
-				_bomb[i]->explode(_map);
-				delete _bomb[i];
-				_bomb.erase(_bomb.begin() + i--);
-			}
-	}
+	this->triggerBomb();
 	updateMap();
 }
 

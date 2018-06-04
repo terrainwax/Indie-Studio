@@ -83,6 +83,7 @@ Map::Cell Map::getCell(irr::core::vector2di pos)
 		Breakable,
 		PowerUp,
 		Fire,
+		Bomb,
 		DFL,
 	};
 	this->checkBound(pos);

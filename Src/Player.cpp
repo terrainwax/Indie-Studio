@@ -35,6 +35,7 @@ Player::~Player()
 void Player::updatePos(ActionManager &actionManager, Map &map)
 {
 	irr::core::vector3df pos = _anode->getPosition();
+	irr::core::vector3df oldPos = pos;
 
 	if (actionManager.isKeyDown(_keySet.upKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
@@ -52,9 +53,11 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += _speed;
 	}
-	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
-		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty) && (map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
-		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty))
+	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty))
+		_anode->setPosition(pos);
+	if (map.getCell(irr::core::vector2di((((oldPos.Z / 10) + 0.5)), (oldPos.X / 10) + 0.5)) == Map::Cell::Bomb &&
+		(map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty ||
+		map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Bomb))
 		_anode->setPosition(pos);
 }
 
@@ -93,7 +96,7 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 
 	this->updatePos(actionManager, map);
 	this->updateAnimation(actionManager);
-	if (actionManager.isKeyPressed(_keySet.bombKey) && _nbBomb != 0 && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5))) {
+	if (actionManager.isKeyPressed(_keySet.bombKey) && _nbBomb != 0 && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5)) != Map::Cell::Bomb) {
 		_nbBomb -= 1;
 		if (env == nullptr)
 			env = device->getGUIEnvironment();
