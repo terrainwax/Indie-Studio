@@ -56,12 +56,8 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 		_anode->setPosition(pos);
 }
 
-void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device)
+void Player::updateAnimation(ActionManager &actionManager)
 {
-	(void)map;
-	(void)actionManager;
-	irr::core::vector3df pos = _anode->getPosition();
-
 	if (actionManager.isKeyDown(irr::KEY_KEY_Z) ||
 		actionManager.isKeyDown(irr::KEY_KEY_S) ||
 		actionManager.isKeyDown(irr::KEY_KEY_Q) ||
@@ -85,6 +81,15 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 			_anode->setFrameLoop(0, 90);
 		}
 	}
+}
+
+void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device)
+{
+	(void)map;
+	(void)actionManager;
+	irr::core::vector3df pos = _anode->getPosition();
+
+	this->updateAnimation(actionManager);
 	if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr) {
 		if (env == nullptr)
 			env = device->getGUIEnvironment();
