@@ -33,14 +33,14 @@ private:
 
 	//getters
 	char		getRadius() const;
-	char		getXMapPos() const;
-	char		getYMapPos() const;
+	int		getXMapPos() const;
+	int		getYMapPos() const;
 	irr::scene::ISceneNode * getNode();
 
 	//setters
 	void		setRadius(const char);
-	void		setXMapPos(const char);
-	void		setYMappos(const char);
+	void		setXMapPos(const int);
+	void		setYMappos(const int);
 
 
 	int		update();

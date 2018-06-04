@@ -39,12 +39,12 @@ char            Bomb::getRadius() const
 	return _radius;
 }
 
-char            Bomb::getXMapPos() const
+int            Bomb::getXMapPos() const
 {
 	return _xMapPos;
 }
 
-char		Bomb::getYMapPos() const
+int		Bomb::getYMapPos() const
 {
 	return _yMapPos;
 }
@@ -54,12 +54,12 @@ void            Bomb::setRadius(const char radius)
 	_radius = radius;
 }
 
-void            Bomb::setXMapPos(const char pos)
+void            Bomb::setXMapPos(const int pos)
 {
 	_xMapPos = pos;
 }
 
-void            Bomb::setYMappos(const char pos)
+void            Bomb::setYMappos(const int pos)
 {
 	_yMapPos = pos;
 }
