@@ -19,6 +19,7 @@ private:
 	irr::gui::IGUIFont* font = nullptr;
 	irr::scene::ITextSceneNode* nodeText = nullptr;
 
+	void 	updatePos(ActionManager &actionManager, Map &map);
 public:
 	Player(std::string name = "PlayerX", irr::scene::ISceneManager *_smgr = nullptr);
 	~Player();

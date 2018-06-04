@@ -30,6 +30,32 @@ Player::~Player()
 {
 }
 
+void Player::updatePos(ActionManager &actionManager, Map &map)
+{
+	irr::core::vector3df pos = _anode->getPosition();
+
+	if (actionManager.isKeyDown(irr::KEY_KEY_Z)) {
+		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
+		pos.Z += _speed;
+	}
+	if (actionManager.isKeyDown(irr::KEY_KEY_S)) {
+		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
+		pos.Z -= _speed;
+	}
+	if (actionManager.isKeyDown(irr::KEY_KEY_Q)) {
+		_anode->setRotation(irr::core::vector3df(-90, 270, 0));
+		pos.X -= _speed;
+	}
+	if (actionManager.isKeyDown(irr::KEY_KEY_D)) {
+		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
+		pos.X += _speed;
+	}
+	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
+		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty) && (map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
+		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty))
+		_anode->setPosition(pos);
+}
+
 void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device)
 {
 	(void)map;
@@ -50,66 +76,46 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 			_anode->setFrameLoop(100, 140);
 		}
 	}
-	else
-	if (_anode->getFrameNr() < 250 && _anode->getEndFrame() == 258)
-	{
+	else {
+		if (_anode->getFrameNr() < 250 && _anode->getEndFrame() == 258)
+		{
 
-	}else {
-		_anode->setAnimationSpeed(30);
-		_anode->setFrameLoop(0, 90);
+		} else {
+			_anode->setAnimationSpeed(30);
+			_anode->setFrameLoop(0, 90);
+		}
 	}
-		if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr) {
-			if (env == nullptr)
- 				env = device->getGUIEnvironment();
-			if (font == nullptr)
-				font = env->getFont("./Assets/Font/fonthaettenschweiler.bmp");
-			_nbBomb -= 1;
-			std::string result = "Bombe NB : ";
-			result = result + std::to_string(_nbBomb);
-			if (nodeText == nullptr)
-				nodeText = _smgr->addTextSceneNode(font, std::wstring(result.begin(), result.end()).c_str());
-			nodeText->setScale(irr::core::vector3df(2,2,2));
-			nodeText->setTextColor(irr::video::SColor(255, 255, 0, 0));
-			nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
-			_anode->setAnimationSpeed(60);
-			_anode->setFrameLoop(200, 258);
-			place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10 ,_smgr);
+	if (actionManager.isKeyDown(irr::KEY_SPACE) && place == nullptr) {
+		if (env == nullptr)
+			env = device->getGUIEnvironment();
+		if (font == nullptr)
+			font = env->getFont("./Assets/Font/fonthaettenschweiler.bmp");
+		_nbBomb -= 1;
+		std::string result = "Bombe NB : ";
+		result = result + std::to_string(_nbBomb);
+		if (nodeText == nullptr)
+			nodeText = _smgr->addTextSceneNode(font, std::wstring(result.begin(), result.end()).c_str());
+		nodeText->setScale(irr::core::vector3df(2,2,2));
+		nodeText->setTextColor(irr::video::SColor(255, 255, 0, 0));
+		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
+		_anode->setAnimationSpeed(60);
+		_anode->setFrameLoop(200, 258);
+		place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10 ,_smgr);
+	}
+	else if (place != nullptr) {
+		if (place->update()) {
+			place->explode(map);
+			_smgr->addToDeletionQueue(place->getNode());
+			place = nullptr;
+			_nbBomb += 1;
 		}
-		else if (place != nullptr) {
-			if (place->update()) {
-				place->explode(map);
-				_smgr->addToDeletionQueue(place->getNode());
-				place = nullptr;
-				_nbBomb += 1;
-			}
-		}
-		if (actionManager.isKeyDown(irr::KEY_KEY_Z)) {
-			_anode->setRotation(irr::core::vector3df(-90, 0, 0));
-			pos.Z += _speed;
-		}
-		if (actionManager.isKeyDown(irr::KEY_KEY_S)) {
-			_anode->setRotation(irr::core::vector3df(-90, 180, 0));
-			pos.Z -= _speed;
-		}
-		if (actionManager.isKeyDown(irr::KEY_KEY_Q)) {
-			_anode->setRotation(irr::core::vector3df(-90, 270, 0));
-			pos.X -= _speed;
-		}
-		if (actionManager.isKeyDown(irr::KEY_KEY_D)) {
-			_anode->setRotation(irr::core::vector3df(-90, 90, 0));
-			pos.X += _speed;
-		}
-	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
-		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty) && (map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5),
-		(int)(pos.X / 10 + 0.5))) == Map::Cell::Empty)) {
-		_anode->setPosition(pos);
-		if (nodeText != nullptr) {
-			nodeText->setPosition(
-				irr::core::vector3df(pos.X, 10, pos.Z));
-			std::string result = "Bombe NB : ";
-			result = result + std::to_string(_nbBomb);
-			nodeText->setText(std::wstring(result.begin(), result.end()).c_str());
-		}
+	}
+	this->updatePos(actionManager, map);
+	if (nodeText != nullptr) {
+		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
+		std::string result = "Bombe NB : ";
+		result = result + std::to_string(_nbBomb);
+		nodeText->setText(std::wstring(result.begin(), result.end()).c_str());
 	}
 }
 
