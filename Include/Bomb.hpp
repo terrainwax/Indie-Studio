@@ -17,13 +17,13 @@ class Bomb
 {
 private:
 	char		_radius;
-	char		_xMapPos;
-	char		_yMapPos;
+	int		_xMapPos;
+	int		_yMapPos;
 	Clock		_clock;
 	irr::scene::ISceneNode *node;
 
 	public:
-	Bomb(char, char, char, irr::scene::ISceneManager *);
+	Bomb(char, int, int, irr::scene::ISceneManager *);
 	~Bomb();
 
 	//getters

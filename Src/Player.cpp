@@ -105,7 +105,8 @@ void	Player::update(ActionManager &actionManager, Map &map, 	irr::scene::ISceneM
 		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
-		place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10 ,_smgr);
+		printf("%d %d\n", (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10);
+		place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10  ,(int)((pos.Z / 10) + 0.5) * 10, _smgr);
 	}
 	else if (place != nullptr) {
 		if (place->update()) {

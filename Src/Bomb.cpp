@@ -13,8 +13,9 @@
 
 # define PI           3.14159265358979323846
 
-Bomb::Bomb(char radius, char posX, char posY, irr::scene::ISceneManager *_smgr) : _radius(radius), _xMapPos(posX), _yMapPos(posY)
+Bomb::Bomb(char radius, int posX, int posY, irr::scene::ISceneManager *_smgr) : _radius(radius), _xMapPos(posX), _yMapPos(posY)
 {
+	printf("%d %d\n", posX, posY);
 	node = _smgr->addMeshSceneNode(_smgr->getMesh("./Assets/Models/bombtext.obj"));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);
