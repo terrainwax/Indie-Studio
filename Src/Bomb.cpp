@@ -13,22 +13,25 @@
 
 # define PI           3.14159265358979323846
 
-Bomb::Bomb(APlayer &player, irr::scene::ISceneManager *_smgr) :
+Bomb::Bomb(APlayer &player, irr::scene::ISceneManager *smgr) :
+_smgr(smgr),
+_player(player),
 _radius(player.getFire()),
 _xMapPos((int)((player.getPos().X / 10) + 0.5) * 10),
 _yMapPos((int)((player.getPos().Z / 10) + 0.5) * 10)
 {
-	node = _smgr->addMeshSceneNode(_smgr->getMesh("./Assets/Models/bombtext.obj"));
-	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
-	node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);
-	node->setRotation(irr::core::vector3df(0, 0, 0));
-	node->setPosition(irr::core::vector3df(_xMapPos, -2, _yMapPos));
-	node->setScale(irr::core::vector3df(4, 4, 4));
+	_node = _smgr->addMeshSceneNode(_smgr->getMesh("./Assets/Models/bombtext.obj"));
+	_node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
+	_node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);
+	_node->setRotation(irr::core::vector3df(0, 0, 0));
+	_node->setPosition(irr::core::vector3df(_xMapPos, -2, _yMapPos));
+	_node->setScale(irr::core::vector3df(4, 4, 4));
 }
 
 Bomb::~Bomb()
 {
-
+	_smgr->addToDeletionQueue(_node);
+	_player.setNbBomb(_player.getNbBomb() + 1);
 }
 
 char            Bomb::getRadius() const
@@ -74,7 +77,7 @@ int		Bomb::update()
 	result = cos(param * bouncer * PI / 180);
 
 
-	node->setScale(0.125 * 4 * irr::core::vector3df(result,
+	_node->setScale(0.125 * 4 * irr::core::vector3df(result,
 		result, result) + 4);
 	if (elapsed >= 3000) {
 		return 1;
@@ -123,5 +126,5 @@ void		Bomb::explode(Map &map)
 
 irr::scene::ISceneNode *Bomb::getNode()
 {
-	return node;
+	return _node;
 }

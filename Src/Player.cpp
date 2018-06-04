@@ -94,11 +94,11 @@ void	Player::update(ActionManager &actionManager, Map &map, irr::scene::ISceneMa
 	this->updatePos(actionManager, map);
 	this->updateAnimation(actionManager);
 	if (actionManager.isKeyDown(_keySet.bombKey) && place == nullptr) {
+		_nbBomb -= 1;
 		if (env == nullptr)
 			env = device->getGUIEnvironment();
 		if (font == nullptr)
 			font = env->getFont("./Assets/Font/fonthaettenschweiler.bmp");
-		_nbBomb -= 1;
 		std::string result = "Bombe NB : ";
 		result = result + std::to_string(_nbBomb);
 		if (nodeText == nullptr)
@@ -114,9 +114,8 @@ void	Player::update(ActionManager &actionManager, Map &map, irr::scene::ISceneMa
 	else if (place != nullptr) {
 		if (place->update()) {
 			place->explode(map);
-			_smgr->addToDeletionQueue(place->getNode());
+			delete place;
 			place = nullptr;
-			_nbBomb += 1;
 		}
 	}
 	if (nodeText != nullptr) {

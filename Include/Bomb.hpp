@@ -16,11 +16,13 @@ class Map;
 class Bomb
 {
 private:
+	irr::scene::ISceneManager *_smgr;
+	APlayer& 	_player;
 	char		_radius;
 	int		_xMapPos;
 	int		_yMapPos;
 	Clock		_clock;
-	irr::scene::ISceneNode *node;
+	irr::scene::ISceneNode *_node;
 
 	public:
 	Bomb(APlayer &player, irr::scene::ISceneManager *);
