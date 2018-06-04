@@ -15,5 +15,5 @@ public:
 	SpeedUp();
 	virtual ~SpeedUp();
 
-	void onPickUp(Player &player) override;
+	void onPickUp(APlayer &player) override;
 };

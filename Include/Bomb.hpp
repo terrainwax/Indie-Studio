@@ -12,6 +12,7 @@
 #include "APlayer.hpp"
 
 class Map;
+class APlayer;
 
 class Bomb
 {

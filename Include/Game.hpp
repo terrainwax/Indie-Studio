@@ -8,6 +8,7 @@
 #ifndef __GAME__
 # define __GAME__
 
+#include "Bomb.hpp"
 #include "APlayer.hpp"
 #include "APowerUp.hpp"
 #include "PowerUpFactory.hpp"
@@ -15,12 +16,12 @@
 class Game
 {
 private:
-	// ActionManager&		_actionManager;
-	// GraphicManager&		_graphManager;
 	std::vector<APlayer*>	_players;
 	Map&			_map;
 	PowerUpFactory		_factory;
 	std::vector<std::unique_ptr<APowerUp>> _powersUp;
+	std::vector<Bomb *> _bomb;
+	void pickUpBonus(APlayer &player);
 
 public:
 	Game(Map&);

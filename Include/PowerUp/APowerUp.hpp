@@ -22,7 +22,8 @@ public:
 	virtual ~APowerUp() = default;
 
 	const std::string getName();
-	virtual void onPickUp(Player &player) = 0;
+	virtual void onPickUp(APlayer &player) = 0;
 	void renderPowerUp(GraphicManager &graphicManager);
 	void setPosition(irr::core::vector3df pos);
+	irr::core::vector3df getPosition() const;
 };

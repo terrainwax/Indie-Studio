@@ -15,5 +15,5 @@ public:
 	FireUp();
 	virtual ~FireUp();
 
-	void onPickUp(Player &player) override;
+	void onPickUp(APlayer &player) override;
 };

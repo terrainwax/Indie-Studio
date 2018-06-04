@@ -15,5 +15,5 @@ public:
 	BombUp();
 	virtual ~BombUp();
 
-	void onPickUp(Player &player) override;
+	void onPickUp(APlayer &player) override;
 };

@@ -15,5 +15,5 @@ public:
 	WallPass();
 	virtual ~WallPass();
 
-	void onPickUp(Player &player) override;
+	void onPickUp(APlayer &player) override;
 };

@@ -13,7 +13,7 @@
 
 Game::Game(// ActionManager& _action, GraphicManager& _graph, 
 	   Map& map) : // _actionManager(_action), _graphManager(_graph),
-								       _map(map)
+_map(map)
 {
 }
 
@@ -61,11 +61,31 @@ void				Game::updateMap()
 	}
 }
 
-void				Game::update(ActionManager& _action, GraphicManager& _graph)
+void	Game::pickUpBonus(APlayer &player)
 {
-	for (int i = 0; i < _players.size(); i++)
-		_players[i++]->update(_action, _map, _graph.getSceneManager(),
-				      _graph.getDevice());
+	irr::core::vector3df playerPos = player.getPos();
+	for (int j = 0; j < _powersUp.size(); j++) {
+		irr::core::vector3df pos = _powersUp[j].get()->getPosition();
+		if (playerPos.X < pos.X + 5 && playerPos.X > pos.X - 5 && playerPos.Z < pos.Z + 5 && playerPos.Z > pos.Z - 5 ) {	
+			_powersUp[j].get()->onPickUp(player);
+			_powersUp.erase(_powersUp.begin() + j--);
+		}
+	}
+}
+
+void				Game::update(ActionManager& action, GraphicManager& graph)
+{
+	for (int i = 0; i < _players.size(); i++) {
+		_players[i]->update(action, graph, _map, _bomb);
+		this->pickUpBonus(*_players[i]);
+	}
+	for (int i = 0; i < _bomb.size(); i++) {
+			if (_bomb[i]->update()) {
+				_bomb[i]->explode(_map);
+				delete _bomb[i];
+				_bomb.erase(_bomb.begin() + i--);
+			}
+	}
 	updateMap();
 }
 
@@ -80,7 +100,7 @@ void				Game::display(GraphicManager& _graph)
 void                            Game::addPowerUp(irr::core::vector3df pos)
 {
 	std::unique_ptr<APowerUp> powerup;
-	
+
 	powerup = _factory.createRandomPowerUp();
 	powerup->setPosition(pos);
 	_powersUp.push_back(std::move(powerup));

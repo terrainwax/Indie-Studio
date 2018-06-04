@@ -25,7 +25,6 @@ _keySet(keyset)
 	_anode->setRotation(irr::core::vector3df(-90,0,0));
 	_anode->setScale(irr::core::vector3df(0.008,0.008,0.008));
 	_anode->setFrameLoop(0, 90);
-	this->place = nullptr;
 }
 
 Player::~Player()
@@ -85,15 +84,15 @@ void Player::updateAnimation(ActionManager &actionManager)
 	}
 }
 
-void	Player::update(ActionManager &actionManager, Map &map, irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device)
+void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &map, std::vector<Bomb *> &bomb)
 {
-	(void)map;
-	(void)actionManager;
 	irr::core::vector3df pos = _anode->getPosition();
+	irr::scene::ISceneManager *_smgr = graphic.getSceneManager();
+	irr::IrrlichtDevice *device = graphic.getDevice();
 
 	this->updatePos(actionManager, map);
 	this->updateAnimation(actionManager);
-	if (actionManager.isKeyDown(_keySet.bombKey) && place == nullptr) {
+	if (actionManager.isKeyDown(_keySet.bombKey) && _nbBomb != 0) {
 		_nbBomb -= 1;
 		if (env == nullptr)
 			env = device->getGUIEnvironment();
@@ -109,15 +108,15 @@ void	Player::update(ActionManager &actionManager, Map &map, irr::scene::ISceneMa
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
 		//map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
-		place = new Bomb(*this, _smgr);
+		bomb.push_back(new Bomb(*this, _smgr));
 	}
-	else if (place != nullptr) {
+	/*else if (place != nullptr) {
 		if (place->update()) {
 			place->explode(map);
 			delete place;
 			place = nullptr;
 		}
-	}
+	}*/
 	if (nodeText != nullptr) {
 		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
 		std::string result = "Bombe NB : ";
@@ -125,7 +124,6 @@ void	Player::update(ActionManager &actionManager, Map &map, irr::scene::ISceneMa
 		nodeText->setText(std::wstring(result.begin(), result.end()).c_str());
 	}
 }
-
 
 void Player::setCameraFocus(GraphicManager &graphicManager)
 {

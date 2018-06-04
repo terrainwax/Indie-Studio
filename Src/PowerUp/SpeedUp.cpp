@@ -2,7 +2,7 @@
 * @Author: Reimua
 * @Date:   2018-05-30 16:39:21
 * @Last Modified by:   Reimua
-* @Last Modified time: 2018-05-30 20:48:36
+* @Last Modified time: 2018-06-04 18:08:51
 */
 
 #include "SpeedUp.hpp"
@@ -16,7 +16,7 @@ SpeedUp::~SpeedUp()
 {
 }
 
-void SpeedUp::onPickUp(Player &player)
+void SpeedUp::onPickUp(APlayer &player)
 {
 	player.setSpeed(player.getSpeed() + 1);
 }

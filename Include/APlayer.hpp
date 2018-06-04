@@ -8,9 +8,14 @@
 #pragma once
 
 #include <string>
+#include <vector>
 #include "Map.hpp"
+#include "Bomb.hpp"
 #include "KeySet.hpp"
 #include "ActionManager.hpp"
+#include "GraphicManager.hpp"
+
+class Bomb;
 
 class APlayer {
 protected:
@@ -43,5 +48,5 @@ public:
 	void		setSpeed(float);
 	void		setNbBomb(char);
 
-	virtual void	update(ActionManager &actionManager, Map &map ,irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device) = 0;
+	virtual void	update(ActionManager &actionManager, GraphicManager &graph, Map &map, std::vector<Bomb *> &bomb) = 0;
 };

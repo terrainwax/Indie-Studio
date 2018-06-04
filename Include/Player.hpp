@@ -13,7 +13,6 @@
 class Player : public APlayer {
 private:
 	irr::scene::IAnimatedMesh* _mesh;
-	Bomb *place;
 	irr::gui::IGUIEnvironment* env = nullptr;
 	irr::gui::IGUIFont* font = nullptr;
 	irr::scene::ITextSceneNode* nodeText = nullptr;
@@ -26,5 +25,5 @@ public:
 	~Player();
 
 	void 	setCameraFocus(GraphicManager &graphicManager);
-	virtual void update(ActionManager &actionManager, Map &map, irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device);
+	virtual void update(ActionManager &actionManager, GraphicManager &graphicManager, Map &map, std::vector<Bomb *> &bomb);
 };

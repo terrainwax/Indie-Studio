@@ -2,7 +2,7 @@
 * @Author: Reimua
 * @Date:   2018-05-30 16:39:21
 * @Last Modified by:   Reimua
-* @Last Modified time: 2018-05-30 20:47:47
+* @Last Modified time: 2018-06-04 18:01:16
 */
 
 #include "APowerUp.hpp"
@@ -29,4 +29,9 @@ void APowerUp::renderPowerUp(GraphicManager &graphicManager)
 void APowerUp::setPosition(irr::core::vector3df pos)
 {
 	_cube.pos = pos;
+}
+
+irr::core::vector3df APowerUp::getPosition() const
+{
+	return _cube.pos;
 }
