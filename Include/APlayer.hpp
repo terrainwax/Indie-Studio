@@ -35,15 +35,12 @@ public:
 	char		getNbBomb() const;
 	char		getFire() const;
 	bool		getWallPass() const;
-	float		getXPos() const;
-	float		getYPos() const;
+	irr::core::vector3df	getPos() const;
 
 	//setters
 	void		setFire(char);
 	void		setWallPass(bool);
-	void		setXPos(float);
 	void		setSpeed(float);
-	void		setYpos(float);
 	void		setNbBomb(char);
 
 	virtual void	update(ActionManager &actionManager, Map &map ,irr::scene::ISceneManager *_smgr, irr::IrrlichtDevice *device) = 0;

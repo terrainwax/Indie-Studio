@@ -13,15 +13,16 @@
 
 # define PI           3.14159265358979323846
 
-Bomb::Bomb(char radius, int posX, int posY, irr::scene::ISceneManager *_smgr) : _radius(radius), _xMapPos(posX), _yMapPos(posY)
+Bomb::Bomb(APlayer &player, irr::scene::ISceneManager *_smgr) :
+_radius(player.getFire()),
+_xMapPos((int)((player.getPos().X / 10) + 0.5) * 10),
+_yMapPos((int)((player.getPos().Z / 10) + 0.5) * 10)
 {
-	printf("%d %d\n", posX, posY);
 	node = _smgr->addMeshSceneNode(_smgr->getMesh("./Assets/Models/bombtext.obj"));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	node->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);
 	node->setRotation(irr::core::vector3df(0, 0, 0));
-	node->setPosition(irr::core::vector3df(posX ,
-		-2, posY));
+	node->setPosition(irr::core::vector3df(_xMapPos, -2, _yMapPos));
 	node->setScale(irr::core::vector3df(4, 4, 4));
 }
 
@@ -87,7 +88,6 @@ void		Bomb::explode(Map &map)
 	bool zs = false;
 	bool xo = false;
 	bool xe = false;
-
 	for (int y = 0; y < 3 ; y++)
 	{
 		for(int x = 0 ;x < 3; x++)

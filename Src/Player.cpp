@@ -109,7 +109,7 @@ void	Player::update(ActionManager &actionManager, Map &map, irr::scene::ISceneMa
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
 		//map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
-		place = new Bomb(1, (int)((pos.X / 10) + 0.5) * 10, (int)((pos.Z / 10) + 0.5) * 10, _smgr);
+		place = new Bomb(*this, _smgr);
 	}
 	else if (place != nullptr) {
 		if (place->update()) {

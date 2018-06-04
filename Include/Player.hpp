@@ -12,7 +12,6 @@
 
 class Player : public APlayer {
 private:
-	irr::scene::IAnimatedMeshSceneNode* _anode;
 	irr::scene::IAnimatedMesh* _mesh;
 	Bomb *place;
 	irr::gui::IGUIEnvironment* env = nullptr;

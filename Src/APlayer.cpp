@@ -40,6 +40,11 @@ char		APlayer::getFire() const
 	return this->_fire;
 }
 
+irr::core::vector3df		APlayer::getPos() const
+{
+	return _anode->getPosition();
+}
+
 bool		APlayer::getWallPass() const
 {
 	return this->_wallPass;

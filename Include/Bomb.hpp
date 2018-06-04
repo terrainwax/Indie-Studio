@@ -5,11 +5,11 @@
 // bomb class
 //
 
-#ifndef __BOMB__
-# define __BOMB__
+#pragma once
 
-#include "Clock.hpp"
 #include <irrlicht.h>
+#include "Clock.hpp"
+#include "APlayer.hpp"
 
 class Map;
 
@@ -23,7 +23,7 @@ private:
 	irr::scene::ISceneNode *node;
 
 	public:
-	Bomb(char, int, int, irr::scene::ISceneManager *);
+	Bomb(APlayer &player, irr::scene::ISceneManager *);
 	~Bomb();
 
 	//getters
@@ -41,5 +41,3 @@ private:
 	int		update();
 	void		explode(Map&);
 };
-
-#endif // __BOMB__
