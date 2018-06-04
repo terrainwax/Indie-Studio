@@ -24,6 +24,8 @@ private:
 	Clock		_clock;
 	irr::scene::ISceneNode *_node;
 
+	void lineExplosion(Map &map, int incX, int incY);
+
 	public:
 	Bomb(APlayer &player, irr::scene::ISceneManager *);
 	~Bomb();

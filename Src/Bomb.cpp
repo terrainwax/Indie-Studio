@@ -85,43 +85,28 @@ int		Bomb::update()
 	return 0;
 }
 
+void Bomb::lineExplosion(Map &map, int incX, int incY)
+{
+	int posX = _xMapPos / 10;
+	int posY = _yMapPos / 10;
+	for (int i = 0; i < _radius; i++) {
+		posX += incX;
+		posY += incY;
+		if (map.getCell(irr::core::vector2di(posY, posX)) == Map::Cell::Breakable) {
+			map.setCell(irr::core::vector2di(posY, posX), Map::Cell::Empty);
+			return;
+		}
+		if (map.getCell(irr::core::vector2di(posY, posX)) != Map::Cell::Empty)
+			return;
+	}
+}
+
 void		Bomb::explode(Map &map)
 {
-	bool zn = false;
-	bool zs = false;
-	bool xo = false;
-	bool xe = false;
-	for (int y = 0; y < 3 ; y++)
-	{
-		for(int x = 0 ;x < 3; x++)
-		{
-
-			if(map.getCell(irr::core::vector2di((_yMapPos / 10 - 1 + x),
-				(_xMapPos / 10 - 1 + y))) == (Map::Cell::Breakable))
-			{
-				if (y == 0 && x == 1)
-					xo = true;
-				else if (y == 1 && x == 0)
-					zs = true;
-				else if (y == 1 && x == 2)
-					zn = true;
-				else if (y == 2 && x == 1)
-					xe = true;
-			}
-		}
-	}
-	for (int i = 0; i <= _radius; i++)
-	{
-		if (zs)
-			map.setCell(irr::core::vector2di((_yMapPos / 10 ) - i, (_xMapPos / 10)), Map::Cell::Empty);
-		if (zn)
-			map.setCell(irr::core::vector2di((_yMapPos / 10) + i, (_xMapPos / 10)), Map::Cell::Empty);
-		if (xo)
-			map.setCell(irr::core::vector2di((_yMapPos / 10), (_xMapPos / 10) - i), Map::Cell::Empty);
-		if (xe)
-			map.setCell(irr::core::vector2di((_yMapPos / 10 ), (_xMapPos / 10) + i), Map::Cell::Empty);
-	}
-
+	this->lineExplosion(map,  1,  0);
+	this->lineExplosion(map, -1,  0);
+	this->lineExplosion(map,  0,  1);
+	this->lineExplosion(map,  0, -1);
 }
 
 irr::scene::ISceneNode *Bomb::getNode()
