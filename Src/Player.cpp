@@ -39,15 +39,15 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
 		pos.Z += _speed;
 	}
-	if (actionManager.isKeyDown(_keySet.downKey)) {
+	else if (actionManager.isKeyDown(_keySet.downKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
 		pos.Z -= _speed;
 	}
-	if (actionManager.isKeyDown(_keySet.leftKey)) {
+	else if (actionManager.isKeyDown(_keySet.leftKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 270, 0));
 		pos.X -= _speed;
 	}
-	if (actionManager.isKeyDown(_keySet.rightKey)) {
+	else if (actionManager.isKeyDown(_keySet.rightKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += _speed;
 	}
@@ -58,16 +58,11 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 	Map::Cell left = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.3)));
 	Map::Cell right = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.7)));
 
-	if (center == top && center == bottom && center == left && center == right)
+	if ((center == Map::Cell::Empty || center == Map::Cell::Bomb) && (left == Map::Cell::Empty || left == Map::Cell::Bomb) &&
+	(right == Map::Cell::Empty || right == Map::Cell::Bomb) && (top == Map::Cell::Empty || top == Map::Cell::Bomb) && (bottom == Map::Cell::Empty || bottom == Map::Cell::Bomb))
 	{
-		if (center == Map::Cell::Empty)
-			_anode->setPosition(pos);
-		if ((center == Map::Cell::Breakable) && _wallPass)
-			_anode->setPosition(pos);
-		if (center== Map::Cell::Bomb &&
-			(center == Map::Cell::Empty ||
-			center == Map::Cell::Bomb))
-			_anode->setPosition(pos);
+		//if ((center == Map::Cell::Breakable) && _wallPass)
+		_anode->setPosition(pos);
 	}
 }
 
