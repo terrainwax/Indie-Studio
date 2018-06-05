@@ -39,7 +39,7 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/Clock.cpp
         Src/KeySet.cpp
         Src/Player.cpp
-	Src/Game.cpp
+        Src/Game.cpp
         Src/APlayer.cpp
         Src/Obj/Cube.cpp
         Src/Obj/Sphere.cpp
