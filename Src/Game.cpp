@@ -11,10 +11,9 @@
 #include "Map.hpp"
 #include <iostream>
 
-Game::Game(GraphicManager& graph) : // _actionManager(_action), _graphManager(_graph),
+Game::Game() :
 _map(Map(13))
 {
-	skydome = graph.getSceneManager()->addSkyDomeSceneNode(graph.getVideoDriver()->getTexture("Assets/Textures/skyfield.jpg"),16,16,4.0f,10000.0f);
 }
 
 Game::~Game()

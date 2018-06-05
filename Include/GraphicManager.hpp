@@ -41,6 +41,8 @@ public:
 
 	irr::scene::ISceneNode *makeCubeNode(const Cube &cube);
 
+
+	void createSkybox(std::string s);
 	void drawCube(const Cube &cube);
 	void drawSphere(const Sphere &sphere);
 	void addToDeletionQueue(irr::scene::ISceneNode *node);

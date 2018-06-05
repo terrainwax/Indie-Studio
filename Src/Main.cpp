@@ -19,9 +19,11 @@ int main(int argc, char **argv)
 	srand(time(NULL));
 	ActionManager action;
 	GraphicManager graphic(action);
-	Game game(graphic);
+	graphic.createSkybox("Assets/Textures/skyfield.jpg");
+	Game game;
 	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet1));
 	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
+	game.addPlayer(new Player(1, 2, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
 
 	while (graphic.isActive() &&
 		game.isOnGoing() &&

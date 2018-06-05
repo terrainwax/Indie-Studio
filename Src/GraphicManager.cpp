@@ -22,6 +22,11 @@ GraphicManager::~GraphicManager()
 	_device->drop();
 }
 
+void GraphicManager::createSkybox(std::string s)
+{
+	_smgr->addSkyDomeSceneNode(_driver->getTexture(&s[0]));
+}
+
 void GraphicManager::drawCube(const Cube &cube)
 {
 	irr::scene::ISceneNode *node = _smgr->addCubeSceneNode();
@@ -33,8 +38,6 @@ void GraphicManager::drawCube(const Cube &cube)
 	node->setMaterialTexture(0, _driver->getTexture(&cube.texture[0]));
 	node->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	node->setMaterialFlag(irr::video::EMF_BILINEAR_FILTER, false);
-	//node->setMaterialFlag(irr::video::EMF_GOURAUD_SHADING, false);
-	//node->setMaterialFlag(irr::video::EMF_WIREFRAME, true);
 	_smgr->addToDeletionQueue(node);
 }
 

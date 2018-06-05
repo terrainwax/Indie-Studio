@@ -27,7 +27,7 @@ private:
 	void triggerBomb();
 
 public:
-	Game(GraphicManager&);
+	Game();
 	~Game();
 
 	bool isOnGoing() const;
