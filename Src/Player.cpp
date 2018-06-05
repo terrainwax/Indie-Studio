@@ -51,8 +51,6 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += _speed;
 	}
-	if ((int)pos.X != (int)oldPos.X && (int)pos.Z != (int)oldPos.Z)
-		return;
 	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty))
 		_anode->setPosition(pos);
 	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Breakable) && _wallPass)
