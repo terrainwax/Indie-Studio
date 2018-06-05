@@ -98,7 +98,7 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 	this->updateAnimation(actionManager);
 	if (actionManager.isKeyPressed(_keySet.bombKey) && _nbBomb != 0 && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5)) != Map::Cell::Bomb) {
 		_nbBomb -= 1;
-		if (env == nullptr)
+	/*	if (env == nullptr)
 			env = device->getGUIEnvironment();
 		if (font == nullptr)
 			font = env->getFont("./Assets/Font/fonthaettenschweiler.bmp");
@@ -108,7 +108,7 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 			nodeText = _smgr->addTextSceneNode(font, std::wstring(result.begin(), result.end()).c_str());
 		nodeText->setScale(irr::core::vector3df(2,2,2));
 		nodeText->setTextColor(irr::video::SColor(255, 255, 0, 0));
-		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
+		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));*/
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
 		map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);

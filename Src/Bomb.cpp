@@ -108,11 +108,11 @@ void Bomb::playerExplosion(APlayer *player)
 	int playerPosY = (int)(pos.Z / 10 + 0.5);
 	if (playerPosY == _yMapPos / 10) {
 		if (playerPosX >= _xMapPos / 10 - _radius && playerPosX <= _xMapPos / 10 + _radius)
-			printf("booom boom\n");
+			player->die();
 	}
 	if (playerPosX == _xMapPos / 10) {
 		if (playerPosY >= _yMapPos / 10 - _radius && playerPosY <= _yMapPos / 10 + _radius)
-			printf("booom boom\n");
+			player->die();
 	}
 }
 

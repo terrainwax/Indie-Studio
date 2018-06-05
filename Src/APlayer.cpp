@@ -12,7 +12,8 @@ _name(name),
 _nbBomb(nbBomb),
 _fire(fire),
 _speed(speed),
-_wallPass(wallPass)
+_wallPass(wallPass),
+_alive(true)
 {
 }
 
@@ -68,4 +69,14 @@ void		APlayer::setFire(char fire)
 void		APlayer::setWallPass(bool wallPass)
 {
 	this->_wallPass = wallPass;
+}
+
+void APlayer::die()
+{
+	_alive = false;
+}
+
+bool APlayer::isAlive() const
+{
+	return _alive;
 }

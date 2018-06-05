@@ -28,6 +28,7 @@ protected:
 	float		_yPos;
 	irr::scene::IAnimatedMeshSceneNode* _anode;
 	irr::scene::IAnimatedMesh* _mesh;
+	bool 		_alive;
 
 public:
 	APlayer(std::string name = "APlayer", int nbBomb = 1, int fire = 1,
@@ -40,6 +41,7 @@ public:
 	char		getNbBomb() const;
 	char		getFire() const;
 	bool		getWallPass() const;
+	bool		isAlive() const;
 	irr::core::vector3df	getPos() const;
 
 	//setters
@@ -47,6 +49,7 @@ public:
 	void		setWallPass(bool);
 	void		setSpeed(float);
 	void		setNbBomb(char);
+	void 		die();
 
 	virtual void	update(ActionManager &actionManager, GraphicManager &graph, Map &map, std::vector<Bomb *> &bomb) = 0;
 };
