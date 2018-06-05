@@ -21,7 +21,7 @@ int main(int argc, char **argv)
 	ActionManager action;
 	GraphicManager graphic(action);
 	Player *player = new Player("test", graphic.getSceneManager());
-	Game game(map);
+	Game game(graphic, map);
 
 	game.addPlayer(player);
 	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_A) != true) {

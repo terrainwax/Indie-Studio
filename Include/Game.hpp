@@ -21,12 +21,14 @@ private:
 	PowerUpFactory		_factory;
 	std::vector<std::unique_ptr<APowerUp>> _powersUp;
 	std::vector<Bomb *> _bomb;
+	irr::scene::ISceneNode* skydome;
+	
 
 	void pickUpBonus(APlayer &player);
 	void triggerBomb();
 
 public:
-	Game(Map&);
+	Game(GraphicManager&, Map&);
 	~Game();
 
 	//getters
