@@ -5,8 +5,7 @@
 // bomb class
 //
 
-#ifndef __GAME__
-# define __GAME__
+#pragma once
 
 #include "Bomb.hpp"
 #include "APlayer.hpp"
@@ -17,7 +16,7 @@ class Game
 {
 private:
 	std::vector<APlayer*>	_players;
-	Map&			_map;
+	Map			_map;
 	PowerUpFactory		_factory;
 	std::vector<std::unique_ptr<APowerUp>> _powersUp;
 	std::vector<Bomb *> _bomb;
@@ -28,24 +27,22 @@ private:
 	void triggerBomb();
 
 public:
-	Game(GraphicManager&, Map&);
+	Game(GraphicManager&);
 	~Game();
 
 	//getters
-	std::vector<APlayer*>		getPlayers() const;
-	Map&				getMap() const;
+	Map getMap() const;
+	std::vector<APlayer*> getPlayers() const;
 
 	//setters
-	void				setPlayers(std::vector<APlayer*>);
-	void				setMap(Map&);
+	void setPlayers(std::vector<APlayer*>);
+	void setMap(Map&);
 
-	void				addPlayer(APlayer*);
-	void				addPowerUp(irr::core::vector3df);
-	void				update(ActionManager&, GraphicManager&);
-	void				updateMap();
-	void				display(GraphicManager&);
+	void addPlayer(APlayer*);
+	void addPowerUp(irr::core::vector3df);
+	void update(ActionManager&, GraphicManager&);
+	void updateMap();
+	void display(GraphicManager&);
 
 private:
 };
-
-#endif // __Game__

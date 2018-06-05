@@ -11,9 +11,8 @@
 #include "Map.hpp"
 #include <iostream>
 
-Game::Game(GraphicManager& graph, 
-	   Map& map) : // _actionManager(_action), _graphManager(_graph),
-_map(map)
+Game::Game(GraphicManager& graph) : // _actionManager(_action), _graphManager(_graph),
+_map(Map(13))
 {
 	skydome = graph.getSceneManager()->addSkyDomeSceneNode(graph.getVideoDriver()->getTexture("Assets/Textures/skyfield.jpg"),16,16,4.0f,10000.0f);
 }
@@ -27,27 +26,27 @@ std::vector<APlayer*>           Game::getPlayers() const
 	return _players;
 }
 
-Map&                             Game::getMap() const
+Map Game::getMap() const
 {
 	return _map;
 }
 
-void                            Game::setPlayers(std::vector<APlayer*> players)
+void Game::setPlayers(std::vector<APlayer*> players)
 {
 	_players = players;
 }
 
-void				Game::setMap(Map& map)
+void Game::setMap(Map& map)
 {
 	_map = map;
 }
 
-void				Game::addPlayer(APlayer* player)
+void Game::addPlayer(APlayer* player)
 {
 	_players.push_back(player);
 }
 
-void				Game::updateMap()
+void Game::updateMap()
 {
 	int size = _map.getSize();
 	

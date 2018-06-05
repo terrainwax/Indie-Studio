@@ -14,16 +14,14 @@
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
-		return 84;
+	(void)argc;
+	(void)argv;
 	srand(time(NULL));
-	Map map(atoi(argv[1]));
 	ActionManager action;
 	GraphicManager graphic(action);
-	Player *player = new Player("test", graphic.getSceneManager());
-	Game game(graphic, map);
+	Game game(graphic);
+	game.addPlayer(new Player("test", graphic.getSceneManager()));
 
-	game.addPlayer(player);
 	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_A) != true) {
 		game.display(graphic);
 		game.update(action, graphic);
