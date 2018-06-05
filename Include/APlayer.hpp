@@ -28,6 +28,7 @@ protected:
 	float		_yPos;
 	irr::scene::IAnimatedMeshSceneNode* _anode;
 	irr::scene::IAnimatedMesh* _mesh;
+	char 		_nbLife;
 	bool 		_alive;
 
 public:
@@ -39,7 +40,9 @@ public:
 	std::string	getName() const;
 	float		getSpeed() const;
 	char		getNbBomb() const;
+	char		getNbLife() const;
 	char		getFire() const;
+	char		getLife() const;
 	bool		getWallPass() const;
 	bool		isAlive() const;
 	irr::core::vector3df	getPos() const;
@@ -49,6 +52,7 @@ public:
 	void		setWallPass(bool);
 	void		setSpeed(float);
 	void		setNbBomb(char);
+	void		setNbLife(char);
 	void 		die();
 	void 		setCameraFocus(GraphicManager &graphicManager);
 

@@ -12,6 +12,7 @@
 #include <string>
 #include <memory>
 #include <functional>
+#include "LifeUp.hpp"
 #include "FireUp.hpp"
 #include "BombUp.hpp"
 #include "SpeedUp.hpp"
@@ -26,6 +27,7 @@ private:
 	std::vector<POWERUP_BUILDER> _managerVector;
 	std::map<std::string, POWERUP_BUILDER> _managerMap;
 
+	APowerUp *createLifeUp() const noexcept;
 	APowerUp *createFireUp() const noexcept;
 	APowerUp *createBombUp() const noexcept;
 	APowerUp *createSpeedUp() const noexcept;

@@ -13,7 +13,8 @@ _nbBomb(nbBomb),
 _fire(fire),
 _speed(speed),
 _wallPass(wallPass),
-_alive(true)
+_alive(true),
+_nbLife(0)
 {
 }
 
@@ -34,6 +35,11 @@ float		APlayer::getSpeed() const
 char		APlayer::getNbBomb() const
 {
 	return this->_nbBomb;
+}
+
+char		APlayer::getNbLife() const
+{
+	return this->_nbLife;
 }
 
 char		APlayer::getFire() const
@@ -68,6 +74,11 @@ void		APlayer::setFire(char fire)
 	_fire = fire;
 }
 
+void		APlayer::setNbLife(char life)
+{
+	_nbLife = life;
+}
+
 void		APlayer::setWallPass(bool wallPass)
 {
 	this->_wallPass = wallPass;
@@ -75,7 +86,10 @@ void		APlayer::setWallPass(bool wallPass)
 
 void APlayer::die()
 {
-	_alive = false;
+	if (_nbLife == 0)
+		_alive = false;
+	else
+		_nbLife--;
 }
 
 bool APlayer::isAlive() const
