@@ -101,9 +101,19 @@ void Bomb::lineExplosion(Map &map, int incX, int incY)
 	}
 }
 
-void Bomb::playerExplosion(APlayer *players)
+void Bomb::playerExplosion(APlayer *player)
 {
-	(void)players;
+	irr::core::vector3df pos = player->getPos();
+	int playerPosX = (int)(pos.X / 10 + 0.5);
+	int playerPosY = (int)(pos.Z / 10 + 0.5);
+	if (playerPosY == _yMapPos / 10) {
+		if (playerPosX >= _xMapPos / 10 - _radius && playerPosX <= _xMapPos / 10 + _radius)
+			printf("booom boom\n");
+	}
+	if (playerPosX == _xMapPos / 10) {
+		if (playerPosY >= _yMapPos / 10 - _radius && playerPosY <= _yMapPos / 10 + _radius)
+			printf("booom boom\n");
+	}
 }
 
 void	Bomb::explode(Map &map, std::vector<APlayer *> &players)
