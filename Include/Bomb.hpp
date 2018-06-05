@@ -26,6 +26,7 @@ private:
 	irr::scene::ISceneNode *_node;
 
 	void lineExplosion(Map &map, int incX, int incY);
+	void playerExplosion(APlayer *players);
 
 	public:
 	Bomb(APlayer &player, irr::scene::ISceneManager *);
@@ -44,5 +45,5 @@ private:
 
 
 	int		update();
-	void		explode(Map&);
+	void		explode(Map&, std::vector<APlayer *> &players);
 };

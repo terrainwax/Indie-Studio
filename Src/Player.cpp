@@ -15,8 +15,6 @@ APlayer(name),
 _keySet(keyset)
 {
 	_mesh = _smgr->getMesh("./Assets/Models/0112.x");
-
-
 	_anode = _smgr->addAnimatedMeshSceneNode(_mesh);
 	_anode->setPosition(irr::core::vector3df(10,-4,20));
 	_anode->setMaterialFlag(irr::video::EMF_LIGHTING, false);
@@ -116,12 +114,12 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 		map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
 		bomb.push_back(new Bomb(*this, _smgr));
 	}
-	if (nodeText != nullptr) {
+	/* if (nodeText != nullptr) {
 		nodeText->setPosition(irr::core::vector3df(pos.X, 10, pos.Z));
 		std::string result = "Bombe NB : ";
 		result = result + std::to_string(_nbBomb);
 		nodeText->setText(std::wstring(result.begin(), result.end()).c_str());
-	}
+	}*/
 }
 
 void Player::setCameraFocus(GraphicManager &graphicManager)

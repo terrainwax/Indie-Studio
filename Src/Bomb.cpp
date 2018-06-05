@@ -101,12 +101,19 @@ void Bomb::lineExplosion(Map &map, int incX, int incY)
 	}
 }
 
-void		Bomb::explode(Map &map)
+void Bomb::playerExplosion(APlayer *players)
+{
+	(void)players;
+}
+
+void	Bomb::explode(Map &map, std::vector<APlayer *> &players)
 {
 	this->lineExplosion(map,  1,  0);
 	this->lineExplosion(map, -1,  0);
 	this->lineExplosion(map,  0,  1);
 	this->lineExplosion(map,  0, -1);
+	for (int i = 0; i < players.size(); i++)
+		this->playerExplosion(players[i]);
 }
 
 irr::scene::ISceneNode *Bomb::getNode()
