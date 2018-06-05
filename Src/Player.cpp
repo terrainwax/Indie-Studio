@@ -10,13 +10,13 @@
 #include "Player.hpp"
 #include "GraphicManager.hpp"
 
-Player::Player(std::string name, irr::scene::ISceneManager *_smgr, KeySet keyset) :
+Player::Player(int posX, int posY, std::string name, irr::scene::ISceneManager *_smgr, KeySet keyset) :
 APlayer(name),
 _keySet(keyset)
 {
 	_mesh = _smgr->getMesh("./Assets/Models/0112.x");
 	_anode = _smgr->addAnimatedMeshSceneNode(_mesh);
-	_anode->setPosition(irr::core::vector3df(10,-4,20));
+	_anode->setPosition(irr::core::vector3df(10 * posX, -4, 10 * posY));
 	_anode->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	_anode->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);
 	_anode->setMaterialFlag(irr::video::EMF_ANISOTROPIC_FILTER, true);

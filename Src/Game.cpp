@@ -31,6 +31,17 @@ Map Game::getMap() const
 	return _map;
 }
 
+bool Game::isOnGoing() const
+{
+	if (_players[0]->isAlive() == false)
+		return false;
+	for (int i = 1; i < _players.size(); i++) {
+		if (_players[i]->isAlive() == true)
+			return true;
+	}
+	return _players.size() == 1;
+}
+
 void Game::setPlayers(std::vector<APlayer*> players)
 {
 	_players = players;
