@@ -58,8 +58,8 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 	Map::Cell left = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.3)));
 	Map::Cell right = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.7)));
 
-	if ((center == Map::Cell::Empty || center == Map::Cell::Bomb) && (left == Map::Cell::Empty || left == Map::Cell::Bomb) &&
-	(right == Map::Cell::Empty || right == Map::Cell::Bomb) && (top == Map::Cell::Empty || top == Map::Cell::Bomb) && (bottom == Map::Cell::Empty || bottom == Map::Cell::Bomb))
+	if ((center == Map::Cell::Empty || center == Map::Cell::Bomb || (center == Map::Cell::Breakable && _wallPass)) && (left == Map::Cell::Empty || left == Map::Cell::Bomb || (left == Map::Cell::Breakable && _wallPass)) &&
+	(right == Map::Cell::Empty || right == Map::Cell::Bomb || (right == Map::Cell::Breakable && _wallPass)) && (top == Map::Cell::Empty || top == Map::Cell::Bomb || (top == Map::Cell::Breakable && _wallPass)) && (bottom == Map::Cell::Empty || bottom == Map::Cell::Bomb || (bottom == Map::Cell::Breakable && _wallPass)))
 	{
 		//if ((center == Map::Cell::Breakable) && _wallPass)
 		_anode->setPosition(pos);
