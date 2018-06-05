@@ -20,9 +20,12 @@ int main(int argc, char **argv)
 	ActionManager action;
 	GraphicManager graphic(action);
 	Game game(graphic);
-	game.addPlayer(new Player("test", graphic.getSceneManager()));
+	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet1));
+	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
 
-	while (graphic.isActive() && action.isKeyPressed(irr::KEY_KEY_A) != true) {
+	while (graphic.isActive() &&
+		game.isOnGoing() &&
+		action.isKeyPressed(irr::KEY_KEY_A) != true) {
 		game.display(graphic);
 		game.update(action, graphic);
 		graphic.render();

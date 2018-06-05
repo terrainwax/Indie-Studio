@@ -30,6 +30,7 @@ public:
 	Game(GraphicManager&);
 	~Game();
 
+	bool isOnGoing() const;
 	//getters
 	Map getMap() const;
 	std::vector<APlayer*> getPlayers() const;
@@ -43,6 +44,4 @@ public:
 	void update(ActionManager&, GraphicManager&);
 	void updateMap();
 	void display(GraphicManager&);
-
-private:
 };
