@@ -45,5 +45,5 @@ private:
 
 
 	int		update();
-	void		explode(Map&, std::vector<APlayer *> &players);
+	void		explode(Map&, std::vector<APlayer *> &players, std::vector<Bomb *> &bomb);
 };

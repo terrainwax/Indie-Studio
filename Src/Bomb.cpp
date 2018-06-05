@@ -116,8 +116,9 @@ void Bomb::playerExplosion(APlayer *player)
 	}
 }
 
-void	Bomb::explode(Map &map, std::vector<APlayer *> &players)
+void	Bomb::explode(Map &map, std::vector<APlayer *> &players, std::vector<Bomb *>&_bomb)
 {
+	(void)bomb;
 	this->lineExplosion(map,  1,  0);
 	this->lineExplosion(map, -1,  0);
 	this->lineExplosion(map,  0,  1);
