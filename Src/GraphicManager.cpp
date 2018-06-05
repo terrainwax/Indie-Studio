@@ -8,7 +8,7 @@
 #include "GraphicManager.hpp"
 
 GraphicManager::GraphicManager(ActionManager &action):
-_device(irr::createDevice(irr::video::EDT_OPENGL, irr::core::dimension2d<irr::u32>(640, 480), 16, false, false, false, &action)),
+_device(irr::createDevice(irr::video::EDT_OPENGL, irr::core::dimension2d<irr::u32>(1280, 720), 16, false, false, false, &action)),
 _smgr(_device->getSceneManager()),
 _driver(_device->getVideoDriver()),
 _camera(_smgr->addCameraSceneNode()) //FPS for debug
