@@ -12,7 +12,8 @@
 #include <iostream>
 
 Game::Game() :
-_map(Map(13))
+_map(Map(13)),
+_skyView(true)
 {
 }
 
@@ -49,6 +50,11 @@ void Game::setPlayers(std::vector<APlayer*> players)
 void Game::setMap(Map& map)
 {
 	_map = map;
+}
+
+void Game::setSkyView(bool view)
+{
+	_skyView = view;
 }
 
 void Game::addPlayer(APlayer* player)
@@ -95,7 +101,7 @@ void Game::triggerBomb()
 	}
 }
 
-void				Game::update(ActionManager& action, GraphicManager& graph)
+void Game::update(ActionManager& action, GraphicManager& graph)
 {
 	for (int i = 0; i < _players.size(); i++) {
 		_players[i]->update(action, graph, _map, _bomb);
@@ -105,15 +111,18 @@ void				Game::update(ActionManager& action, GraphicManager& graph)
 	updateMap();
 }
 
-void				Game::display(GraphicManager& _graph)
+void Game::display(GraphicManager& _graph)
 {
 	_map.renderMap(_graph);
 	for (int i = 0; i < _powersUp.size(); i++)
 		_powersUp[i]->renderPowerUp(_graph);
-	_players[0]->setCameraFocus(_graph);
+	if (_skyView)
+		_map.setCameraFocus(_graph);
+	else
+		_players[0]->setCameraFocus(_graph);
 }
 
-void                            Game::addPowerUp(irr::core::vector3df pos)
+void Game::addPowerUp(irr::core::vector3df pos)
 {
 	std::unique_ptr<APowerUp> powerup;
 

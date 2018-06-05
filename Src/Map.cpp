@@ -99,9 +99,11 @@ void Map::setCell(irr::core::vector2di pos, Map::Cell cell)
 	_map[pos.Y][pos.X] = cell;
 }
 
-irr::core::vector3df Map::getCenter() const
+void Map::setCameraFocus(GraphicManager &graphic) const
 {
-	return irr::core::vector3df(_mapSize / 2 * 10 - 5, 0, _mapSize / 2 * 10 - 5);
+	irr::core::vector3df pos(_mapSize / 2 * 10 - 5, 0, _mapSize / 2 * 10 - 5);
+	graphic.setCameraTarget(pos);
+	graphic.setCameraPosition(irr::core::vector3df(pos.X, pos.Y + (_mapSize + 1) * 5, pos.Z - (_mapSize + 1) * 5));
 }
 
 int Map::getSize() const

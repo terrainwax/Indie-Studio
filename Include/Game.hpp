@@ -21,7 +21,7 @@ private:
 	std::vector<std::unique_ptr<APowerUp>> _powersUp;
 	std::vector<Bomb *> _bomb;
 	irr::scene::ISceneNode* skydome;
-	
+	bool 	_skyView;
 
 	void pickUpBonus(APlayer &player);
 	void triggerBomb();
@@ -39,6 +39,7 @@ public:
 	void setPlayers(std::vector<APlayer*>);
 	void setMap(Map&);
 
+	void setSkyView(bool view);
 	void addPlayer(APlayer*);
 	void addPowerUp(irr::core::vector3df);
 	void update(ActionManager&, GraphicManager&);
