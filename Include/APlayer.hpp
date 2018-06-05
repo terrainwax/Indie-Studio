@@ -50,6 +50,7 @@ public:
 	void		setSpeed(float);
 	void		setNbBomb(char);
 	void 		die();
+	void 		setCameraFocus(GraphicManager &graphicManager);
 
 	virtual void	update(ActionManager &actionManager, GraphicManager &graph, Map &map, std::vector<Bomb *> &bomb) = 0;
 };

@@ -24,6 +24,5 @@ public:
 	Player(std::string name = "PlayerX", irr::scene::ISceneManager *_smgr = nullptr, KeySet keyset = KeySetUtils::dflKeySet2);
 	~Player();
 
-	void 	setCameraFocus(GraphicManager &graphicManager);
 	virtual void update(ActionManager &actionManager, GraphicManager &graphicManager, Map &map, std::vector<Bomb *> &bomb);
 };

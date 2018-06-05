@@ -43,6 +43,8 @@ char		APlayer::getFire() const
 
 irr::core::vector3df		APlayer::getPos() const
 {
+	if (_anode == nullptr)
+		return irr::core::vector3df(0, 0, 0);
 	return _anode->getPosition();
 }
 
@@ -79,4 +81,16 @@ void APlayer::die()
 bool APlayer::isAlive() const
 {
 	return _alive;
+}
+
+
+void APlayer::setCameraFocus(GraphicManager &graphicManager)
+{
+	if (_anode == nullptr)
+		return;
+
+	irr::core::vector3df pos = _anode->getPosition();
+
+	graphicManager.setCameraTarget(pos);
+	graphicManager.setCameraPosition(irr::core::vector3df(pos.X, pos.Y + 40 , pos.Z - 40));
 }

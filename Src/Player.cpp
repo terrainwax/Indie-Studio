@@ -90,12 +90,18 @@ void Player::updateAnimation(ActionManager &actionManager)
 
 void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &map, std::vector<Bomb *> &bomb)
 {
-	irr::core::vector3df pos = _anode->getPosition();
 	irr::scene::ISceneManager *_smgr = graphic.getSceneManager();
 	irr::IrrlichtDevice *device = graphic.getDevice();
+	if (_alive == false && _anode != nullptr) {
+		_smgr->addToDeletionQueue(_anode);
+		_anode = nullptr;
+	}
+	if (_alive == false)
+		return;
 
 	this->updatePos(actionManager, map);
 	this->updateAnimation(actionManager);
+	irr::core::vector3df pos = _anode->getPosition();
 	if (actionManager.isKeyPressed(_keySet.bombKey) && _nbBomb != 0 && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5)) != Map::Cell::Bomb) {
 		_nbBomb -= 1;
 	/*	if (env == nullptr)
@@ -120,12 +126,4 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 		result = result + std::to_string(_nbBomb);
 		nodeText->setText(std::wstring(result.begin(), result.end()).c_str());
 	}*/
-}
-
-void Player::setCameraFocus(GraphicManager &graphicManager)
-{
-	irr::core::vector3df pos = _anode->getPosition();
-
-	graphicManager.setCameraTarget(pos);
-	graphicManager.setCameraPosition(irr::core::vector3df(pos.X, pos.Y + 40 , pos.Z - 40));
 }

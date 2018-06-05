@@ -100,7 +100,7 @@ void				Game::display(GraphicManager& _graph)
 	_map.renderMap(_graph);
 	for (int i = 0; i < _powersUp.size(); i++)
 		_powersUp[i]->renderPowerUp(_graph);
-	dynamic_cast<Player *>(_players[0])->setCameraFocus(_graph);
+	_players[0]->setCameraFocus(_graph);
 }
 
 void                            Game::addPowerUp(irr::core::vector3df pos)
