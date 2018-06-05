@@ -73,7 +73,7 @@ void Player::updateAnimation(ActionManager &actionManager)
 
 		}
 		else if (_anode->getStartFrame() != 100) {
-			_anode->setAnimationSpeed(30);
+			_anode->setAnimationSpeed(_speed * 60);
 			_anode->setFrameLoop(100, 140);
 		}
 	}
@@ -82,7 +82,7 @@ void Player::updateAnimation(ActionManager &actionManager)
 		{
 
 		} else {
-			_anode->setAnimationSpeed(30);
+			_anode->setAnimationSpeed(_speed * 60);
 			_anode->setFrameLoop(0, 90);
 		}
 	}
