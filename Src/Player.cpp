@@ -51,14 +51,24 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 		_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		pos.X += _speed;
 	}
-	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty))
-		_anode->setPosition(pos);
-	if ((map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Breakable) && _wallPass)
-		_anode->setPosition(pos);
-	if (map.getCell(irr::core::vector2di((((oldPos.Z / 10) + 0.5)), (oldPos.X / 10) + 0.5)) == Map::Cell::Bomb &&
-		(map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Empty ||
-		map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Bomb))
-		_anode->setPosition(pos);
+
+	Map::Cell center = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5)));
+	Map::Cell top = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.3), (int)(pos.X / 10 + 0.5)));
+	Map::Cell bottom = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.7), (int)(pos.X / 10 + 0.5)));
+	Map::Cell left = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.3)));
+	Map::Cell right = map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.7)));
+
+	if (center == top && center == bottom && center == left && center == right)
+	{
+		if (center == Map::Cell::Empty)
+			_anode->setPosition(pos);
+		if ((center == Map::Cell::Breakable) && _wallPass)
+			_anode->setPosition(pos);
+		if (center== Map::Cell::Bomb &&
+			(center == Map::Cell::Empty ||
+			center == Map::Cell::Bomb))
+			_anode->setPosition(pos);
+	}
 }
 
 void Player::updateAnimation(ActionManager &actionManager)
