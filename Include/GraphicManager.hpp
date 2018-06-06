@@ -21,7 +21,7 @@
 
 #ifndef TEXTURE
 # define TEXTURE(x) (std::string("./Assets/Textures/") + std::string(x))
-#endif 
+#endif
 
 class GraphicManager final {
 private:
