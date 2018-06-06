@@ -12,7 +12,7 @@
 #include <iostream>
 
 Game::Game() :
-_map(Map(13)),
+_map(Map(13, 60)),
 _skyView(true)
 {
 }
