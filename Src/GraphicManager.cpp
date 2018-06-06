@@ -19,7 +19,6 @@ _camera(_smgr->addCameraSceneNode()) //FPS for debug
 
 GraphicManager::~GraphicManager()
 {
-	_device->drop();
 }
 
 void GraphicManager::createSkybox(std::string s)

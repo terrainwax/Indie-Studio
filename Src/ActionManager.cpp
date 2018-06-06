@@ -45,3 +45,12 @@ bool ActionManager::OnEvent(const irr::SEvent &e)
 	}
 	return false;
 }
+
+void ActionManager::flush()
+{
+	for (int key = 0; key < irr::KEY_KEY_CODES_COUNT; key = key + 1)
+	{
+		_previousState[key] = _currentState[key];
+		_currentState[key] = false;
+	}
+}

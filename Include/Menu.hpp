@@ -18,6 +18,8 @@ public:
 	Menu(irr::IrrlichtDevice *device, ActionManager *action, SoundManager *sound);
 	~Menu();
 	void run();
+	void chooseScreen();
+	void launchGame();
 
 private:
 	irr::IrrlichtDevice *_device;
