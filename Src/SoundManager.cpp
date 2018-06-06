@@ -2,7 +2,7 @@
 * @Author: Reimua
 * @Date:   2018-06-06 10:25:30
 * @Last Modified by:   Reimua
-* @Last Modified time: 2018-06-06 10:50:16
+* @Last Modified time: 2018-06-06 10:51:16
 */
 
 #include "SoundManager.hpp"
@@ -16,6 +16,7 @@ _engine(irrklang::createIrrKlangDevice())
 
 SoundManager::~SoundManager()
 {
+	_engine->drop();
 }
 
 void SoundManager::playSound(std::string s)
