@@ -12,6 +12,9 @@
 #include <stdexcept>
 #include <irrKlang.h>
 
+#ifndef SOUND
+# define SOUND(x) (std::string("./Assets/Music/") + std::string(x))
+#endif
 
 class SoundManager {
 private:

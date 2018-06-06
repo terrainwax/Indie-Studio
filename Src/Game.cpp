@@ -89,10 +89,11 @@ void	Game::pickUpBonus(APlayer &player)
 	}
 }
 
-void Game::triggerBomb()
+void Game::triggerBomb(SoundManager &sound)
 {
 	for (int i = 0; i < _bomb.size(); i++) {
 		if (_bomb[i]->update()) {
+			sound.playSound(SOUND("Explosion.ogg"));
 			_map.setCell(irr::core::vector2di(_bomb[i]->getYMapPos() / 10, _bomb[i]->getXMapPos() / 10), Map::Cell::Empty);
 			_bomb[i]->explode(_map, _players, _bomb);
 			delete _bomb[i];
@@ -101,13 +102,13 @@ void Game::triggerBomb()
 	}
 }
 
-void Game::update(ActionManager& action, GraphicManager& graph)
+void Game::update(ActionManager& action, GraphicManager& graph, SoundManager &sound)
 {
 	for (int i = 0; i < _players.size(); i++) {
 		_players[i]->update(action, graph, _map, _bomb);
 		this->pickUpBonus(*_players[i]);
 	}
-	this->triggerBomb();
+	this->triggerBomb(sound);
 	updateMap();
 }
 

@@ -10,6 +10,7 @@
 #include "Bomb.hpp"
 #include "APlayer.hpp"
 #include "APowerUp.hpp"
+#include "SoundManager.hpp"
 #include "PowerUpFactory.hpp"
 
 class Game
@@ -24,7 +25,7 @@ private:
 	bool 	_skyView;
 
 	void pickUpBonus(APlayer &player);
-	void triggerBomb();
+	void triggerBomb(SoundManager &sound);
 
 public:
 	Game();
@@ -42,7 +43,7 @@ public:
 	void setSkyView(bool view);
 	void addPlayer(APlayer*);
 	void addPowerUp(irr::core::vector3df);
-	void update(ActionManager&, GraphicManager&);
+	void update(ActionManager&, GraphicManager&, SoundManager&);
 	void updateMap();
 	void display(GraphicManager&);
 };

@@ -27,12 +27,10 @@ int main(int argc, char **argv)
 	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
 	game.addPlayer(new Player(1, 2, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
 
-	sound.playBgm("./Assets/Music/GroSonSaRace.wav");
-	while (graphic.isActive() &&
-		game.isOnGoing() &&
-		action.isKeyPressed(irr::KEY_KEY_A) != true) {
+	sound.playBgm(SOUND("GroSonSaRace.ogg"));
+	while (graphic.isActive() && game.isOnGoing()) {
 		game.display(graphic);
-		game.update(action, graphic);
+		game.update(action, graphic, sound);
 		graphic.render();
 	}
 	return 0;
