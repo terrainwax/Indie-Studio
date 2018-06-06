@@ -54,6 +54,7 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/PowerUp/LifeUp.cpp
         Src/PowerUp/SpeedUp.cpp
         Src/PowerUp/APowerUp.cpp
+        Src/PowerUp/FullFire.cpp
         Src/PowerUp/PierceUp.cpp
         Src/PowerUp/WallPass.cpp
         Src/PowerUp/PowerUpFactory.cpp)

@@ -17,6 +17,7 @@
 #include "BombUp.hpp"
 #include "SpeedUp.hpp"
 #include "APowerUp.hpp"
+#include "FullFire.hpp"
 #include "PierceUp.hpp"
 #include "WallPass.hpp"
 
@@ -32,6 +33,7 @@ private:
 	APowerUp *createFireUp() const noexcept;
 	APowerUp *createBombUp() const noexcept;
 	APowerUp *createSpeedUp() const noexcept;
+	APowerUp *createFullFire() const noexcept;
 	APowerUp *createPierceUp() const noexcept;
 	APowerUp *createWallPass() const noexcept;
 public:
