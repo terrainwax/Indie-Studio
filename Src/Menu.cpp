@@ -31,13 +31,11 @@ void Menu::run()
 		clock.tick();
 
 		irr::video::ITexture *image = (clock.elapsedMilliseconds() % 1000 > 500) ? imageBlue : imageRed;
-	driver->beginScene(true, true,
-		irr::video::SColor (0,120,120,120));
-	driver->draw2DImage(image,
-		irr::core::rect<irr::s32> (0, 0, WINDOW_WIDTH, WINDOW_HEIGHT),
-		irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height),
-		0, blanc, true);
-		driver->endScene ();
+		driver->beginScene(true, true, irr::video::SColor (0,120,120,120));
+		driver->draw2DImage(image,
+			irr::core::rect<irr::s32> (0, 0, WINDOW_WIDTH, WINDOW_HEIGHT),
+			irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height), 0, blanc, true);
+		driver->endScene();
 	}
 
 	GraphicManager graphics(_device);
