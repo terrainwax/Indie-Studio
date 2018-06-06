@@ -7,10 +7,10 @@
 
 #include "GraphicManager.hpp"
 
-GraphicManager::GraphicManager(ActionManager &action):
-_device(irr::createDevice(irr::video::EDT_OPENGL, irr::core::dimension2d<irr::u32>(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_BITS, false, false, false, &action)),
-_smgr(_device->getSceneManager()),
-_driver(_device->getVideoDriver()),
+GraphicManager::GraphicManager(irr::IrrlichtDevice *device):
+_device(device),
+_smgr(device->getSceneManager()),
+_driver(device->getVideoDriver()),
 _camera(_smgr->addCameraSceneNode()) //FPS for debug
 {
 	if (_device == nullptr)

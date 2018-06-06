@@ -35,6 +35,7 @@ INCLUDE_DIRECTORIES(Include/PowerUp)
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/Binaries)
 
 ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
+        Src/Menu.cpp
         Src/Map.cpp
         Src/Bomb.cpp
         Src/Bomb.cpp
