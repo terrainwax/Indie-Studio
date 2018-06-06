@@ -14,13 +14,11 @@ Menu::~Menu()
 void Menu::run()
 {
 	irr::video::IVideoDriver* driver = _device->getVideoDriver();
-	irr::scene::ISceneManager *sceneManager = _device->getSceneManager();
 
-	irr::video::ITexture *imageBlue = driver->getTexture("Assets/Menus/StartGameBlue.jpg");    // chargement de l'image
+	irr::video::ITexture *imageBlue = driver->getTexture("Assets/Menus/StartGameBlue.jpg");
 	irr::video::ITexture *imageRed = driver->getTexture("Assets/Menus/StartGameRed.jpg");
-	//driver->makeColorKeyTexture (image, irr::core::position2d<irr::s32> (0,0)); // transparence pour le fond
 
-	irr::video::SColor blanc[4];                                          // creation variable couleur blanche
+	irr::video::SColor blanc[4];
 	blanc[0].set(255,255,255,255);
 	blanc[1].set(255,255,255,255);
 	blanc[2].set(255,255,255,255);
@@ -28,14 +26,14 @@ void Menu::run()
 
 	Clock clock;
 
-	while(_device->run() && !_actions->isKeyPressed(irr::KEY_RETURN))                                              // la boucle de rendu
+	while(_device->run() && !_actions->isKeyPressed(irr::KEY_RETURN))
 	{
 		clock.tick();
 
 		irr::video::ITexture *image = (clock.elapsedMilliseconds() % 1000 > 500) ? imageBlue : imageRed;
 	driver->beginScene(true, true,
 		irr::video::SColor (0,120,120,120));
-	driver->draw2DImage(image,                                     // dessin de la salle
+	driver->draw2DImage(image,
 		irr::core::rect<irr::s32> (0, 0, WINDOW_WIDTH, WINDOW_HEIGHT),
 		irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height),
 		0, blanc, true);
