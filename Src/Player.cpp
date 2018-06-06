@@ -37,7 +37,6 @@ Player::~Player()
 void Player::updatePos(ActionManager &actionManager, Map &map)
 {
 	irr::core::vector3df pos = _anode->getPosition();
-	irr::core::vector3df oldPos = pos;
 
 	if (actionManager.isKeyDown(_keySet.upKey)) {
 		_anode->setRotation(irr::core::vector3df(-90, 0, 0));
@@ -100,7 +99,6 @@ void Player::updateAnimation(ActionManager &actionManager)
 void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &map, std::vector<Bomb *> &bomb)
 {
 	irr::scene::ISceneManager *_smgr = graphic.getSceneManager();
-	irr::IrrlichtDevice *device = graphic.getDevice();
 	if (_alive == false && _anode != nullptr) {
 		_smgr->addToDeletionQueue(_anode);
 		_anode = nullptr;
