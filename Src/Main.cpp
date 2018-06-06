@@ -6,8 +6,9 @@
 */
 
 #include <ctime>
-#include "Game.hpp"
+#include "AI.hpp"
 #include "Map.hpp"
+#include "Game.hpp"
 #include "BombUp.hpp"
 #include "SoundManager.hpp"
 #include "GraphicManager.hpp"
@@ -25,7 +26,7 @@ int main(int argc, char **argv)
 	Game game;
 	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet1));
 	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
-	game.addPlayer(new Player(1, 2, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
+	game.addPlayer(new AI("Lol", graphic.getSceneManager()));
 
 	sound.playBgm(SOUND("GroSonSaRace.ogg"));
 	while (graphic.isActive() && game.isOnGoing()) {

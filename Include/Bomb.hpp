@@ -7,7 +7,10 @@
 
 #pragma once
 
+#pragma GCC diagnostic ignored "-Wunused-parameter"
 #include <irrlicht.h>
+#pragma GCC diagnostic warning "-Wunused-parameter"
+
 #include "Clock.hpp"
 #include "APlayer.hpp"
 

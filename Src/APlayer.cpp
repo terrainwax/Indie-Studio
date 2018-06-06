@@ -9,12 +9,12 @@
 
 APlayer::APlayer(std::string name, int nbBomb, int fire, float speed, bool wallPass) :
 _name(name),
+_speed(speed),
 _nbBomb(nbBomb),
 _fire(fire),
-_speed(speed),
 _wallPass(wallPass),
-_alive(true),
 _nbLife(0),
+_alive(true),
 _pierce(false)
 {
 }
