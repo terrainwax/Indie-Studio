@@ -12,34 +12,36 @@
 #include "SoundManager.hpp"
 #include "GraphicManager.hpp"
 #include "PowerUpFactory.hpp"
+#include "Clock.hpp"
 
 int main(int argc, char **argv)
 {
-	irr::IrrlichtDevice* device = irr::createDevice(irr::video::EDT_OPENGL, irr::core::dimension2d<irr::u32>(640,480), 32, false, false, false);
+	irr::IrrlichtDevice* device = irr::createDevice(irr::video::EDT_OPENGL, irr::core::dimension2d<irr::u32>(WINDOW_WIDTH,WINDOW_HEIGHT), WINDOW_BITS, false, false, false);
 	irr::video::IVideoDriver* driver = device->getVideoDriver();
 	irr::scene::ISceneManager *sceneManager = device->getSceneManager();
 
-	irr::video::ITexture *image = driver->getTexture("Assets/Textures/Bomberman.png");    // chargement de l'image
-	driver->makeColorKeyTexture (image, irr::core::position2d<irr::s32> (0,0)); // transparence pour le fond
+	irr::video::ITexture *imageBlue = driver->getTexture("Assets/Menus/StartGameBlue.jpg");    // chargement de l'image
+	irr::video::ITexture *imageRed = driver->getTexture("Assets/Menus/StartGameRed.jpg");
+	//driver->makeColorKeyTexture (image, irr::core::position2d<irr::s32> (0,0)); // transparence pour le fond
 
-	irr::video::SColor blanc;                                          // creation variable couleur blanche
-	blanc.set(255,255,255,255);
+	irr::video::SColor blanc[4];                                          // creation variable couleur blanche
+	blanc[0].set(255,255,255,255);
+	blanc[1].set(255,255,255,255);
+	blanc[2].set(255,255,255,255);
+	blanc[3].set(255,255,255,255);
+
+	Clock clock;
 
 	while(device->run ())                                              // la boucle de rendu
 	{
+		clock.tick();
+
+		irr::video::ITexture *image = (clock.elapsedMilliseconds() % 1000 > 500) ? imageBlue : imageRed;
 	driver->beginScene(true, true,
 		irr::video::SColor (0,120,120,120));
 	driver->draw2DImage(image,                                     // dessin de la salle
-		irr::core::position2d<irr::s32> (20,20),
-		irr::core::rect<irr::s32> (0,0,342,224),
-		0, blanc, true);
-	driver->draw2DImage (image,                                    // dessin du premier truc rouge
-		irr::core::position2d<irr::s32> (140,140),
-		irr::core::rect<irr::s32> (349,15,385,78),
-		0, blanc, true);
-	driver->draw2DImage (image,                                    // dessin du deuxième truc rouge
-		irr::core::position2d<irr::s32> (150,20),
-		irr::core::rect<irr::s32> (387,15,423,78),
+		irr::core::rect<irr::s32> (0, 0, WINDOW_WIDTH, WINDOW_HEIGHT),
+		irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height),
 		0, blanc, true);
 		driver->endScene ();
 	}

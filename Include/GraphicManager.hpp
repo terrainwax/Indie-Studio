@@ -23,6 +23,10 @@
 # define TEXTURE(x) (std::string("./Assets/Textures/") + std::string(x))
 #endif
 
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+#define WINDOW_BITS 32
+
 class GraphicManager final {
 private:
 	irr::IrrlichtDevice *_device;
