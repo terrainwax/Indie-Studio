@@ -89,15 +89,40 @@ void	Game::pickUpBonus(APlayer &player)
 	}
 }
 
+void Game::explodeBomb(int idx)
+{
+	Bomb *bomb = _bomb[idx];
+	_bomb.erase(_bomb.begin() + idx);
+	_map.setCell(irr::core::vector2di(bomb->getYMapPos() / 10, bomb->getXMapPos() / 10), Map::Cell::Empty);
+	bomb->explode(_map, _players, _bomb);
+	int posX = bomb->getXMapPos() / 10;
+	int posY = bomb->getYMapPos() / 10;
+	int radius = bomb->getRadius();
+	delete bomb;
+	for (int i = 0; i < _bomb.size(); i++) {
+		int bombX = _bomb[i]->getXMapPos() / 10;
+		int bombY = _bomb[i]->getYMapPos() / 10;
+		printf("yuBomb: %d %d\n", bombX, bombY);
+		printf("myBOmb: %d %d\n", posX, posY);
+		if (bombX >= posX - radius && bombX <= posX + radius && posY == bombY) {
+			this->explodeBomb(i);
+			i = 0;
+		}
+		if (bombY >= posY - radius && bombY <= posY + radius && posX == bombX) {
+			this->explodeBomb(i);
+			i = 0;
+		}
+	}
+
+}
+
 void Game::triggerBomb(SoundManager &sound)
 {
 	for (int i = 0; i < _bomb.size(); i++) {
 		if (_bomb[i]->update()) {
-			sound.playSound(SOUND("Explosion.ogg"));
-			_map.setCell(irr::core::vector2di(_bomb[i]->getYMapPos() / 10, _bomb[i]->getXMapPos() / 10), Map::Cell::Empty);
-			_bomb[i]->explode(_map, _players, _bomb);
-			delete _bomb[i];
-			_bomb.erase(_bomb.begin() + i--);
+			sound.playSound(SOUND("Explosion.ogg"));	
+			this->explodeBomb(i);
+			i = 0;
 		}
 	}
 }

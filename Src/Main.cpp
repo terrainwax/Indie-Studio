@@ -24,9 +24,9 @@ int main(int argc, char **argv)
 	GraphicManager graphic(action);
 	graphic.createSkybox("Assets/Textures/skyfield.jpg");
 	Game game;
-	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet1));
-	game.addPlayer(new Player(1, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
-	game.addPlayer(new AI("Lol", graphic.getSceneManager()));
+	game.setSkyView(false);
+	game.addPlayer(new Player(4, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet1));
+	game.addPlayer(new Player(4, 1, "test", graphic.getSceneManager(), KeySetUtils::dflKeySet2));
 
 	sound.playBgm(SOUND("GroSonSaRace.ogg"));
 	while (graphic.isActive() && game.isOnGoing()) {

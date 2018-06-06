@@ -24,6 +24,7 @@ private:
 	irr::scene::ISceneNode* skydome;
 	bool 	_skyView;
 
+	void explodeBomb(int idx);
 	void pickUpBonus(APlayer &player);
 	void triggerBomb(SoundManager &sound);
 
