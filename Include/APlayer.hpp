@@ -30,6 +30,7 @@ protected:
 	irr::scene::IAnimatedMesh* _mesh;
 	char 		_nbLife;
 	bool 		_alive;
+	bool		_pierce;
 
 public:
 	APlayer(std::string name = "APlayer", int nbBomb = 1, int fire = 1,
@@ -43,6 +44,7 @@ public:
 	char		getNbLife() const;
 	char		getFire() const;
 	char		getLife() const;
+	bool		getPierce() const;
 	bool		getWallPass() const;
 	bool		isAlive() const;
 	irr::core::vector3df	getPos() const;
@@ -50,6 +52,7 @@ public:
 	//setters
 	void		setFire(char);
 	void		setWallPass(bool);
+	void		setPierce(bool);
 	void		setSpeed(float);
 	void		setNbBomb(char);
 	void		setNbLife(char);

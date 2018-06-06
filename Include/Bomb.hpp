@@ -20,6 +20,7 @@ private:
 	irr::scene::ISceneManager *_smgr;
 	APlayer& 	_player;
 	char		_radius;
+	bool 		_pierce;
 	int		_xMapPos;
 	int		_yMapPos;
 	Clock		_clock;

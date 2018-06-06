@@ -17,6 +17,7 @@ Bomb::Bomb(APlayer &player, irr::scene::ISceneManager *smgr) :
 _smgr(smgr),
 _player(player),
 _radius(player.getFire()),
+_pierce(player.getPierce()),
 _xMapPos((int)((player.getPos().X / 10) + 0.5) * 10),
 _yMapPos((int)((player.getPos().Z / 10) + 0.5) * 10)
 {
@@ -98,9 +99,10 @@ void Bomb::lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &p
 		this->playersExplosion(players, posX, posY);
 		if (map.getCell(irr::core::vector2di(posY, posX)) == Map::Cell::Breakable) {
 			map.setCell(irr::core::vector2di(posY, posX), Map::Cell::PowerUp);
-			return;
+			if (_pierce == false)
+				return;
 		}
-		if (map.getCell(irr::core::vector2di(posY, posX)) != Map::Cell::Empty)
+		if (map.getCell(irr::core::vector2di(posY, posX)) == Map::Cell::Wall)
 			return;
 	}
 }

@@ -16,8 +16,9 @@
 #include "FireUp.hpp"
 #include "BombUp.hpp"
 #include "SpeedUp.hpp"
-#include "WallPass.hpp"
 #include "APowerUp.hpp"
+#include "PierceUp.hpp"
+#include "WallPass.hpp"
 
 #define POWERUP_BUILDER std::function<APowerUp *()>
 #define FACTORY_BIND(x) std::bind(x, this)
@@ -31,6 +32,7 @@ private:
 	APowerUp *createFireUp() const noexcept;
 	APowerUp *createBombUp() const noexcept;
 	APowerUp *createSpeedUp() const noexcept;
+	APowerUp *createPierceUp() const noexcept;
 	APowerUp *createWallPass() const noexcept;
 public:
 	PowerUpFactory();

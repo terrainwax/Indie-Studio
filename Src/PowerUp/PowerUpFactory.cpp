@@ -14,12 +14,14 @@ PowerUpFactory::PowerUpFactory()
 	_managerMap["BombUp"] = FACTORY_BIND(&PowerUpFactory::createBombUp);
 	_managerMap["FireUp"] = FACTORY_BIND(&PowerUpFactory::createFireUp);
 	_managerMap["SpeedUp"] = FACTORY_BIND(&PowerUpFactory::createSpeedUp);
+	_managerMap["PierceUp"] = FACTORY_BIND(&PowerUpFactory::createPierceUp);
 	_managerMap["WallPass"] = FACTORY_BIND(&PowerUpFactory::createWallPass);
 
 	_managerVector.push_back(FACTORY_BIND(&PowerUpFactory::createLifeUp));
 	_managerVector.push_back(FACTORY_BIND(&PowerUpFactory::createBombUp));
 	_managerVector.push_back(FACTORY_BIND(&PowerUpFactory::createFireUp));
 	_managerVector.push_back(FACTORY_BIND(&PowerUpFactory::createSpeedUp));
+	_managerVector.push_back(FACTORY_BIND(&PowerUpFactory::createPierceUp));
 	_managerVector.push_back(FACTORY_BIND(&PowerUpFactory::createWallPass));
 }
 
@@ -61,6 +63,11 @@ APowerUp *PowerUpFactory::createFireUp() const noexcept
 APowerUp *PowerUpFactory::createSpeedUp() const noexcept
 {
 	return new SpeedUp;
+}
+
+APowerUp *PowerUpFactory::createPierceUp() const noexcept
+{
+	return new PierceUp;
 }
 
 APowerUp *PowerUpFactory::createWallPass() const noexcept

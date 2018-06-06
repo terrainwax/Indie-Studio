@@ -14,7 +14,8 @@ _fire(fire),
 _speed(speed),
 _wallPass(wallPass),
 _alive(true),
-_nbLife(0)
+_nbLife(0),
+_pierce(false)
 {
 }
 
@@ -54,6 +55,11 @@ irr::core::vector3df		APlayer::getPos() const
 	return _anode->getPosition();
 }
 
+bool		APlayer::getPierce() const
+{
+	return _pierce;
+}
+
 bool		APlayer::getWallPass() const
 {
 	return this->_wallPass;
@@ -84,6 +90,11 @@ void		APlayer::setWallPass(bool wallPass)
 	this->_wallPass = wallPass;
 }
 
+void APlayer::setPierce(bool pierce)
+{
+	_pierce = pierce;
+}
+
 void APlayer::die()
 {
 	if (_nbLife == 0)
@@ -96,7 +107,6 @@ bool APlayer::isAlive() const
 {
 	return _alive;
 }
-
 
 void APlayer::setCameraFocus(GraphicManager &graphicManager)
 {
