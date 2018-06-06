@@ -102,8 +102,6 @@ void Game::explodeBomb(int idx)
 	for (int i = 0; i < _bomb.size(); i++) {
 		int bombX = _bomb[i]->getXMapPos() / 10;
 		int bombY = _bomb[i]->getYMapPos() / 10;
-		printf("yuBomb: %d %d\n", bombX, bombY);
-		printf("myBOmb: %d %d\n", posX, posY);
 		if (bombX >= posX - radius && bombX <= posX + radius && posY == bombY) {
 			this->explodeBomb(i);
 			i = 0;
