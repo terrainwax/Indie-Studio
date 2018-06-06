@@ -18,12 +18,14 @@
 
 class SoundManager {
 private:
-	irrklang::ISoundEngine* _engine;
+	irrklang::ISoundEngine *_engine;
+	irrklang::ISound *_bgm;
 
 public:
 	SoundManager();
 	~SoundManager();
 
+	void stopBgm();
 	void playBgm(std::string s);
 	void playSound(std::string s);
 };
