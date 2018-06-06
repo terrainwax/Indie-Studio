@@ -70,7 +70,7 @@ void Game::updateMap()
 		for (int j = 0; j < size; j++) {
 			if (_map.getCell(irr::core::vector2di(i, j)) == Map::Cell::PowerUp) {
 				_map.setCell(irr::core::vector2di(i, j), Map::Cell::Empty);
-				if (rand() % 3 == 0)
+				if (rand() % 2 == 0)
 					addPowerUp(irr::core::vector3df(j * 10, 0, i * 10));
 			}
 		}

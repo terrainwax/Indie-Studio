@@ -25,8 +25,9 @@ private:
 	Clock		_clock;
 	irr::scene::ISceneNode *_node;
 
-	void lineExplosion(Map &map, int incX, int incY);
-	void playerExplosion(APlayer *players);
+	void lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &);
+	void playersExplosion(std::vector<APlayer *> &players, int posX, int posY);
+
 
 	public:
 	Bomb(APlayer &player, irr::scene::ISceneManager *);

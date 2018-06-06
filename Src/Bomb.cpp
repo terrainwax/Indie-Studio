@@ -85,13 +85,17 @@ int		Bomb::update()
 	return 0;
 }
 
-void Bomb::lineExplosion(Map &map, int incX, int incY)
+void Bomb::lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &players)
 {
 	int posX = _xMapPos / 10;
 	int posY = _yMapPos / 10;
+	
+
+	this->playersExplosion(players, posX, posY);
 	for (int i = 0; i < _radius; i++) {
 		posX += incX;
 		posY += incY;
+		this->playersExplosion(players, posX, posY);
 		if (map.getCell(irr::core::vector2di(posY, posX)) == Map::Cell::Breakable) {
 			map.setCell(irr::core::vector2di(posY, posX), Map::Cell::PowerUp);
 			return;
@@ -101,30 +105,24 @@ void Bomb::lineExplosion(Map &map, int incX, int incY)
 	}
 }
 
-void Bomb::playerExplosion(APlayer *player)
+void Bomb::playersExplosion(std::vector<APlayer *> &players, int posX, int posY)
 {
-	irr::core::vector3df pos = player->getPos();
-	int playerPosX = (int)(pos.X / 10 + 0.5);
-	int playerPosY = (int)(pos.Z / 10 + 0.5);
-	if (playerPosY == _yMapPos / 10) {
-		if (playerPosX >= _xMapPos / 10 - _radius && playerPosX <= _xMapPos / 10 + _radius)
-			player->die();
-	}
-	if (playerPosX == _xMapPos / 10) {
-		if (playerPosY >= _yMapPos / 10 - _radius && playerPosY <= _yMapPos / 10 + _radius)
-			player->die();
+	for (int j = 0; j < players.size(); j++) {
+		irr::core::vector3df pos = players[j]->getPos();
+		int playerPosX = (int)(pos.X / 10 + 0.5);
+		int playerPosY = (int)(pos.Z / 10 + 0.5);
+		if (playerPosY == posY && playerPosX == posX)
+			players[j]->die();
 	}
 }
 
 void	Bomb::explode(Map &map, std::vector<APlayer *> &players, std::vector<Bomb *> &bomb)
 {
 	(void)bomb;
-	this->lineExplosion(map,  1,  0);
-	this->lineExplosion(map, -1,  0);
-	this->lineExplosion(map,  0,  1);
-	this->lineExplosion(map,  0, -1);
-	for (int i = 0; i < players.size(); i++)
-		this->playerExplosion(players[i]);
+	this->lineExplosion(map,  1,  0, players);
+	this->lineExplosion(map, -1,  0, players);
+	this->lineExplosion(map,  0,  1, players);
+	this->lineExplosion(map,  0, -1, players);
 }
 
 irr::scene::ISceneNode *Bomb::getNode()
