@@ -15,7 +15,11 @@ APlayer(name),
 _keySet(keyset)
 {
 	_mesh = _smgr->getMesh("./Assets/Models/0112.x");
+	if (_mesh == nullptr)
+		throw std::runtime_error("Cannot get mesh");
 	_anode = _smgr->addAnimatedMeshSceneNode(_mesh);
+	if (_anode == nullptr)
+		throw std::runtime_error("Cannot get node");
 	_anode->setPosition(irr::core::vector3df(10 * posX, -4, 10 * posY));
 	_anode->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	_anode->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);

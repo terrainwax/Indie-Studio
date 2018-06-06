@@ -7,6 +7,7 @@
 
 #pragma once
 
+#include <stdexcept>
 #include "APlayer.hpp"
 #include "Bomb.hpp"
 
