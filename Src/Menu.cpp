@@ -350,7 +350,6 @@ void Menu::launchVictory(int winner)
 	Clock clock;
 
 	char choice = 0;
-	printf("winner: %d\n", winner);
 
 	while(_device->run())
 	{
