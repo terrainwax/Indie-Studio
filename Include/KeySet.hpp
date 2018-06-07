@@ -29,4 +29,6 @@ class KeySetUtils final {
 public:
 static KeySet dflKeySet1;
 static KeySet dflKeySet2;
+static KeySet dflKeySet3;
+static KeySet dflKeySet4;
 };

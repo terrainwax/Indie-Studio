@@ -35,3 +35,19 @@ KeySet KeySetUtils::dflKeySet2 = {
 	irr::KEY_KEY_D,
 	irr::KEY_KEY_E
 };
+
+KeySet KeySetUtils::dflKeySet3 = {
+	irr::KEY_KEY_O,
+	irr::KEY_KEY_L,
+	irr::KEY_KEY_K,
+	irr::KEY_KEY_M,
+	irr::KEY_KEY_P
+};
+
+KeySet KeySetUtils::dflKeySet4 = {
+	irr::KEY_KEY_Y,
+	irr::KEY_KEY_H,
+	irr::KEY_KEY_G,
+	irr::KEY_KEY_J,
+	irr::KEY_KEY_U
+};

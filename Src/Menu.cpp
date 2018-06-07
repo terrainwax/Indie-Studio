@@ -283,9 +283,15 @@ void Menu::addPlayer(Game &game, GraphicManager &graphics, int mapSize)
 		mapSize - 2,
 		1
 	};
+	KeySet keyMap[PLAYER_NUMBER] = {
+		KeySetUtils::dflKeySet1,
+		KeySetUtils::dflKeySet2,
+		KeySetUtils::dflKeySet3,
+		KeySetUtils::dflKeySet4
+	};
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (_com[i] == false)
-			game.addPlayer(new Player(spawnX[i], spawnY[i], "test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
+			game.addPlayer(new Player(spawnX[i], spawnY[i], "test", graphics.getSceneManager(), keyMap[i]));
 	}
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (_com[i] == true)
