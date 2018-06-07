@@ -15,9 +15,10 @@
 #include <IEventReceiver.h>
 #pragma GCC diagnostic warning "-Wunused-parameter"
 
-#include "ActionManager.hpp"
-#include "SoundManager.hpp"
+#include "AI.hpp"
 #include "Game.hpp"
+#include "SoundManager.hpp"
+#include "ActionManager.hpp"
 
 #define PLAYER_NUMBER 4
 

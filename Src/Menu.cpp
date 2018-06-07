@@ -5,9 +5,10 @@
 **    <------->
 */
 
+#include <iostream>
+
 #include "Menu.hpp"
 
-#include <iostream>
 
 Menu::Menu(irr::IrrlichtDevice *device, ActionManager *actions, SoundManager *sounds)
 	: _device(device), _actions(actions), _sounds(sounds)
@@ -277,10 +278,12 @@ void Menu::launchGame()
 	graphics.createSkybox("Assets/Textures/skyfield.jpg");
 
 	Game game;
-	game.addPlayer(new Player(1, 1, "test", graphics.getSceneManager(), KeySetUtils::dflKeySet1));
-	game.addPlayer(new Player(1, 1, "test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
-	game.addPlayer(new Player(1, 2, "test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
-
+	for (int i = 0; i < PLAYER_NUMBER; i++) {
+		if (_com[i] == true)
+			game.addPlayer(new AI("lol", graphics.getSceneManager()));
+		else
+			game.addPlayer(new Player(1, 1, "test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
+	}
 	_sounds->playBgm(SOUND("GroSonSaRace.ogg"));
 	while (graphics.isActive() && game.isOnGoing() && !_actions->isKeyPressed(irr::KEY_ESCAPE)) {
 		game.display(graphics);

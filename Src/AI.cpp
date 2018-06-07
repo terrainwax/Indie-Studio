@@ -1,11 +1,11 @@
-#include "AI.hpp"
-
 #include <iostream>
+
+#include "AI.hpp"
 
 AI::AI(std::string name, irr::scene::ISceneManager *smgr) :
 APlayer(smgr, name)
 {
-	this->_mesh = smgr->getMesh("./Assets/Models/0112.x");
+	this->_mesh = smgr->getMesh("./Assets/Models/0113.x");
 	this->_anode = smgr->addAnimatedMeshSceneNode(this->_mesh);
 	this->_anode->setPosition(irr::core::vector3df(10,-4,20));
 	this->_anode->setMaterialFlag(irr::video::EMF_LIGHTING, false);
