@@ -35,7 +35,8 @@ void Menu::run()
 
 	irr::video::ITexture *imageBlue = driver->getTexture("Assets/Menus/StartGameBlue.jpg");
 	irr::video::ITexture *imageRed = driver->getTexture("Assets/Menus/StartGameRed.jpg");
-
+	if (imageBlue == nullptr || imageRed == nullptr)
+		throw std::runtime_error("Can't load assests");
 	irr::video::SColor blanc[4];
 	blanc[0].set(255,255,255,255);
 	blanc[1].set(255,255,255,255);
