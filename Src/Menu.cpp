@@ -287,6 +287,5 @@ void Menu::launchGame()
 		game.update(*_actions, graphics, *_sounds);
 		graphics.render();
 	}
-
 	_actions->flush();
 }

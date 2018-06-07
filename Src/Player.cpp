@@ -10,8 +10,8 @@
 #include "Player.hpp"
 #include "GraphicManager.hpp"
 
-Player::Player(int posX, int posY, std::string name, irr::scene::ISceneManager *_smgr, KeySet keyset) :
-APlayer(name),
+Player::Player(int posX, int posY, std::string name, irr::scene::ISceneManager *smgr, KeySet keyset) :
+APlayer(smgr, name),
 _keySet(keyset)
 {
 	_mesh = _smgr->getMesh("./Assets/Models/0112.x");
@@ -64,7 +64,6 @@ void Player::updatePos(ActionManager &actionManager, Map &map)
 	if ((center == Map::Cell::Empty || center == Map::Cell::Bomb || (center == Map::Cell::Breakable && _wallPass)) && (left == Map::Cell::Empty || left == Map::Cell::Bomb || (left == Map::Cell::Breakable && _wallPass)) &&
 	(right == Map::Cell::Empty || right == Map::Cell::Bomb || (right == Map::Cell::Breakable && _wallPass)) && (top == Map::Cell::Empty || top == Map::Cell::Bomb || (top == Map::Cell::Breakable && _wallPass)) && (bottom == Map::Cell::Empty || bottom == Map::Cell::Bomb || (bottom == Map::Cell::Breakable && _wallPass)))
 	{
-		//if ((center == Map::Cell::Breakable) && _wallPass)
 		_anode->setPosition(pos);
 	}
 }

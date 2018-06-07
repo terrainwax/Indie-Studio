@@ -3,7 +3,7 @@
 #include <iostream>
 
 AI::AI(std::string name, irr::scene::ISceneManager *smgr) :
-APlayer(name)
+APlayer(smgr, name)
 {
 	this->_mesh = smgr->getMesh("./Assets/Models/0112.x");
 	this->_anode = smgr->addAnimatedMeshSceneNode(this->_mesh);

@@ -28,12 +28,14 @@ protected:
 	float		_yPos;
 	irr::scene::IAnimatedMeshSceneNode* _anode;
 	irr::scene::IAnimatedMesh* _mesh;
+	irr::scene::ISceneManager *_smgr;
 	char 		_nbLife;
 	bool 		_alive;
 	bool		_pierce;
 
 public:
-	APlayer(std::string name = "APlayer", int nbBomb = 1, int fire = 1,
+	APlayer(irr::scene::ISceneManager *_smgr,
+		std::string name = "APlayer", int nbBomb = 1, int fire = 1,
 		float speed = 0.5, bool wallPass = false);
 	~APlayer();
 

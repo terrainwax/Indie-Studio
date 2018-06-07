@@ -51,7 +51,7 @@ std::string Map::makeLine(int size, int lineIdx)
 void Map::renderMap(GraphicManager &graph)
 {
 	Cube wall(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyWall.jpg"));
-	Cube grass(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 0.1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyGrass.jpg"));
+	Cube grass(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 0.1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("SmollGrass.png"));
 	Cube breakable(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyBreakable.jpg"));
 
 	for (unsigned int i = 0; i < _map.size(); i++) {

@@ -13,11 +13,8 @@
 
 class Player : public APlayer {
 private:
-	irr::scene::IAnimatedMesh* _mesh;
-	irr::gui::IGUIEnvironment* env = nullptr;
-	irr::gui::IGUIFont* font = nullptr;
-	irr::scene::ITextSceneNode* nodeText = nullptr;
 	KeySet _keySet;
+	irr::scene::IAnimatedMesh *_mesh;
 
 	void 	updateAnimation(ActionManager &actionManager);
 	void 	updatePos(ActionManager &actionManager, Map &map);

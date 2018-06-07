@@ -7,7 +7,8 @@
 
 #include "APlayer.hpp"
 
-APlayer::APlayer(std::string name, int nbBomb, int fire, float speed, bool wallPass) :
+APlayer::APlayer(irr::scene::ISceneManager *smgr, std::string name, int nbBomb, int fire, float speed, bool wallPass) :
+_smgr(smgr),
 _name(name),
 _speed(speed),
 _nbBomb(nbBomb),
@@ -21,6 +22,8 @@ _pierce(false)
 
 APlayer::~APlayer()
 {
+	if (_anode != nullptr)
+		_smgr->addToDeletionQueue(_anode);
 }
 
 std::string	APlayer::getName() const
