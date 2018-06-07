@@ -23,8 +23,8 @@ SoundManager::~SoundManager()
 
 void SoundManager::playSound(std::string s)
 {
-
-	_engine->play2D(s.c_str(), false);
+	irrklang::ISound *sound = _engine->play2D(s.c_str(), false);
+	(_audio) ? sound->setVolume(1) : sound->setVolume(0);
 }
 
 void SoundManager::stopBgm()

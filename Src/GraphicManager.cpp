@@ -98,6 +98,11 @@ void GraphicManager::render()
 	_driver->endScene();
 }
 
+void GraphicManager::clear()
+{
+	_smgr->clear();
+}
+
 void GraphicManager::addToDeletionQueue(irr::scene::ISceneNode *node)
 {
 	_smgr->addToDeletionQueue(node);
