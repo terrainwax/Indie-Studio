@@ -323,18 +323,23 @@ void Menu::launchGame()
 		game.update(*_actions, graphics, *_sounds);
 		graphics.render();
 	}
-	displayVictory();
+	launchVictory(game.winnerNbr());
 	_sounds->playBgm(SOUND("Menu.ogg"));
 	_actions->flush();
 }
 
-void Menu::displayVictory()
+void Menu::launchVictory(int winner)
 {
 	_actions->flush();
 
 	irr::video::IVideoDriver* driver = _device->getVideoDriver();
 
-	irr::video::ITexture *imagePlayer1 = driver->getTexture("Assets/Menus/VictoryOne.jpg");
+	irr::video::ITexture *imagesPlayers[5];
+	imagesPlayers[0] = driver->getTexture("Assets/Menus/VictoryNoobs.jpg");
+	imagesPlayers[1] = driver->getTexture("Assets/Menus/VictoryPlayerOne.jpg");
+	imagesPlayers[2] = driver->getTexture("Assets/Menus/VictoryPlayerTwo.jpg");
+	imagesPlayers[3] = driver->getTexture("Assets/Menus/VictoryPlayerThree.jpg");
+	imagesPlayers[4] = driver->getTexture("Assets/Menus/VictoryPlayerFour.jpg");
 
 	irr::video::SColor blanc[4];
 	blanc[0].set(255,255,255,255);
@@ -345,12 +350,13 @@ void Menu::displayVictory()
 	Clock clock;
 
 	char choice = 0;
+	printf("winner: %d\n", winner);
 
 	while(_device->run())
 	{
 		clock.tick();
 
-		irr::video::ITexture *image = (choice == 0) ? imagePlayer1 : ((choice == 1) ? imagePlayer2 : ((choice == 2) ? imagePlayer3 : ((choice == 3) ? imagePlayer4 : imageStart)));
+		irr::video::ITexture *image = imagesPlayers[winner];
 
 		driver->beginScene(true, true, irr::video::SColor (0,120,120,120));
 		driver->draw2DImage(image,

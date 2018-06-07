@@ -38,15 +38,22 @@ Map Game::getMap() const
 
 int Game::winnerNbr()
 {
+	int players = 0, ais = 0, winner = 0;
+
 	for (int i = 0; i < _players.size(); i++) {
-		if (_players[i]->getName() == "Player" && _players[i]->isAlive())
-			return i;
+		if (_players[i]->getName() == "Player" && _players[i]->isAlive()) {
+			players++;
+			winner = i;
+		}
 	}
 	for (int i = 0; i < _players.size(); i++) {
-		if (_players[i]->getName() == "AI" && _players[i]->isAlive())
-			return i;
+		if (_players[i]->getName() == "AI" && _players[i]->isAlive()) {
+			ais++;
+		}
 	}
-	return -1;
+	if (players == 1 && ais == 0)
+		return winner + 1;
+	return 0;
 }
 
 bool Game::isOnGoing() const
@@ -86,7 +93,7 @@ void Game::addPlayer(APlayer* player)
 void Game::updateMap()
 {
 	int size = _map.getSize();
-	
+
 	for (int i = 0; i < size; i++) {
 		for (int j = 0; j < size; j++) {
 			if (_map.getCell(irr::core::vector2di(i, j)) == Map::Cell::PowerUp) {
@@ -103,7 +110,7 @@ void	Game::pickUpBonus(APlayer &player)
 	irr::core::vector3df playerPos = player.getPos();
 	for (int j = 0; j < _powersUp.size(); j++) {
 		irr::core::vector3df pos = _powersUp[j].get()->getPosition();
-		if (playerPos.X < pos.X + 5 && playerPos.X > pos.X - 5 && playerPos.Z < pos.Z + 5 && playerPos.Z > pos.Z - 5 ) {	
+		if (playerPos.X < pos.X + 5 && playerPos.X > pos.X - 5 && playerPos.Z < pos.Z + 5 && playerPos.Z > pos.Z - 5 ) {
 			_powersUp[j].get()->onPickUp(player);
 			_powersUp.erase(_powersUp.begin() + j--);
 		}
@@ -139,7 +146,7 @@ void Game::triggerBomb(SoundManager &sound)
 {
 	for (int i = 0; i < _bomb.size(); i++) {
 		if (_bomb[i]->update()) {
-			sound.playSound(SOUND("Explosion.ogg"));	
+			sound.playSound(SOUND("Explosion.ogg"));
 			this->explodeBomb(i);
 			i = 0;
 		}
