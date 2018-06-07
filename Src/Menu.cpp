@@ -291,11 +291,11 @@ void Menu::addPlayer(Game &game, GraphicManager &graphics, int mapSize)
 	};
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (_com[i] == false)
-			game.addPlayer(new Player(spawnX[i], spawnY[i], "test", graphics.getSceneManager(), keyMap[i]));
+			game.addPlayer(new Player(spawnX[i], spawnY[i], "Player", graphics.getSceneManager(), keyMap[i]));
 	}
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (_com[i] == true)
-			game.addPlayer(new AI(spawnX[i], spawnY[i], "lol", graphics.getSceneManager()));
+			game.addPlayer(new AI(spawnX[i], spawnY[i], "AI", graphics.getSceneManager()));
 	}
 }
 

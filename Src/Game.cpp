@@ -38,13 +38,16 @@ Map Game::getMap() const
 
 bool Game::isOnGoing() const
 {
-	if (_players[0]->isAlive() == false)
-		return false;
-	for (int i = 1; i < _players.size(); i++) {
-		if (_players[i]->isAlive() == true)
-			return true;
+	int aliveBot = 0;
+	int alivePlayers = 0;
+
+	for (int i = 0; i < _players.size(); i++) {
+		if (_players[i]->getName() == "Player" && _players[i]->isAlive())
+			alivePlayers++;
+		if (_players[i]->getName() == "AI" && _players[i]->isAlive())
+			aliveBot++;
 	}
-	return _players.size() == 1;
+	return !(alivePlayers == 1 && aliveBot == 0);
 }
 
 void Game::setPlayers(std::vector<APlayer*> players)
