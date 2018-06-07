@@ -41,6 +41,8 @@ public:
 	void setPlayers(std::vector<APlayer*>);
 	void setMap(Map&);
 
+
+	int winnerNbr();
 	void setSkyView(bool view);
 	void addPlayer(APlayer*);
 	void addPowerUp(irr::core::vector3df);

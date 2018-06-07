@@ -36,6 +36,19 @@ Map Game::getMap() const
 	return _map;
 }
 
+int Game::winnerNbr()
+{
+	for (int i = 0; i < _players.size(); i++) {
+		if (_players[i]->getName() == "Player" && _players[i]->isAlive())
+			return i;
+	}
+	for (int i = 0; i < _players.size(); i++) {
+		if (_players[i]->getName() == "AI" && _players[i]->isAlive())
+			return i;
+	}
+	return -1;
+}
+
 bool Game::isOnGoing() const
 {
 	int aliveBot = 0;
@@ -47,7 +60,7 @@ bool Game::isOnGoing() const
 		if (_players[i]->getName() == "AI" && _players[i]->isAlive())
 			aliveBot++;
 	}
-	return !(alivePlayers == 1 && aliveBot == 0);
+	return !(alivePlayers <= 1 && aliveBot == 0);
 }
 
 void Game::setPlayers(std::vector<APlayer*> players)
