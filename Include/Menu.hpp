@@ -34,6 +34,8 @@ public:
 	void launchPlayerChoice();
 	void launchOptions();
 	void togglePlayer(char player);
+	void addPlayer(Game &game, GraphicManager &graphics, int mapSize);
+
 
 private:
 	bool			_com[PLAYER_NUMBER];

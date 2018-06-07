@@ -11,7 +11,7 @@
 
 
 Menu::Menu(irr::IrrlichtDevice *device, ActionManager *actions, SoundManager *sounds)
-	: _device(device), _actions(actions), _sounds(sounds)
+: _device(device), _actions(actions), _sounds(sounds)
 {
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		_com[i] = false;
@@ -269,6 +269,30 @@ void Menu::launchOptions()
 	_actions->flush();
 }
 
+void Menu::addPlayer(Game &game, GraphicManager &graphics, int mapSize)
+{
+	int spawnX[PLAYER_NUMBER] = {
+		1,
+		1,
+		mapSize - 2,
+		mapSize - 2
+	};
+	int spawnY[PLAYER_NUMBER] = {
+		1,
+		mapSize - 2,
+		mapSize - 2,
+		1
+	};
+	for (int i = 0; i < PLAYER_NUMBER; i++) {
+		if (_com[i] == false)
+			game.addPlayer(new Player(spawnX[i], spawnY[i],"test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
+	}
+	for (int i = 0; i < PLAYER_NUMBER; i++) {
+		if (_com[i] == true)
+			game.addPlayer(new AI("lol", graphics.getSceneManager()));
+	}
+}
+
 void Menu::launchGame()
 {
 	_actions->flush();
@@ -276,14 +300,16 @@ void Menu::launchGame()
 	GraphicManager graphics(_device);
 
 	graphics.createSkybox("Assets/Textures/skyfield.jpg");
+	int mapSize = 15;
+	int playerNb = 0; 
 
-	Game game;
-	for (int i = 0; i < PLAYER_NUMBER; i++) {
-		if (_com[i] == true)
-			game.addPlayer(new AI("lol", graphics.getSceneManager()));
-		else
-			game.addPlayer(new Player(1, 1, "test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
-	}
+	Game game(mapSize);
+	
+	this->addPlayer(game, graphics, mapSize);
+	for (int i = 0; i < PLAYER_NUMBER; i++)
+		playerNb = _com[i] ? playerNb : playerNb + 1;
+	if (playerNb <= 1)
+		game.setSkyView(false);
 	_sounds->playBgm(SOUND("GroSonSaRace.ogg"));
 	while (graphics.isActive() && game.isOnGoing() && !_actions->isKeyPressed(irr::KEY_ESCAPE)) {
 		game.display(graphics);
