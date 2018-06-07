@@ -322,6 +322,6 @@ void Menu::launchGame()
 		game.update(*_actions, graphics, *_sounds);
 		graphics.render();
 	}
-	_sounds->stopBgm();
+	_sounds->playBgm(SOUND("Menu.ogg"));
 	_actions->flush();
 }

@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 	SoundManager sounds;
 	ActionManager actions;
 
+	sounds.playBgm(SOUND("Menu.ogg"));
 	irr::IrrlichtDevice *device = irr::createDevice(irr::video::EDT_OPENGL,
 	irr::core::dimension2d<irr::u32>(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_BITS, false, false, false, &actions);
 
