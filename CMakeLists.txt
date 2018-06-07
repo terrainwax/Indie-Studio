@@ -36,10 +36,10 @@ SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/Binaries)
 
 ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/AI.cpp
-        Src/Menu.cpp
         Src/Map.cpp
         Src/Bomb.cpp
         Src/Main.cpp
+        Src/Menu.cpp
         Src/Game.cpp
         Src/Clock.cpp
         Src/KeySet.cpp
@@ -61,6 +61,8 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/PowerUp/PowerUpFactory.cpp)
 TARGET_LINK_LIBRARIES(indie ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})
+
+install(TARGETS indie DESTINATION bin)
 
 file(COPY Assets DESTINATION ${PROJECT_BINARY_DIR}/Binaries)
 

@@ -2,7 +2,7 @@
 * @Author: Reimua
 * @Date:   2018-06-06 10:25:30
 * @Last Modified by:   Reimua
-* @Last Modified time: 2018-06-07 19:43:57
+* @Last Modified time: 2018-06-07 20:28:11
 */
 
 #include "SoundManager.hpp"
@@ -41,7 +41,8 @@ void SoundManager::playBgm(std::string s)
 	if (_bgm != nullptr)
 		this->stopBgm();
 	_bgm = _engine->play2D(s.c_str(), true, false, true);
-	(_audio) ? _bgm->setVolume(1) : _bgm->setVolume(0);
+	if (_bgm)
+		(_audio) ? _bgm->setVolume(1) : _bgm->setVolume(0);
 }
 
 void SoundManager::toggleAudio()
