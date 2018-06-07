@@ -24,9 +24,6 @@ Menu::~Menu()
 void Menu::togglePlayer(char player)
 {
 	_com[player] = !_com[player];
-	for (int i = 0; i < PLAYER_NUMBER; i++) {
-		printf("Bot nb %d -> %d\n", i, (int)_com[i]);
-	}
 }
 
 void Menu::run()
@@ -128,6 +125,10 @@ void Menu::launchPlayerChoice()
 {
 	_actions->flush();
 
+	for (int i = 0; i < PLAYER_NUMBER; i++) {
+		_com[i] = false;
+	}
+
 	irr::video::IVideoDriver* driver = _device->getVideoDriver();
 
 	irr::video::ITexture *imagePlayer1 = driver->getTexture("Assets/Menus/StartMenuPlayer1.jpg");
@@ -164,19 +165,7 @@ void Menu::launchPlayerChoice()
 		driver->draw2DImage(image,
 			irr::core::rect<irr::s32> (0, 0, driver->getScreenSize().Width, driver->getScreenSize().Height),
 			irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height), 0, blanc, true);
-		// bite
-		driver->draw2DImage(com1,
-			irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.082f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.122f)),
-			irr::core::rect<irr::s32> (0,0, com1->getOriginalSize().Width, com1->getOriginalSize().Height), 0, blanc, true);
-		driver->draw2DImage(com2,
-			irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.285f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.325f)),
-			irr::core::rect<irr::s32> (0,0, com2->getOriginalSize().Width, com2->getOriginalSize().Height), 0, blanc, true);
-		driver->draw2DImage(com3,
-			irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.480f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.520f)),
-			irr::core::rect<irr::s32> (0,0, com3->getOriginalSize().Width, com3->getOriginalSize().Height), 0, blanc, true);
-		driver->draw2DImage(com4,
-			irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.683f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.723f)),
-			irr::core::rect<irr::s32> (0,0, com4->getOriginalSize().Width, com4->getOriginalSize().Height), 0, blanc, true);
+		displayChecks(driver, com1, com2, com3, com4, blanc);
 		driver->endScene();
 
 		if (_actions->isKeyPressed(irr::KEY_UP))
@@ -200,6 +189,22 @@ void Menu::launchPlayerChoice()
 	}
 
 	_actions->flush();
+}
+
+void displayChecks(irr::video::IVideoDriver *driver, irr::video::ITexture *com1, irr::video::ITexture *com2, irr::video::ITexture *com3, irr::video::ITexture *com4, irr::video::SColor *blanc)
+{
+	driver->draw2DImage(com1,
+		irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.082f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.122f)),
+		irr::core::rect<irr::s32> (0,0, com1->getOriginalSize().Width, com1->getOriginalSize().Height), 0, blanc, true);
+	driver->draw2DImage(com2,
+		irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.285f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.325f)),
+		irr::core::rect<irr::s32> (0,0, com2->getOriginalSize().Width, com2->getOriginalSize().Height), 0, blanc, true);
+	driver->draw2DImage(com3,
+		irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.480f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.520f)),
+		irr::core::rect<irr::s32> (0,0, com3->getOriginalSize().Width, com3->getOriginalSize().Height), 0, blanc, true);
+	driver->draw2DImage(com4,
+		irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.855f), (int)((float)driver->getScreenSize().Height * 0.683f), (int)((float)driver->getScreenSize().Width * 0.884f), (int)((float)driver->getScreenSize().Height * 0.723f)),
+		irr::core::rect<irr::s32> (0,0, com4->getOriginalSize().Width, com4->getOriginalSize().Height), 0, blanc, true);
 }
 
 void Menu::launchOptions()
