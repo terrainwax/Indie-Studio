@@ -2,7 +2,7 @@
 * @Author: Reimua
 * @Date:   2018-06-06 10:25:30
 * @Last Modified by:   Reimua
-* @Last Modified time: 2018-06-06 12:58:44
+* @Last Modified time: 2018-06-07 19:43:57
 */
 
 #include "SoundManager.hpp"
@@ -23,8 +23,8 @@ SoundManager::~SoundManager()
 
 void SoundManager::playSound(std::string s)
 {
-
-	_engine->play2D(s.c_str(), false);
+	if (_audio)
+		_engine->play2D(s.c_str(), false);
 }
 
 void SoundManager::stopBgm()
