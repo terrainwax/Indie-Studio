@@ -21,17 +21,17 @@ KeySet::~KeySet()
 }
 
 KeySet KeySetUtils::dflKeySet1 = {
-	.upKey = irr::KEY_UP,
-	.downKey = irr::KEY_DOWN,
-	.leftKey = irr::KEY_LEFT,
-	.rightKey = irr::KEY_RIGHT,
-	.bombKey = irr::KEY_SPACE,
+	irr::KEY_UP,
+	irr::KEY_DOWN,
+	irr::KEY_LEFT,
+	irr::KEY_RIGHT,
+	irr::KEY_SPACE
 };
 
 KeySet KeySetUtils::dflKeySet2 = {
-	.upKey = irr::KEY_KEY_Z,
-	.downKey = irr::KEY_KEY_S,
-	.leftKey = irr::KEY_KEY_Q,
-	.rightKey = irr::KEY_KEY_D,
-	.bombKey = irr::KEY_KEY_E,
+	irr::KEY_KEY_Z,
+	irr::KEY_KEY_S,
+	irr::KEY_KEY_Q,
+	irr::KEY_KEY_D,
+	irr::KEY_KEY_E
 };
