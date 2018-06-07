@@ -1,3 +1,10 @@
+/*
+** EPITECH PROJECT, 2018
+**  <------------>
+** File description:
+**    <------->
+*/
+
 #include "Menu.hpp"
 
 #include <iostream>
@@ -5,7 +12,6 @@
 Menu::Menu(irr::IrrlichtDevice *device, ActionManager *actions, SoundManager *sounds)
 	: _device(device), _actions(actions), _sounds(sounds)
 {
-
 }
 
 Menu::~Menu()
@@ -118,6 +124,8 @@ void Menu::launchOptions()
 
 	irr::video::ITexture *optionsAudio = driver->getTexture("Assets/Menus/OptionsMenuAudio.jpg");
 	irr::video::ITexture *optionsBack = driver->getTexture("Assets/Menus/OptionsMenuBack.jpg");
+	irr::video::ITexture *audioOn = driver->getTexture("Assets/Menus/OK.jpg");
+	irr::video::ITexture *audioOff = driver->getTexture("Assets/Menus/KO.jpg");
 
 	irr::video::SColor blanc[4];
 	blanc[0].set(255,255,255,255);
@@ -134,23 +142,28 @@ void Menu::launchOptions()
 		clock.tick();
 
 		irr::video::ITexture *image = (choice == 0) ? optionsAudio : optionsBack;
+		irr::video::ITexture *audio = (_sounds->getAudioStatus()) ? audioOn : audioOff;
 
 		driver->beginScene(true, true, irr::video::SColor (0,120,120,120));
 		driver->draw2DImage(image,
 			irr::core::rect<irr::s32> (0, 0, driver->getScreenSize().Width, driver->getScreenSize().Height),
 			irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height), 0, blanc, true);
+		driver->draw2DImage(audio,
+			irr::core::rect<irr::s32> ((int)((float)driver->getScreenSize().Width * 0.535f), (int)((float)driver->getScreenSize().Height * 0.21f), (int)((float)driver->getScreenSize().Width * 0.564f), (int)((float)driver->getScreenSize().Height * 0.25f)),
+			irr::core::rect<irr::s32> (0,0, audio->getOriginalSize().Width, audio->getOriginalSize().Height), 0, blanc, true);
 		driver->endScene();
 
 		if (_actions->isKeyPressed(irr::KEY_UP))
-			choice = (3 + (choice - 1)) % 3;
+			choice = (2 + (choice - 1)) % 2;
 
 		if (_actions->isKeyPressed(irr::KEY_DOWN))
-			choice = (3 + (choice + 1)) % 3;
+			choice = (2 + (choice + 1)) % 2;
 
 		if (_actions->isKeyPressed(irr::KEY_RETURN))
 		{
-			if (choice == 0)
-				printf("toto\n");
+			if (choice == 0) {
+				_sounds->toggleAudio();
+			}
 			if (choice == 1)
 				break;
 			// else
