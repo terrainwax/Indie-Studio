@@ -21,6 +21,8 @@ int main(int argc, char **argv)
 	irr::IrrlichtDevice *device = irr::createDevice(irr::video::EDT_OPENGL,
 	irr::core::dimension2d<irr::u32>(WINDOW_WIDTH, WINDOW_HEIGHT), WINDOW_BITS, false, false, false, &actions);
 
+	device->setWindowCaption(L"Super Ultra Mega Bomberman");
+
 	Menu menu(device, &actions, &sounds);
 
 	menu.run();
