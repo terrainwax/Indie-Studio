@@ -18,8 +18,9 @@
 
 class SoundManager {
 private:
-	irrklang::ISoundEngine *_engine;
-	irrklang::ISound *_bgm;
+	irrklang::ISoundEngine	*_engine;
+	irrklang::ISound	*_bgm;
+	bool			_audio;
 
 public:
 	SoundManager();
@@ -28,4 +29,6 @@ public:
 	void stopBgm();
 	void playBgm(std::string s);
 	void playSound(std::string s);
+	void toggleAudio();
+	bool getAudioStatus();
 };

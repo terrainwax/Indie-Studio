@@ -21,7 +21,11 @@
 
 #ifndef TEXTURE
 # define TEXTURE(x) (std::string("./Assets/Textures/") + std::string(x))
-#endif 
+#endif
+
+#define WINDOW_WIDTH 1280
+#define WINDOW_HEIGHT 720
+#define WINDOW_BITS 32
 
 class GraphicManager final {
 private:
@@ -31,7 +35,7 @@ private:
 	irr::video::IVideoDriver *_driver;
 	irr::scene::ICameraSceneNode *_camera;
 public:
-	GraphicManager(ActionManager &actionMgr);
+	GraphicManager(irr::IrrlichtDevice *device);
 	~GraphicManager();
 
 	void render();
