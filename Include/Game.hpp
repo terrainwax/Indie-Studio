@@ -29,7 +29,7 @@ private:
 	void triggerBomb(SoundManager &sound);
 
 public:
-	Game();
+	Game(int mapSize = 15);
 	~Game();
 
 	bool isOnGoing() const;

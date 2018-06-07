@@ -11,8 +11,8 @@
 #include "Map.hpp"
 #include <iostream>
 
-Game::Game() :
-_map(Map(13, 60)),
+Game::Game(int mapSize) :
+_map(Map(mapSize, 60)),
 _skyView(true)
 {
 }
