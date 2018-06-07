@@ -20,6 +20,7 @@ public:
 	void run();
 	void chooseScreen();
 	void launchGame();
+	void launchOptions();
 
 private:
 	irr::IrrlichtDevice *_device;

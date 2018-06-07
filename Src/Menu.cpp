@@ -93,8 +93,68 @@ void Menu::chooseScreen()
 		{
 			if (choice == 0)
 				launchGame();
-			else
+			if (choice == 1)
+				launchOptions();
+			if (choice == 2)
 				break;
+			// else
+				// break;
+		}
+
+		if (_actions->isKeyPressed(irr::KEY_ESCAPE))
+			break;
+
+		_actions->flush();
+	}
+
+	_actions->flush();
+}
+
+void Menu::launchOptions()
+{
+	_actions->flush();
+
+	irr::video::IVideoDriver* driver = _device->getVideoDriver();
+
+	irr::video::ITexture *optionsAudio = driver->getTexture("Assets/Menus/OptionsMenuAudio.jpg");
+	irr::video::ITexture *optionsBack = driver->getTexture("Assets/Menus/OptionsMenuBack.jpg");
+
+	irr::video::SColor blanc[4];
+	blanc[0].set(255,255,255,255);
+	blanc[1].set(255,255,255,255);
+	blanc[2].set(255,255,255,255);
+	blanc[3].set(255,255,255,255);
+
+	Clock clock;
+
+	char choice = 0;
+
+	while(_device->run())
+	{
+		clock.tick();
+
+		irr::video::ITexture *image = (choice == 0) ? optionsAudio : optionsBack;
+
+		driver->beginScene(true, true, irr::video::SColor (0,120,120,120));
+		driver->draw2DImage(image,
+			irr::core::rect<irr::s32> (0, 0, driver->getScreenSize().Width, driver->getScreenSize().Height),
+			irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height), 0, blanc, true);
+		driver->endScene();
+
+		if (_actions->isKeyPressed(irr::KEY_UP))
+			choice = (3 + (choice - 1)) % 3;
+
+		if (_actions->isKeyPressed(irr::KEY_DOWN))
+			choice = (3 + (choice + 1)) % 3;
+
+		if (_actions->isKeyPressed(irr::KEY_RETURN))
+		{
+			if (choice == 0)
+				printf("toto\n");
+			if (choice == 1)
+				break;
+			// else
+				// break;
 		}
 
 		if (_actions->isKeyPressed(irr::KEY_ESCAPE))
