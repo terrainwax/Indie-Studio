@@ -307,10 +307,10 @@ void Menu::launchGame()
 
 	graphics.createSkybox("Assets/Textures/skyfield.jpg");
 	int mapSize = 15;
-	int playerNb = 0; 
+	int playerNb = 0;
 
 	Game game(mapSize);
-	
+
 	this->addPlayer(game, graphics, mapSize);
 	for (int i = 0; i < PLAYER_NUMBER; i++)
 		playerNb = _com[i] ? playerNb : playerNb + 1;
@@ -322,6 +322,46 @@ void Menu::launchGame()
 		game.update(*_actions, graphics, *_sounds);
 		graphics.render();
 	}
+	displayVictory();
 	_sounds->playBgm(SOUND("Menu.ogg"));
+	_actions->flush();
+}
+
+void Menu::displayVictory()
+{
+	_actions->flush();
+
+	irr::video::IVideoDriver* driver = _device->getVideoDriver();
+
+	irr::video::ITexture *imagePlayer1 = driver->getTexture("Assets/Menus/VictoryOne.jpg");
+
+	irr::video::SColor blanc[4];
+	blanc[0].set(255,255,255,255);
+	blanc[1].set(255,255,255,255);
+	blanc[2].set(255,255,255,255);
+	blanc[3].set(255,255,255,255);
+
+	Clock clock;
+
+	char choice = 0;
+
+	while(_device->run())
+	{
+		clock.tick();
+
+		irr::video::ITexture *image = (choice == 0) ? imagePlayer1 : ((choice == 1) ? imagePlayer2 : ((choice == 2) ? imagePlayer3 : ((choice == 3) ? imagePlayer4 : imageStart)));
+
+		driver->beginScene(true, true, irr::video::SColor (0,120,120,120));
+		driver->draw2DImage(image,
+			irr::core::rect<irr::s32> (0, 0, driver->getScreenSize().Width, driver->getScreenSize().Height),
+			irr::core::rect<irr::s32> (0,0, image->getOriginalSize().Width, image->getOriginalSize().Height), 0, blanc, true);
+		driver->endScene();
+
+		if (_actions->isKeyPressed(irr::KEY_RETURN) || _actions->isKeyPressed(irr::KEY_ESCAPE))
+			break;
+
+		_actions->flush();
+	}
+
 	_actions->flush();
 }

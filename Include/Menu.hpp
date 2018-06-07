@@ -33,6 +33,7 @@ public:
 	void launchGame();
 	void launchPlayerChoice();
 	void launchOptions();
+	void launchVictory();
 	void togglePlayer(char player);
 	void addPlayer(Game &game, GraphicManager &graphics, int mapSize);
 
