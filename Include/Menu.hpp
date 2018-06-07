@@ -19,18 +19,24 @@
 #include "SoundManager.hpp"
 #include "Game.hpp"
 
+#define PLAYER_NUMBER 4
+
 class Menu
 {
 public:
 	Menu(irr::IrrlichtDevice *device, ActionManager *action, SoundManager *sound);
 	~Menu();
+
 	void run();
 	void chooseScreen();
 	void launchGame();
+	void launchPlayerChoice();
 	void launchOptions();
+	void togglePlayer(char player);
 
 private:
-	irr::IrrlichtDevice *_device;
-	ActionManager *_actions;
-	SoundManager *_sounds;
+	bool			_com[PLAYER_NUMBER];
+	irr::IrrlichtDevice	*_device;
+	ActionManager		*_actions;
+	SoundManager		*_sounds;
 };
