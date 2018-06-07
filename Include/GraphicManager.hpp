@@ -23,6 +23,10 @@
 # define TEXTURE(x) (std::string("./Assets/Textures/") + std::string(x))
 #endif
 
+#ifndef MODEL
+# define MODEL(x) (std::string("./Assets/Models/") + std::string(x))
+#endif
+
 #define WINDOW_WIDTH 1280
 #define WINDOW_HEIGHT 720
 #define WINDOW_BITS 32

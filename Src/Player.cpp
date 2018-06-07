@@ -10,11 +10,11 @@
 #include "Player.hpp"
 #include "GraphicManager.hpp"
 
-Player::Player(int posX, int posY, std::string name, irr::scene::ISceneManager *smgr, KeySet keyset) :
+Player::Player(int posX, int posY, std::string model, std::string name, irr::scene::ISceneManager *smgr, KeySet keyset) :
 APlayer(smgr, name),
 _keySet(keyset)
 {
-	_mesh = _smgr->getMesh("./Assets/Models/0112.x");
+	_mesh = _smgr->getMesh(MODEL(model).c_str());
 	if (_mesh == nullptr)
 		throw std::runtime_error("Cannot get mesh");
 	_anode = _smgr->addAnimatedMeshSceneNode(_mesh);
