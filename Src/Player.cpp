@@ -108,7 +108,8 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 	this->updatePos(actionManager, map);
 	this->updateAnimation(actionManager);
 	irr::core::vector3df pos = _anode->getPosition();
-	if (actionManager.isKeyPressed(_keySet.bombKey) && _nbBomb != 0 && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5)) != Map::Cell::Bomb) {
+	if (actionManager.isKeyPressed(_keySet.bombKey) && _nbBomb != 0 && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5)) != Map::Cell::Bomb
+	    && map.getCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5)) != Map::Cell::Breakable) {
 		_nbBomb -= 1;
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
