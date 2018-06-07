@@ -2,12 +2,12 @@
 
 #include "AI.hpp"
 
-AI::AI(std::string name, irr::scene::ISceneManager *smgr) :
+AI::AI(int posX, int posY, std::string name, irr::scene::ISceneManager *smgr) :
 APlayer(smgr, name)
 {
 	this->_mesh = smgr->getMesh("./Assets/Models/0113.x");
 	this->_anode = smgr->addAnimatedMeshSceneNode(this->_mesh);
-	this->_anode->setPosition(irr::core::vector3df(10,-4,20));
+	this->_anode->setPosition(irr::core::vector3df(10 * posX, -4, 10 * posY));
 	this->_anode->setMaterialFlag(irr::video::EMF_LIGHTING, false);
 	this->_anode->setMaterialFlag(irr::video::EMF_NORMALIZE_NORMALS, false);
 	this->_anode->setMaterialFlag(irr::video::EMF_ANISOTROPIC_FILTER, true);
