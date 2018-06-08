@@ -55,9 +55,13 @@ void MiniVideoMgr::drawSprite(MiniSprite &sprite)
 			irr::core::rect<irr::s32> (source.x, source.y, source.x + source.width, source.y + source.height), 0, color, true);
 }
 
+bool MiniVideoMgr::available()
+{
+	return _videoDevice->run();
+}
+
 void MiniVideoMgr::clear()
 {
-	_videoDevice->run();
 	_videoDevice->getVideoDriver()->beginScene(true, true, irr::video::SColor (0,120,120,120));
 }
 
