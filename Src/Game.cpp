@@ -58,16 +58,21 @@ int Game::winnerNbr()
 
 bool Game::isOnGoing() const
 {
+	int alive = 0;
 	int aliveBot = 0;
 	int alivePlayers = 0;
 
 	for (int i = 0; i < _players.size(); i++) {
-		if (_players[i]->getName() == "Player" && _players[i]->isAlive())
+		if (_players[i]->getName() == "Player" && _players[i]->isAlive()) {
+			alive++;
 			alivePlayers++;
-		if (_players[i]->getName() == "AI" && _players[i]->isAlive())
+		}
+		if (_players[i]->getName() == "AI" && _players[i]->isAlive()) {
+			alive++;
 			aliveBot++;
+		}
 	}
-	return !(alivePlayers <= 1 && aliveBot == 0);
+	return !(alive <= 1 || alivePlayers == 0);
 }
 
 void Game::setPlayers(std::vector<APlayer*> players)
