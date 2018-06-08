@@ -45,7 +45,8 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/Mini/MiniScene.cpp
         Src/Mini/MiniSceneIntro.cpp
         Src/Mini/MiniSceneMenu.cpp
-        Src/Mini/MiniSceneOptions.cpp)
+        Src/Mini/MiniSceneOptions.cpp
+        Src/Mini/MiniScenePlayers.cpp)
 TARGET_LINK_LIBRARIES(indie ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})
 
