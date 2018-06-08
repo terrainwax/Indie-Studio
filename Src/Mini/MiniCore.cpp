@@ -89,3 +89,13 @@ void MiniCore::add(MiniScene *scene)
 		throw std::runtime_error("Invalid scene");
 	_knownScenes[scene->getName()] = scene;
 }
+
+irr::IrrlichtDevice *MiniCore::getVideoDevice()
+{
+	return _videoDevice;
+}
+
+irrklang::ISoundEngine *MiniCore::getAudioDevice()
+{
+	return _audioDevice;
+}

@@ -24,6 +24,7 @@ private:
 
 public:
 	SoundManager();
+	SoundManager(irrklang::ISoundEngine *engine);
 	~SoundManager();
 
 	void stopBgm();

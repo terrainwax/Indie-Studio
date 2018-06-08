@@ -8,12 +8,17 @@
 #include "SoundManager.hpp"
 
 SoundManager::SoundManager() :
-_engine(irrklang::createIrrKlangDevice()),
+_engine(nullptr),
 _bgm(nullptr),
 _audio(true)
 {
-	if (_engine == nullptr)
-		throw std::runtime_error("Cannot get sound engine");
+}
+
+SoundManager::SoundManager(irrklang::ISoundEngine *engine) :
+_engine(engine),
+_bgm(nullptr),
+_audio(true)
+{
 }
 
 SoundManager::~SoundManager()

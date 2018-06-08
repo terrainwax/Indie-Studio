@@ -31,6 +31,9 @@ public:
 
 	void add(MiniScene *scene);
 
+	irr::IrrlichtDevice *getVideoDevice() override;
+	irrklang::ISoundEngine *getAudioDevice() override;
+
 private:
 	MiniActionMgr _action;
 	irr::IrrlichtDevice *_videoDevice;

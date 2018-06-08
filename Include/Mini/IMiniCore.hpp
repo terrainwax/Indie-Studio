@@ -18,4 +18,7 @@ public:
 	virtual void pop() = 0;
 
 	virtual void quit() = 0;
+
+	virtual irr::IrrlichtDevice *getVideoDevice() = 0;
+	virtual irrklang::ISoundEngine *getAudioDevice() = 0;
 };

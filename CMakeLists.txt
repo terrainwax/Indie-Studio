@@ -30,6 +30,7 @@ INCLUDE_DIRECTORIES(${IRRLICHT_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR})
 
 INCLUDE_DIRECTORIES(Include)
 INCLUDE_DIRECTORIES(Include/Mini)
+INCLUDE_DIRECTORIES(Include/PowerUp)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/Binaries)
 
@@ -46,7 +47,28 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/Mini/MiniSceneIntro.cpp
         Src/Mini/MiniSceneMenu.cpp
         Src/Mini/MiniSceneOptions.cpp
-        Src/Mini/MiniScenePlayers.cpp)
+        Src/Mini/MiniScenePlayers.cpp
+        Src/Mini/MiniSceneBomber.cpp
+        Src/Map.cpp
+        Src/Bomb.cpp
+        Src/Clock.cpp
+        Src/KeySet.cpp
+        Src/Player.cpp
+        Src/Game.cpp
+        Src/APlayer.cpp
+        Src/Obj/Cube.cpp
+        Src/Obj/Sphere.cpp
+        Src/SoundManager.cpp
+        Src/PowerUp/BombUp.cpp
+        Src/PowerUp/FireUp.cpp
+        Src/GraphicManager.cpp
+        Src/PowerUp/LifeUp.cpp
+        Src/PowerUp/SpeedUp.cpp
+        Src/PowerUp/APowerUp.cpp
+        Src/PowerUp/FullFire.cpp
+        Src/PowerUp/PierceUp.cpp
+        Src/PowerUp/WallPass.cpp
+        Src/PowerUp/PowerUpFactory.cpp)
 TARGET_LINK_LIBRARIES(indie ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})
 

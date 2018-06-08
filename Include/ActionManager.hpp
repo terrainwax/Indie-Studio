@@ -7,6 +7,11 @@
 
 #pragma once
 
+#include "MiniActionMgr.hpp"
+
+#define ActionManager IMiniActionMgr
+
+/*
 #pragma GCC diagnostic ignored "-Wunused-parameter"
 #include <irrlicht.h>
 #include <Keycodes.h>
@@ -27,4 +32,4 @@ public:
 private:
 	bool _currentState[irr::KEY_KEY_CODES_COUNT];
 	bool _previousState[irr::KEY_KEY_CODES_COUNT];
-};
+};*/
