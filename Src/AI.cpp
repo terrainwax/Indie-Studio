@@ -131,6 +131,13 @@ bool	AI::isInDanger(Map &map)
 
 void	AI::update(__attribute__((unused)) ActionManager &actionManager, GraphicManager &graph, Map &map, std::vector<Bomb *> &bomb)
 {
+	irr::scene::ISceneManager *_smgr = graph.getSceneManager();
+	if (_alive == false && _anode != nullptr) {
+		_smgr->addToDeletionQueue(_anode);
+		_anode = nullptr;
+	}
+	if (_alive == false)
+		return;
 	irr::core::vector3df modPos = this->_anode->getPosition();
 	irr::core::vector2di pos;
 
