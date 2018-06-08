@@ -23,7 +23,19 @@
 
 #include "Clock.hpp"
 
-#define BASE_PATH "Assets/Menus/"
+#define MENU_PATH "Assets/Menus/"
+#define MUSIC_PATH "Assets/Music/"
 
-#define OK BASE_PATH "OK.jpg"
-#define KO BASE_PATH "KO.jpg"
+#define OK MENU_PATH "OK.jpg"
+#define KO MENU_PATH "KO.jpg"
+
+// musics
+#define MENU_MUSIC MUSIC_PATH "Menu.ogg"
+
+// Sounds
+#define OPENING MUSIC_PATH "Opening.ogg"
+#define NOCK MUSIC_PATH "Nock.ogg"
+#define ON MUSIC_PATH "On.ogg"
+#define OFF MUSIC_PATH "Off.ogg"
+#define TOGGLE_PLAYER MUSIC_PATH "TogglePlayer.ogg"
+#define TRANSITION MUSIC_PATH "Transition.ogg"

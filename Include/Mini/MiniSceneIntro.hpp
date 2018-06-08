@@ -9,8 +9,8 @@
 
 #include "MiniScene.hpp"
 
-#define INTRO_BLUE BASE_PATH "StartGameBlue.jpg"
-#define INTRO_RED BASE_PATH "StartGameRed.jpg"
+#define INTRO_BLUE MENU_PATH "StartGameBlue.jpg"
+#define INTRO_RED MENU_PATH "StartGameRed.jpg"
 
 class MiniSceneIntro final : public MiniScene {
 public:

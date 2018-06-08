@@ -47,22 +47,32 @@ void MiniSceneMenu::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAu
 
 	if (action->isKeyPressed(irr::KEY_RETURN))
 	{
-		if (_choice == 0)
+		if (_choice == 0) {
+			audio->playSound(TRANSITION);
 			core->push("Players");
-		if (_choice == 1)
+		}
+		if (_choice == 1) {
+			audio->playSound(TRANSITION);
 			core->push("Options");
+		}
 		if (_choice == 2)
 			core->quit();
 	}
 
-	if (action->isKeyPressed(irr::KEY_UP))
+	if (action->isKeyPressed(irr::KEY_UP)) {
+		audio->playSound(NOCK);
 		_choice = (3 + (-1) + _choice) % 3;
+	}
 
-	if (action->isKeyPressed(irr::KEY_DOWN))
+	if (action->isKeyPressed(irr::KEY_DOWN)) {
+		audio->playSound(NOCK);
 		_choice = (3 + (+1) + _choice) % 3;
+	}
 
-	if (action->isKeyPressed(irr::KEY_ESCAPE))
+	if (action->isKeyPressed(irr::KEY_ESCAPE)) {
+		audio->playSound(OPENING);
 		core->pop();
+	}
 }
 
 void MiniSceneMenu::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)

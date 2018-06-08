@@ -9,9 +9,9 @@
 
 #include "MiniScene.hpp"
 
-#define GAME_MENU_START BASE_PATH "GameMenuStart.jpg"
-#define GAME_MENU_OPTIONS BASE_PATH "GameMenuOptions.jpg"
-#define GAME_MENU_EXIT BASE_PATH "GameMenuExit.jpg"
+#define GAME_MENU_START MENU_PATH "GameMenuStart.jpg"
+#define GAME_MENU_OPTIONS MENU_PATH "GameMenuOptions.jpg"
+#define GAME_MENU_EXIT MENU_PATH "GameMenuExit.jpg"
 
 class MiniSceneMenu final : public MiniScene {
 public:

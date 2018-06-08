@@ -9,8 +9,8 @@
 
 #include "MiniScene.hpp"
 
-#define OPTIONS_MENU_AUDIO BASE_PATH "OptionsMenuAudio.jpg"
-#define OPTIONS_MENU_BACK BASE_PATH "OptionsMenuBack.jpg"
+#define OPTIONS_MENU_AUDIO MENU_PATH "OptionsMenuAudio.jpg"
+#define OPTIONS_MENU_BACK MENU_PATH "OptionsMenuBack.jpg"
 
 class MiniSceneOptions final : public MiniScene {
 public:

@@ -27,20 +27,14 @@ MiniAudioMgr::~MiniAudioMgr()
 	_audioDevice = nullptr;
 }
 
-void MiniAudioMgr::playSound(std::string soundFile, float soundVolume)
+void MiniAudioMgr::playSound(std::string soundFile)
 {
-	if (soundVolume > AUDIO_MAX_VOLUME || soundVolume < AUDIO_MIN_VOLUME)
-		throw std::runtime_error("Invalid soundVolume");
-	irrklang::ISound *sound = _audioDevice->play2D(soundFile.c_str());
-	sound->setVolume(soundVolume);
+	_audioDevice->play2D(soundFile.c_str());
 }
 
-void MiniAudioMgr::playMusic(std::string musicFile, float musicVolume)
+void MiniAudioMgr::playMusic(std::string musicFile)
 {
-	if (musicVolume > AUDIO_MAX_VOLUME || musicVolume < AUDIO_MIN_VOLUME)
-		throw std::runtime_error("Invalid musicVolume");
-	irrklang::ISound *music = _audioDevice->play2D(musicFile.c_str(), true);
-	music->setVolume(musicVolume);
+	_audioDevice->play2D(musicFile.c_str(), true);
 }
 
 float MiniAudioMgr::getMasterVolume()

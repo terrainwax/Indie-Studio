@@ -52,22 +52,32 @@ void MiniSceneOptions::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 		{
 			if (audio->getMasterVolume() > 0.0f)
 				audio->setMasterVolume(0.0f);
-			else
+			else {
+				audio->playSound(ON);
 				audio->setMasterVolume(1.0f);
+			}
 
 		}
-		if (_choice == 1)
+		if (_choice == 1) {
+			audio->playSound(TRANSITION);
 			core->pop();
+		}
 	}
 
-	if (action->isKeyPressed(irr::KEY_UP))
+	if (action->isKeyPressed(irr::KEY_UP)) {
+		audio->playSound(NOCK);
 		_choice = (2 + (-1) + _choice) % 2;
+	}
 
-	if (action->isKeyPressed(irr::KEY_DOWN))
+	if (action->isKeyPressed(irr::KEY_DOWN)) {
+		audio->playSound(NOCK);
 		_choice = (2 + (+1) + _choice) % 2;
+	}
 
-	if (action->isKeyPressed(irr::KEY_ESCAPE))
+	if (action->isKeyPressed(irr::KEY_ESCAPE)) {
+		audio->playSound(TRANSITION);
 		core->pop();
+	}
 }
 
 void MiniSceneOptions::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)

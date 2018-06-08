@@ -26,6 +26,9 @@ void MiniSceneIntro::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr 
 	MiniScene::start(core, audio, video);
 
 	// Add code here
+	audio->playSound(OPENING);
+	audio->playMusic(MENU_MUSIC);
+	audio->setMasterVolume(AUDIO_MAX_VOLUME);
 	_blue = MiniSprite(video->loadTexture(INTRO_BLUE));
 	_red  = MiniSprite(video->loadTexture(INTRO_RED));
 }
@@ -43,8 +46,10 @@ void MiniSceneIntro::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniA
 	(void)action;
 	(void)audio;
 
-	if (action->isKeyPressed(irr::KEY_RETURN))
+	if (action->isKeyPressed(irr::KEY_RETURN)) {
+		audio->playSound(TRANSITION);
 		core->push("Menu");
+	}
 
 	if (action->isKeyPressed(irr::KEY_ESCAPE))
 		core->pop();
