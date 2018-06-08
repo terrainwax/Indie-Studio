@@ -48,7 +48,7 @@ void MiniSceneMenu::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAu
 	if (action->isKeyPressed(irr::KEY_RETURN))
 	{
 		if (_choice == 0)
-			core->push("Start");
+			core->push("Players");
 		if (_choice == 1)
 			core->push("Options");
 		if (_choice == 2)
