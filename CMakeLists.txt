@@ -28,13 +28,17 @@ ENDIF (UNIX)
 
 INCLUDE_DIRECTORIES(${IRRLICHT_INCLUDE_DIR} ${OPENGL_INCLUDE_DIR})
 
+INCLUDE_DIRECTORIES(Include)
 INCLUDE_DIRECTORIES(Include/Mini)
 
 SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/Binaries)
 
 ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
+        Src/Clock.cpp
         Src/Mini/MiniMain.cpp
         Src/Mini/MiniCore.cpp
+        Src/Mini/MiniRectangle.cpp
+        Src/Mini/MiniSprite.cpp
         Src/Mini/MiniActionMgr.cpp
         Src/Mini/MiniAudioMgr.cpp
         Src/Mini/MiniVideoMgr.cpp

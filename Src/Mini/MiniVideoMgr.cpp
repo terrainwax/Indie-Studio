@@ -34,7 +34,34 @@ std::size_t MiniVideoMgr::getScreenHeight()
 	return _videoDevice->getVideoDriver()->getScreenSize().Height;
 }
 
+irr::video::ITexture *MiniVideoMgr::loadTexture(const std::string &textureFile)
+{
+	return _videoDevice->getVideoDriver()->getTexture(textureFile.c_str());
+}
+
 void MiniVideoMgr::drawSprite(MiniSprite &sprite)
 {
-	(void)sprite;
+	irr::video::SColor color[4];
+	color[0] = sprite.color;
+	color[1] = sprite.color;
+	color[2] = sprite.color;
+	color[3] = sprite.color;
+
+	MiniRectangle source = sprite.source;
+	MiniRectangle destination = sprite.destination;
+
+	_videoDevice->getVideoDriver()->draw2DImage(sprite.getTexture(),
+			irr::core::rect<irr::s32> (destination.x, destination.y, destination.x + destination.width, destination.y + destination.height),
+			irr::core::rect<irr::s32> (source.x, source.y, source.x + source.width, source.y + source.height), 0, color, true);
+}
+
+void MiniVideoMgr::clear()
+{
+	_videoDevice->run();
+	_videoDevice->getVideoDriver()->beginScene(true, true, irr::video::SColor (0,120,120,120));
+}
+
+void MiniVideoMgr::present()
+{
+	_videoDevice->getVideoDriver()->endScene();
 }

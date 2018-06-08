@@ -16,9 +16,13 @@ public:
 
 	MiniScene *clone() override;
 
-	void start(IMiniCore *core) override;
-	void stop(IMiniCore *core) override;
+	void start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video) override;
+	void stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video) override;
 
-	void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio) override;
-	void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio) override;
+	void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock) override;
+	void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock) override;
+
+private:
+	MiniSprite _blue;
+	MiniSprite _red;
 };

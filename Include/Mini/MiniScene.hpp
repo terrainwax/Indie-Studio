@@ -19,11 +19,11 @@ public:
 
 	virtual MiniScene *clone() = 0;
 
-	virtual void start(IMiniCore *core);
-	virtual void stop(IMiniCore *core);
+	virtual void start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video);
+	virtual void stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video);
 
-	virtual void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio) = 0;
-	virtual void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio) = 0;
+	virtual void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock) = 0;
+	virtual void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock) = 0;
 
 	virtual std::string getName();
 	virtual bool isRunning();

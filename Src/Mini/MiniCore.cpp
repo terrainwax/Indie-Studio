@@ -31,18 +31,42 @@ MiniCore::~MiniCore()
 {
 }
 
-void MiniCore::enter(const std::string &sceneName)
+void MiniCore::push(const std::string &sceneName)
 {
-	MiniScene *scene = _knownScenes[sceneName];
+	MiniScene *scene = _knownScenes[sceneName]->clone();
+
+	scene->start(this, &_audio, &_video);
 
 	_currentScenes.push(scene);
+}
 
-	scene->start(this);
+void MiniCore::pop()
+{
+	MiniScene *scene = _currentScenes.top();
 
-	while (scene->isRunning())
+	scene->stop(this, &_audio, &_video);
+
+	_currentScenes.pop();
+}
+
+void MiniCore::enter()
+{
+	Clock timeClock;
+
+	while (_currentScenes.size() > 0)
 	{
-		scene->updateFrame(this, &_action, &_audio);
-		scene->renderFrame(this, &_video, &_audio);
+		MiniScene *scene = _currentScenes.top();
+
+		timeClock.tick();
+
+		_video.clear();
+
+		scene->updateFrame(this, &_action, &_audio, timeClock);
+		scene->renderFrame(this, &_video, &_audio, timeClock);
+
+		_video.present();
+
+		_action.flush();
 	}
 }
 
@@ -50,10 +74,7 @@ void MiniCore::quit()
 {
 	while (_currentScenes.size() > 0)
 	{
-		MiniScene *scene = _currentScenes.top();
-		_currentScenes.pop();
-
-		scene->stop(this);
+		pop();
 	}
 }
 

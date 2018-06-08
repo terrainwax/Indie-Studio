@@ -16,6 +16,8 @@ int main(int argc, char **argv)
 
 	core.add(MiniSceneIntro());
 
+	core.push("Intro");
+
 	core.enter();
 
 	return 0;

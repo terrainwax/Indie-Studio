@@ -23,8 +23,11 @@ public:
 	MiniCore();
 	~MiniCore() override;
 
-	void enter(const std::string &sceneName) override;
-	void quit() override;
+	void enter();
+	void quit();
+
+	void push(const std::string &sceneName) override;
+	void pop() override;
 
 	void add(MiniScene *scene);
 

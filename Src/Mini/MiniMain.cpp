@@ -17,7 +17,11 @@ int	main(int argc, char **argv)
 
 	core.add(new MiniSceneIntro());
 
-	core.enter("Intro");
+	core.push("Intro");
+	core.push("Intro");
+	core.push("Intro");
+
+	core.enter();
 
 	return 0;
 }

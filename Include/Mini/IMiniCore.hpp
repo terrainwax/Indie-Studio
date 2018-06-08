@@ -14,6 +14,6 @@ public:
 	IMiniCore() = default;
 	virtual ~IMiniCore() = default;
 
-	virtual void enter(const std::string &sceneName) = 0;
-	virtual void quit() = 0;
+	virtual void push(const std::string &sceneName) = 0;
+	virtual void pop() = 0;
 };
