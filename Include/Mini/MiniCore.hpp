@@ -24,7 +24,7 @@ public:
 	~MiniCore() override;
 
 	void enter();
-	void quit();
+	void quit() override;
 
 	void push(const std::string &sceneName) override;
 	void pop() override;

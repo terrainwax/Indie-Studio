@@ -25,6 +25,7 @@ MiniScene *MiniSceneIntro::clone()
 void MiniSceneIntro::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video)
 {
 	MiniScene::start(core, audio, video);
+
 	// Add code here
 	_blue = MiniSprite(video->loadTexture("Assets/Menus/StartGameBlue.jpg"));
 	_red  = MiniSprite(video->loadTexture("Assets/Menus/StartGameRed.jpg"));
@@ -33,7 +34,7 @@ void MiniSceneIntro::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr 
 void MiniSceneIntro::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video)
 {
 	// Add code here
-	std::cout << "Quit Intro"  << std::endl;
+
 	MiniScene::stop(core, audio, video);
 }
 
@@ -42,6 +43,9 @@ void MiniSceneIntro::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniA
 	(void)core;
 	(void)action;
 	(void)audio;
+
+	if (action->isKeyPressed(irr::KEY_RETURN))
+		core->push("Menu");
 
 	if (action->isKeyPressed(irr::KEY_ESCAPE))
 		core->pop();

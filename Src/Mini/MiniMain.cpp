@@ -7,6 +7,7 @@
 
 #include "MiniCore.hpp"
 #include "MiniSceneIntro.hpp"
+#include "MiniSceneMenu.hpp"
 
 int	main(int argc, char **argv)
 {
@@ -16,10 +17,10 @@ int	main(int argc, char **argv)
 	MiniCore core;
 
 	core.add(new MiniSceneIntro());
+	core.add(new MiniSceneMenu());
 
 	core.push("Intro");
-	core.push("Intro");
-	core.push("Intro");
+	//core.push("Menu");
 
 	core.enter();
 

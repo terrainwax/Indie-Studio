@@ -16,4 +16,6 @@ public:
 
 	virtual void push(const std::string &sceneName) = 0;
 	virtual void pop() = 0;
+
+	virtual void quit() = 0;
 };
