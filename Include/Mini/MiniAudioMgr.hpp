@@ -10,7 +10,7 @@
 #include "IMiniAudioMgr.hpp"
 
 #define AUDIO_MIN_VOLUME 0.0f
-#define AUDIO_MAX_VOLUME 0.1f
+#define AUDIO_MAX_VOLUME 1.0f
 
 class MiniAudioMgr final : public IMiniAudioMgr {
 public:
