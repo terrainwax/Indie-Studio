@@ -43,6 +43,7 @@ public:
 	~GraphicManager();
 
 	void render();
+	void clear();
 	bool isActive();
 	void setCameraTarget(const irr::core::vector3df &pos);
 	void setCameraPosition(const irr::core::vector3df &pos);

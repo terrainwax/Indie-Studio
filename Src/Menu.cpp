@@ -369,5 +369,7 @@ void Menu::launchVictory(int winner)
 		_actions->flush();
 	}
 
+	graphics.clear();
+
 	_actions->flush();
 }

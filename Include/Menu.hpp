@@ -46,3 +46,4 @@ private:
 };
 
 void displayChecks(irr::video::IVideoDriver *driver, irr::video::ITexture *com1, irr::video::ITexture *com2, irr::video::ITexture *com3, irr::video::ITexture *com4, irr::video::SColor *blanc);
+

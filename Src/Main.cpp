@@ -14,16 +14,16 @@
 #include "GraphicManager.hpp"
 #include "PowerUpFactory.hpp"
 #include "Menu.hpp"
+#include "MiniCore.hpp"
 
 int main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
 
-	srand(time(NULL));
+	MiniCore core;
 
-	SoundManager sounds;
-	ActionManager actions;
+	core.add(MiniSceneIntro());
 
 	sounds.playBgm(SOUND("Menu.ogg"));
 	irr::IrrlichtDevice *device = irr::createDevice(irr::video::EDT_OPENGL,
@@ -36,5 +36,9 @@ int main(int argc, char **argv)
 	menu.run();
 
 	device->drop();
+	core.push("Intro");
+
+	core.enter();
+
 	return 0;
 }
