@@ -54,12 +54,14 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	game.addPlayer(new Player(1, 1, "0112.x", "test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
 	game.addPlayer(new Player(1, 2, "0112.x", "test", graphics.getSceneManager(), KeySetUtils::dflKeySet2));
 
-	sounds.playBgm(SOUND("GroSonSaRace.ogg"));
+	//sounds.playBgm(SOUND("GroSonSaRace.ogg"));
 	while (graphics.isActive() && game.isOnGoing() && !action->isKeyPressed(irr::KEY_ESCAPE)) {
 		game.display(graphics);
 		game.update(*action, graphics, sounds);
 		graphics.render();
 	}
+
+	core->pop();
 }
 
 void MiniSceneBomber::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)
