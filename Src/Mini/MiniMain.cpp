@@ -6,17 +6,18 @@
 */
 
 #include "MiniCore.hpp"
+#include "MiniSceneIntro.hpp"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	(void)argc;
 	(void)argv;
 
 	MiniCore core;
 
-	core.add(MiniSceneIntro());
+	core.add(new MiniSceneIntro());
 
-	core.enter();
+	core.enter("Intro");
 
 	return 0;
 }
