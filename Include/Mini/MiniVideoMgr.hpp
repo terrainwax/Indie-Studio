@@ -22,6 +22,7 @@ public:
 	irr::video::ITexture *loadTexture(const std::string &textureFile) override;
 	void drawSprite(MiniSprite &sprite) override;
 
+	bool available();
 	void clear();
 	void present();
 private:
