@@ -26,7 +26,7 @@ void MiniSceneVictory::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMg
 	MiniScene::start(core, audio, video);
 
 	audio->clear();
-	// audio->playSound(VICTORY);
+	audio->playSound(VICTORY);
 
 	_images[0] = MiniSprite(video->loadTexture("Assets/Menus/VictoryNoobs.jpg"));
 	_images[1] = MiniSprite(video->loadTexture("Assets/Menus/VictoryPlayerOne.jpg"));

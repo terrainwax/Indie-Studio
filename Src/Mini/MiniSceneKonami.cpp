@@ -24,6 +24,7 @@ MiniScene *MiniSceneKonami::clone()
 void MiniSceneKonami::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video)
 {
 	MiniScene::start(core, audio, video);
+	audio->playMusic(GAME_MUSIC);
 
 	_back = MiniSprite(video->loadTexture("Assets/Sprites/MiniGameBackground.jpg"));
 	_back.destination.width = video->getScreenWidth();
@@ -58,7 +59,7 @@ void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	if (action->isKeyDown(irr::KEY_UP)) {
 		_player.destination.y -= 10;
 	}
-	else if (action->isKeyDown(irr::KEY_DOWN)) {
+	else if (action->isKeyPressed(irr::KEY_DOWN)) {
 		_player.destination.y += 10;
 	}
 	else if (action->isKeyDown(irr::KEY_LEFT)) {
