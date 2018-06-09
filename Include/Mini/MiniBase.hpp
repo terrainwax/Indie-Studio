@@ -32,6 +32,7 @@
 
 // musics
 #define MENU_MUSIC MUSIC_PATH "Menu.ogg"
+#define GAME_MUSIC MUSIC_PATH "Game.ogg"
 
 // Sounds
 #define OPENING MUSIC_PATH "Opening.ogg"

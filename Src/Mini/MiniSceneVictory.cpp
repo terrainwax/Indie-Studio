@@ -25,6 +25,9 @@ void MiniSceneVictory::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMg
 {
 	MiniScene::start(core, audio, video);
 
+	audio->clear();
+	// audio->playSound(VICTORY);
+
 	_images[0] = MiniSprite(video->loadTexture("Assets/Menus/VictoryNoobs.jpg"));
 	_images[1] = MiniSprite(video->loadTexture("Assets/Menus/VictoryPlayerOne.jpg"));
 	_images[2] = MiniSprite(video->loadTexture("Assets/Menus/VictoryPlayerTwo.jpg"));
@@ -46,11 +49,15 @@ void MiniSceneVictory::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 	(void)audio;
 	(void)clock;
 
-	if (action->isKeyPressed(irr::KEY_RETURN))
+	if (action->isKeyPressed(irr::KEY_RETURN)) {
+		audio->playMusic(MENU_MUSIC);
 		core->pop();
+	}
 
-	if (action->isKeyPressed(irr::KEY_ESCAPE))
+	if (action->isKeyPressed(irr::KEY_ESCAPE)) {
+		audio->playMusic(MENU_MUSIC);
 		core->pop();
+	}
 }
 
 void MiniSceneVictory::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)

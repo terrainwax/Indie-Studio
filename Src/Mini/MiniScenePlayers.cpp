@@ -57,7 +57,8 @@ void MiniScenePlayers::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 	if (action->isKeyPressed(irr::KEY_RETURN))
 	{
 		if (_choice == 4) {
-			audio->playSound(TRANSITION);
+			audio->clear();
+			audio->playMusic(GAME_MUSIC);
 			core->setPlayers(_players);
 			core->push("Bomber");
 		} else {

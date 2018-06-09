@@ -84,8 +84,13 @@ void MiniSceneOptions::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 		core->pop();
 	}
 
-	if (action->isKonami())
+	if (action->isKonami()) {
+		if (_konami != true) {
+			audio->clear();
+			audio->playSound(KONAMI_ACTIVATED);
+		}
 		_konami = true;
+	}
 }
 
 void MiniSceneOptions::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)
@@ -110,10 +115,11 @@ void MiniSceneOptions::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniA
 	if (_konami)
 	{
 		_rect.width += KONAMI_SPEED;
-		if (_rect.width >= video->getScreenWidth() && _rect.height >= video->getScreenHeight())
+		if (_rect.width >= video->getScreenWidth() && _rect.height >= video->getScreenHeight()) {
+			_konami = false;
+			_rect = MiniRectangle(0, 0, 0, 0);
 			core->push("Konami");
-		else
-		{
+		} else {
 			if (_rect.width > video->getScreenWidth())
 			{
 				_rect.width = KONAMI_SPEED;
