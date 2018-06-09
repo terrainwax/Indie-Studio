@@ -13,7 +13,7 @@
 #include "AI.hpp"
 
 MiniSceneBomber::MiniSceneBomber()
-	: MiniScene("Bomber")
+	: MiniScene("Bomber", false)
 {
 }
 
@@ -64,9 +64,9 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 		game.setSkyView(false);
 
 	while (graphics.isActive() && game.isOnGoing() && !action->isKeyPressed(irr::KEY_ESCAPE)) {
+		graphics.render();
 		game.display(graphics);
 		game.update(*(ActionManager *)action, graphics, sounds);
-		graphics.render();
 	}
 
 	graphics.clear();

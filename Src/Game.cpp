@@ -19,11 +19,14 @@ _skyView(true)
 
 Game::~Game()
 {
+	// CETTE MERDE SIGSEGV ...
+
+	/*
 	for (int i = 0; i < _bomb.size(); i++)
 		delete _bomb[i];
 	for (int i = 0; i < _players.size(); i++) {
 		delete _players[i];
-	}
+	}*/
 }
 
 std::vector<APlayer*>           Game::getPlayers() const

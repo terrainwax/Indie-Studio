@@ -58,12 +58,16 @@ void MiniCore::enter()
 
 			timeClock.tick();
 
-			_video.clear();
+			if (scene->isSimple())
+				_video.clear();
 
 			scene->updateFrame(this, &_action, &_audio, timeClock);
-			scene->renderFrame(this, &_video, &_audio, timeClock);
 
-			_video.present();
+			if (_currentScenes.size() > 0 && _currentScenes.top() == scene)
+				scene->renderFrame(this, &_video, &_audio, timeClock);
+
+			if (scene->isSimple())
+				_video.present();
 
 			_action.flush();
 		}
