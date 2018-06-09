@@ -45,6 +45,7 @@ void MiniSceneOptions::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 	(void)core;
 	(void)action;
 	(void)audio;
+	(void)clock;
 
 	if (action->isKeyPressed(irr::KEY_RETURN))
 	{
@@ -85,6 +86,7 @@ void MiniSceneOptions::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniA
 	(void)core;
 	(void)video;
 	(void)audio;
+	(void)clock;
 
 	MiniSprite sprite = (_choice == 0) ? _audio : _back;
 	sprite.destination.width = video->getScreenWidth();

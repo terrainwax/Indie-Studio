@@ -52,6 +52,7 @@ void MiniScenePlayers::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 	(void)core;
 	(void)action;
 	(void)audio;
+	(void)clock;
 
 	if (action->isKeyPressed(irr::KEY_RETURN))
 	{
@@ -86,6 +87,7 @@ void MiniScenePlayers::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniA
 	(void)core;
 	(void)video;
 	(void)audio;
+	(void)clock;
 
 	MiniSprite sprite = _buttons[_choice];
 	sprite.destination.width = video->getScreenWidth();
