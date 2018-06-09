@@ -70,9 +70,9 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	}
 
 	graphics.clear();
-	//launchVictory(game.winnerNbr());
-
+	core->setWinner(game.winnerNbr());
 	core->pop();
+	core->push("Victory");
 }
 
 void MiniSceneBomber::addPlayer(IMiniCore *core, Game &game, GraphicManager &graphics, int mapSize)

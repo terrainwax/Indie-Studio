@@ -24,4 +24,7 @@ public:
 
 	virtual void setPlayers(bool players[PLAYER_NUMBER]) = 0;
 	virtual bool *getPlayers() = 0;
+
+	virtual std::size_t getWinner() = 0;
+	virtual void setWinner(std::size_t winner) = 0;
 };

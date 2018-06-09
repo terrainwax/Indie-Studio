@@ -8,7 +8,7 @@
 #include "MiniCore.hpp"
 
 MiniCore::MiniCore()
-	: _running(false)
+	: _running(false), _winner(0)
 {
 	srand(time(NULL));
 
@@ -110,4 +110,14 @@ void MiniCore::setPlayers(bool players[PLAYER_NUMBER])
 bool *MiniCore::getPlayers()
 {
 	return _players;
+}
+
+std::size_t MiniCore::getWinner()
+{
+	return _winner;
+}
+
+void MiniCore::setWinner(std::size_t winner)
+{
+	_winner = winner;
 }

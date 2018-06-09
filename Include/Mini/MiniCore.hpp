@@ -37,6 +37,9 @@ public:
 	void setPlayers(bool players[PLAYER_NUMBER]) override;
 	bool *getPlayers() override;
 
+	std::size_t getWinner() override;
+	void setWinner(std::size_t winner) override;
+
 private:
 	ActionManager _action;
 	irr::IrrlichtDevice *_videoDevice;
@@ -49,4 +52,5 @@ private:
 	bool _running;
 
 	bool _players[PLAYER_NUMBER];
+	std::size_t _winner;
 };
