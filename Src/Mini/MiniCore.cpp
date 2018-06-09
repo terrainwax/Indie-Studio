@@ -6,16 +6,13 @@
 */
 
 #include "MiniCore.hpp"
-#include "MiniActionMgr.hpp"
-#include "MiniVideoMgr.hpp"
-#include "MiniAudioMgr.hpp"
 
 MiniCore::MiniCore()
 	: _running(false)
 {
 	srand(time(NULL));
 
-	_action = MiniActionMgr();
+	_action = ActionManager();
 
 	_videoDevice = irr::createDevice(CORE_WINDOW_DRIVER,
 	irr::core::dimension2d<irr::u32>(CORE_WINDOW_WIDTH, CORE_WINDOW_HEIGHT), CORE_WINDOW_BITS, false, false, false, &_action);

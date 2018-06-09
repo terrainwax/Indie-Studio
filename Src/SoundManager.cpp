@@ -29,7 +29,6 @@ SoundManager::~SoundManager()
 void SoundManager::playSound(std::string s)
 {
 	irrklang::ISound *sound = _engine->play2D(s.c_str(), false);
-	(_audio) ? sound->setVolume(1) : sound->setVolume(0);
 }
 
 void SoundManager::stopBgm()
@@ -46,21 +45,4 @@ void SoundManager::playBgm(std::string s)
 	if (_bgm != nullptr)
 		this->stopBgm();
 	_bgm = _engine->play2D(s.c_str(), true, false, true);
-	if (_bgm)
-		(_audio) ? _bgm->setVolume(1) : _bgm->setVolume(0);
-}
-
-void SoundManager::toggleAudio()
-{
-	_audio = !_audio;
-	if (!(_bgm == nullptr)) {
-		(_audio) ? _bgm->setVolume(1) : _bgm->setVolume(0);
-	} else {
-		// do nothing
-	}
-}
-
-bool SoundManager::getAudioStatus()
-{
-	return _audio;
 }

@@ -40,7 +40,6 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/Mini/MiniCore.cpp
         Src/Mini/MiniRectangle.cpp
         Src/Mini/MiniSprite.cpp
-        Src/Mini/MiniActionMgr.cpp
         Src/Mini/MiniAudioMgr.cpp
         Src/Mini/MiniVideoMgr.cpp
         Src/Mini/MiniScene.cpp
@@ -49,6 +48,7 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/Mini/MiniSceneOptions.cpp
         Src/Mini/MiniScenePlayers.cpp
         Src/Mini/MiniSceneBomber.cpp
+        Src/ActionManager.cpp
         Src/AI.cpp
         Src/Map.cpp
         Src/Bomb.cpp

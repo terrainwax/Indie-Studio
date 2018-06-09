@@ -9,7 +9,7 @@
 
 #include "IMiniCore.hpp"
 #include "MiniScene.hpp"
-#include "MiniActionMgr.hpp"
+#include "ActionManager.hpp"
 #include "MiniVideoMgr.hpp"
 #include "MiniAudioMgr.hpp"
 
@@ -38,7 +38,7 @@ public:
 	bool *getPlayers() override;
 
 private:
-	MiniActionMgr _action;
+	ActionManager _action;
 	irr::IrrlichtDevice *_videoDevice;
 	irrklang::ISoundEngine *_audioDevice;
 	MiniVideoMgr _video;

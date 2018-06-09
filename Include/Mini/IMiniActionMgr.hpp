@@ -20,6 +20,4 @@ public:
 	virtual bool isKeyReleased(irr::EKEY_CODE key) = 0;
 
 	virtual bool OnEvent(const irr::SEvent& event) override = 0;
-
-	virtual void flush() = 0;
 };

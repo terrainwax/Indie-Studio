@@ -65,9 +65,8 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	//sounds.playBgm(SOUND("GroSonSaRace.ogg"));
 	while (graphics.isActive() && game.isOnGoing() && !action->isKeyPressed(irr::KEY_ESCAPE)) {
 		game.display(graphics);
-		game.update(*action, graphics, sounds);
+		game.update(*(ActionManager *)action, graphics, sounds);
 		graphics.render();
-		action->flush();
 	}
 	//launchVictory(game.winnerNbr());
 

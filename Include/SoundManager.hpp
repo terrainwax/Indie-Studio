@@ -30,6 +30,4 @@ public:
 	void stopBgm();
 	void playBgm(std::string s);
 	void playSound(std::string s);
-	void toggleAudio();
-	bool getAudioStatus();
 };
