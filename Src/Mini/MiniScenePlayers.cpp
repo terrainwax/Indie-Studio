@@ -97,7 +97,7 @@ void MiniScenePlayers::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniA
 	for (size_t x = 0; x < PLAYER_NUMBER; x++)
 	{
 		MiniSprite check = (_players[x]) ? _checks[0] : _checks[1];
-		check.destination.x = video->getScreenWidth() * (0.858f + (0.001f * (float)x));
+		check.destination.x = video->getScreenWidth() * (0.828f + (0.001f * (float)x));
 		check.destination.y = video->getScreenHeight() * (0.085f + 0.2f * (float)x);
 		check.destination.width = video->getScreenWidth() * 0.029f;
 		check.destination.height = video->getScreenHeight() * 0.04f;
