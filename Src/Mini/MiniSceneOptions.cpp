@@ -27,6 +27,11 @@ void MiniSceneOptions::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMg
 	MiniScene::start(core, audio, video);
 
 	// Add code here
+	_konami = false;
+	_rect = MiniRectangle(0, 0, 0, 0);
+	_bomb = MiniSprite(video->loadTexture("Assets/Sprites/BombAsc.png"));
+	_bomb.destination.width = 50;
+	_bomb.destination.height = 50;
 	_audio = MiniSprite(video->loadTexture(OPTIONS_MENU_AUDIO));
 	_back = MiniSprite(video->loadTexture(OPTIONS_MENU_BACK));
 	_ok = MiniSprite(video->loadTexture(OK));
@@ -57,7 +62,6 @@ void MiniSceneOptions::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 				audio->playSound(ON);
 				audio->setMasterVolume(1.0f);
 			}
-
 		}
 		if (_choice == 1) {
 			audio->playSound(TRANSITION);
@@ -79,6 +83,9 @@ void MiniSceneOptions::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 		audio->playSound(TRANSITION);
 		core->pop();
 	}
+
+	if (action->isKonami())
+		_konami = true;
 }
 
 void MiniSceneOptions::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)
@@ -99,4 +106,38 @@ void MiniSceneOptions::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniA
 	check.destination.width = video->getScreenWidth() * 0.029f;
 	check.destination.height = video->getScreenHeight() * 0.04f;
 	video->drawSprite(check);
+
+	if (_konami)
+	{
+		_rect.width += KONAMI_SPEED;
+		if (_rect.width >= video->getScreenWidth() && _rect.height >= video->getScreenHeight())
+			core->push("Intro");
+		else
+		{
+			if (_rect.width > video->getScreenWidth())
+			{
+				_rect.width = KONAMI_SPEED;
+				_rect.height += KONAMI_SPEED;
+			}
+
+			size_t y = 0;
+
+			for (; y < _rect.height; y += _bomb.destination.height)
+			{
+				for (size_t x = 0; x < video->getScreenWidth(); x += _bomb.destination.width)
+				{
+					_bomb.destination.x = x;
+					_bomb.destination.y = y;
+					video->drawSprite(_bomb);
+				}
+			}
+
+			for (size_t x = 0; x < _rect.width; x += _bomb.destination.width)
+			{
+				_bomb.destination.x = x;
+				_bomb.destination.y = y;
+				video->drawSprite(_bomb);
+			}
+		}
+	}
 }

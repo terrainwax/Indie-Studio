@@ -19,5 +19,7 @@ public:
 	virtual bool isKeyPressed(irr::EKEY_CODE key) = 0;
 	virtual bool isKeyReleased(irr::EKEY_CODE key) = 0;
 
+	virtual bool isKonami() = 0;
+
 	virtual bool OnEvent(const irr::SEvent& event) override = 0;
 };
