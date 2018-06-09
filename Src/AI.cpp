@@ -21,56 +21,77 @@ AI::~AI()
 {
 }
 
-void	AI::updatePos(irr::core::vector2di safePos)
+void	AI::updatePos(irr::core::vector2di safePos, Map &map)
 {
 	irr::core::vector3df pos = this->_anode->getPosition();
 
-	if (pos.X < safePos.X) {
+	//std::cout << "safepos.x: " << safePos.X << " safepos.Y: " << safePos.Y << std::endl;
+	if (pos.X < safePos.X * 10 && (map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X + this->_speed) / 10)) == Map::Cell::Empty
+		|| map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X + this->_speed) / 10)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 90, 0));
+		//std::cout << "bot right\n";
 		pos.X += this->_speed;
-	} else {
+	} else if (pos.X > safePos.X * 10 && (map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X - this->_speed) / 10)) == Map::Cell::Empty
+		|| map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X - this->_speed) / 10)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 270, 0));
+		//std::cout << "bot left\n";
 		pos.X -= this->_speed;
 	}
-	if (pos.Z < safePos.Y) {
+	if (pos.Z < safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10, pos.X / 10)) == Map::Cell::Empty
+		|| map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10, pos.X / 10)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 0, 0));
+		//std::cout << "bot up\n";
 		pos.Z += this->_speed;
-	} else {
+	} else if (pos.Z > safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10, pos.X / 10)) == Map::Cell::Empty
+		|| map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10, pos.X / 10)) == Map::Cell::PowerUp)) {
 		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
+		//std::cout << "bot down\n";
 		pos.Z -= this->_speed;
 	}
+	if (pos.Z <= 10)
+		pos.Z = 10;
+	if (pos.X <= 10)
+		pos.X = 10;
+	if (this->_isSet && (pos.Z - safePos.Y) <= 1 && (pos.Y - safePos.X) <= 1)
+		this->_isSet = false;
+	//std::cout << "pos.X: " << pos.X << " pos.Y: " << pos.Z << std::endl;
 	this->_anode->setPosition(pos);
 }
 
 irr::core::vector2di	AI::defend(Map &map, irr::core::vector2di safePos)
 {
 	int				size = map.getSize();
-	char			newMap[size][size] = {{-1}};
+	char			newMap[size][size];
 	char			d = 0;
+	bool			safe = false;
 
+	this->_isSet = false;
+	memset(newMap, -1, size * size * sizeof(char));
 	newMap[safePos.X][safePos.Y] = d;
-	while (1) {
-		for (int x = 0; x < (size * 10); x++) {
-			for (int y = 0; y < (size * 10); y++) {
+	while (d <= size) {
+		for (int x = 1; x < size - 1; x++) {
+			for (int y = 1; y < size - 1; y++) {
 				if (newMap[x][y] == d) {
-					if (newMap[y][x + 1] == -1)
-						newMap[y][x + 1] = d + 1;
-               		if (newMap[y][x - 1] == -1)
-               			newMap[y][x - 1] = d + 1;
-           			if (newMap[y + 1][x] == -1)
-               			newMap[y + 1][x] = d + 1;
-           			if (newMap[y - 1][x] == -1)
-               			newMap[y - 1][x] = d + 1;
-               		if (this->isCellSafe({x, y}, map)) {
+					if (newMap[x][y + 1] == -1)
+						newMap[x][y + 1] = d + 1;
+               		if (newMap[x][y - 1] == -1)
+               			newMap[x][y - 1] = d + 1;
+           			if (newMap[x + 1][y] == -1)
+               			newMap[x + 1][y] = d + 1;
+           			if (newMap[x - 1][y] == -1)
+               			newMap[x - 1][y] = d + 1;
+               		if (this->isCellSafe({x, y}, map) && !safe) {
                			safePos.X = x;
                			safePos.Y = y;
-               			break;
+               			safe = true;
+               			break ;
                		}
                	}
 			}
 		}
 		d++;
 	}
+	//std::cout << "tu veux bouger ?\n" << "x: " << safePos.X << " y: " << safePos.Y << std::endl;
 	return safePos;
 }
 
@@ -81,30 +102,63 @@ bool	AI::isCellSafe(irr::core::vector2di iaPos, Map &map)
 
 	pos.X = (int) iaPos.X;
 	pos.Y = (int) iaPos.Y;
-	for (int i = 0; i < size; i++) {
-		pos.Y = i;
-		if (map.getCell(irr::core::vector2di((int)(pos.Y / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Bomb)
-			return false;
-	}
-	pos.Y = (int) iaPos.Y;
-	for (int y = 0; y < size; y++) {
-		pos.X = y;
-		if (map.getCell(irr::core::vector2di((int)(pos.Y / 10 + 0.5), (int)(pos.X / 10 + 0.5))) == Map::Cell::Bomb)
-			return false;
-	}
-	return true;
+	if (map.getCell(irr::core::vector2di(pos.Y, pos.X)) == Map::Cell::Wall
+		|| map.getCell(irr::core::vector2di(pos.Y, pos.X)) == Map::Cell::Breakable
+		|| map.getCell(irr::core::vector2di(pos.Y, pos.X)) == Map::Cell::Fire)
+		return false;
+  	for (int i = 0; i < size; i++) {
+    	pos.Y = i;
+    	if (map.getCell(irr::core::vector2di(pos.Y, pos.X)) == Map::Cell::Bomb)
+      		return false;
+  	}
+  	pos.Y = (int) iaPos.Y;
+  	for (int y = 0; y < size; y++) {
+    	pos.X = y;
+    	if (map.getCell(irr::core::vector2di(pos.Y, pos.X)) == Map::Cell::Bomb )
+      		return false;
+  	}
+  	return true;
 }
 
 void	AI::attack(Map &map, std::vector<Bomb *> &bomb, irr::core::vector3df pos, GraphicManager &graph)
 {
-/*	irr::scene::ISceneManager *smgr = graph.getSceneManager();
+	irr::scene::ISceneManager *smgr = graph.getSceneManager();
+	irr::core::vector2di	twodPos;
+	int						nb = 0;
 
-	if (this->_nbBomb != 0) {
+	twodPos.X = pos.X / 10;
+	twodPos.Y = pos.Z / 10;
+	if (this->_nbBomb != 0 && (map.getCell(irr::core::vector2di(twodPos.Y, twodPos.X + 1)) == Map::Cell::Breakable
+		|| map.getCell(irr::core::vector2di(twodPos.Y + 1, twodPos.X)) == Map::Cell::Breakable
+		|| map.getCell(irr::core::vector2di(twodPos.Y, twodPos.X -1)) == Map::Cell::Breakable
+		|| map.getCell(irr::core::vector2di(twodPos.Y - 1, twodPos.X)) == Map::Cell::Breakable)) {
 		this->_nbBomb--;
-		map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
+		map.setCell(irr::core::vector2di(((pos.Z / 10)), pos.X / 10), Map::Cell::Bomb);
 		bomb.push_back(new Bomb(*this, smgr));
-		this->updatePos(irr::core::vector2di(pos.Z - 5, pos.X));
-	}*/
+		twodPos = this->defend(map, twodPos);
+		this->updatePos(twodPos, map);
+	}
+	else {
+		if (!this->_isSet) {
+			this->_isSet = true;
+		nb = rand() % 4;
+		switch (nb) {
+			case 0:
+			this->_goal.X += 3;
+			break;
+			case 1:
+			this->_goal.X -= 3;
+			break;
+			case 2:
+			this->_goal.Y += 3;
+			break;
+			case 3:
+			this->_goal.Y -= 3;
+			break;
+		}
+	}
+		this->updatePos(this->_goal, map);
+	}
 }
 
 bool	AI::isInDanger(Map &map)
@@ -113,16 +167,20 @@ bool	AI::isInDanger(Map &map)
 	irr::core::vector3df iaPos = this->_anode->getPosition();
 	irr::core::vector2di pos;
 
-	pos.X = (int) (iaPos.X / 10) + 0.5;
-	pos.Y = (int) (iaPos.Z / 10) + 0.5;
-	for (int i = 0; i < size; i++) {
-		//std::cout << "ai: pos.Y:" << (pos.Y / 10) + 0.5 << " pos.X:" << (pos.X / 10) + 0.5 << std::endl;
+	pos.X = (int) (iaPos.X / 10);
+	pos.Y = (int) (iaPos.Z / 10);
+	for (int i = 1; i < size - 1; i++) {
+		if (map.getCell(irr::core::vector2di(i, pos.X)) == Map::Cell::Wall) {
+			break ;
+		}
 		if (map.getCell(irr::core::vector2di(i, pos.X)) == Map::Cell::Bomb)
 			return true;
 	}
-	pos.Y = (int) (iaPos.Z / 10) + 0.5;
-	for (int y = 0; y < size; y++) {
-		//std::cout << "ai: pos.Y:" << (pos.Y / 10) + 0.5 << " pos.X:" << (pos.X / 10) + 0.5 << std::endl;
+	pos.Y = (int) (iaPos.Z / 10);
+	for (int y = 1; y < size - 1; y++) {
+		if (map.getCell(irr::core::vector2di(pos.Y, y)) == Map::Cell::Wall) {
+			break ;
+		}
 		if (map.getCell(irr::core::vector2di(pos.Y, y)) == Map::Cell::Bomb)
 			return true;
 	}
@@ -131,22 +189,15 @@ bool	AI::isInDanger(Map &map)
 
 void	AI::update(__attribute__((unused)) ActionManager &actionManager, GraphicManager &graph, Map &map, std::vector<Bomb *> &bomb)
 {
-	irr::scene::ISceneManager *_smgr = graph.getSceneManager();
-	if (_alive == false && _anode != nullptr) {
-		_smgr->addToDeletionQueue(_anode);
-		_anode = nullptr;
-	}
-	if (_alive == false)
-		return;
 	irr::core::vector3df modPos = this->_anode->getPosition();
 	irr::core::vector2di pos;
 
-	pos.X = modPos.X;
-	pos.Y = modPos.Z;
+	pos.X = modPos.X / 10;
+	pos.Y = modPos.Z / 10;
 	if (this->isInDanger(map)) {
 		//std::cout << "danger" << std::endl;
-		//pos = this->defend(map, pos);
-		//this->updatePos(pos);
+		pos = this->defend(map, pos);
+		this->updatePos(pos, map);
 	}
 	else {
 		//std::cout << "attack" << std::endl;
