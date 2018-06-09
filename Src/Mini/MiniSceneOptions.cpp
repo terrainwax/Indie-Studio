@@ -111,7 +111,7 @@ void MiniSceneOptions::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniA
 	{
 		_rect.width += KONAMI_SPEED;
 		if (_rect.width >= video->getScreenWidth() && _rect.height >= video->getScreenHeight())
-			core->push("Intro");
+			core->push("Konami");
 		else
 		{
 			if (_rect.width > video->getScreenWidth())
