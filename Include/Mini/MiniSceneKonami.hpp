@@ -24,4 +24,5 @@ public:
 
 private:
 	MiniSprite _back;
+	MiniSprite _player;
 };
