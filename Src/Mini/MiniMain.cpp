@@ -12,6 +12,7 @@
 #include "MiniScenePlayers.hpp"
 #include "MiniSceneBomber.hpp"
 #include "MiniSceneVictory.hpp"
+#include "MiniSceneKonami.hpp"
 
 int	main(int argc, char **argv)
 {
@@ -26,6 +27,7 @@ int	main(int argc, char **argv)
 	core.add(new MiniScenePlayers());
 	core.add(new MiniSceneBomber());
 	core.add(new MiniSceneVictory());
+	core.add(new MiniSceneKonami());
 
 	core.push("Intro");
 
