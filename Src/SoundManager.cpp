@@ -23,7 +23,6 @@ _audio(audio)
 
 SoundManager::~SoundManager()
 {
-	_engine->drop();
 }
 
 void SoundManager::playSound(std::string s)
