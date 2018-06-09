@@ -39,3 +39,5 @@
 #define OFF MUSIC_PATH "Off.ogg"
 #define TOGGLE_PLAYER MUSIC_PATH "TogglePlayer.ogg"
 #define TRANSITION MUSIC_PATH "Transition.ogg"
+
+#define PLAYER_NUMBER 4

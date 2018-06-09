@@ -57,6 +57,7 @@ void MiniScenePlayers::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMin
 	{
 		if (_choice == 4) {
 			audio->playSound(TRANSITION);
+			core->setPlayers(_players);
 			core->push("Bomber");
 		} else {
 			audio->playSound(TOGGLE_PLAYER);

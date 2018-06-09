@@ -34,6 +34,9 @@ public:
 	irr::IrrlichtDevice *getVideoDevice() override;
 	irrklang::ISoundEngine *getAudioDevice() override;
 
+	void setPlayers(bool players[PLAYER_NUMBER]) override;
+	bool *getPlayers() override;
+
 private:
 	MiniActionMgr _action;
 	irr::IrrlichtDevice *_videoDevice;
@@ -44,4 +47,6 @@ private:
 	std::stack<MiniScene *> _currentScenes;
 	std::map<std::string, MiniScene *> _knownScenes;
 	bool _running;
+
+	bool _players[PLAYER_NUMBER];
 };

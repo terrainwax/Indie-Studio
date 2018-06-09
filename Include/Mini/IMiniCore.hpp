@@ -21,4 +21,7 @@ public:
 
 	virtual irr::IrrlichtDevice *getVideoDevice() = 0;
 	virtual irrklang::ISoundEngine *getAudioDevice() = 0;
+
+	virtual void setPlayers(bool players[PLAYER_NUMBER]) = 0;
+	virtual bool *getPlayers() = 0;
 };

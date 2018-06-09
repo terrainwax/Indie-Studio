@@ -9,8 +9,6 @@
 
 #include "MiniScene.hpp"
 
-#define PLAYER_NUMBER 4
-
 #define START_MENU_P1 MENU_PATH "StartMenuPlayer1.jpg"
 #define START_MENU_P2 MENU_PATH "StartMenuPlayer2.jpg"
 #define START_MENU_P3 MENU_PATH "StartMenuPlayer3.jpg"

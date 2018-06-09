@@ -99,3 +99,14 @@ irrklang::ISoundEngine *MiniCore::getAudioDevice()
 {
 	return _audioDevice;
 }
+
+void MiniCore::setPlayers(bool players[PLAYER_NUMBER])
+{
+	for (std::size_t x = 0; x < PLAYER_NUMBER; x++)
+		_players[x] = players[x];
+}
+
+bool *MiniCore::getPlayers()
+{
+	return _players;
+}

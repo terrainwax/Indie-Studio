@@ -8,6 +8,8 @@
 #pragma once
 
 #include "MiniScene.hpp"
+#include "GraphicManager.hpp"
+#include "Game.hpp"
 
 class MiniSceneBomber final : public MiniScene {
 public:
@@ -21,4 +23,6 @@ public:
 
 	void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock) override;
 	void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock) override;
+
+	void addPlayer(IMiniCore *core, Game &game, GraphicManager &graphics, int mapSize);
 };
