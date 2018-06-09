@@ -27,23 +27,23 @@ void	AI::updatePos(irr::core::vector2di safePos, Map &map)
 
 	//std::cout << "safepos.x: " << safePos.X << " safepos.Y: " << safePos.Y << std::endl;
 	if (pos.X < safePos.X * 10 && (map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X + this->_speed) / 10)) == Map::Cell::Empty
-		|| map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X + this->_speed) / 10)) == Map::Cell::PowerUp)) {
+		|| map.getCell(irr::core::vector2di(pos.Z / 10 + 0.5, (pos.X + this->_speed) / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 90, 0));
 		//std::cout << "bot right\n";
 		pos.X += this->_speed;
-	} else if (pos.X > safePos.X * 10 && (map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X - this->_speed) / 10)) == Map::Cell::Empty
-		|| map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X - this->_speed) / 10)) == Map::Cell::PowerUp)) {
+	} else if (pos.X > safePos.X * 10 && (map.getCell(irr::core::vector2di(pos.Z / 10 + 0.5, (pos.X - this->_speed) / 10 + 0.5)) == Map::Cell::Empty
+		|| map.getCell(irr::core::vector2di(pos.Z / 10 + 0.5, (pos.X - this->_speed) / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 270, 0));
 		//std::cout << "bot left\n";
 		pos.X -= this->_speed;
 	}
-	if (pos.Z < safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10, pos.X / 10)) == Map::Cell::Empty
-		|| map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10, pos.X / 10)) == Map::Cell::PowerUp)) {
+	if (pos.Z < safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::Empty
+		|| map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 0, 0));
 		//std::cout << "bot up\n";
 		pos.Z += this->_speed;
-	} else if (pos.Z > safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10, pos.X / 10)) == Map::Cell::Empty
-		|| map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10, pos.X / 10)) == Map::Cell::PowerUp)) {
+	} else if (pos.Z > safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::Empty
+		|| map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
 		//std::cout << "bot down\n";
 		pos.Z -= this->_speed;
@@ -126,14 +126,14 @@ void	AI::attack(Map &map, std::vector<Bomb *> &bomb, irr::core::vector3df pos, G
 	irr::core::vector2di	twodPos;
 	int						nb = 0;
 
-	twodPos.X = pos.X / 10;
-	twodPos.Y = pos.Z / 10;
+	twodPos.X = pos.X / 10 + 0.5;
+	twodPos.Y = pos.Z / 10 + 0.5;
 	if (this->_nbBomb != 0 && (map.getCell(irr::core::vector2di(twodPos.Y, twodPos.X + 1)) == Map::Cell::Breakable
 		|| map.getCell(irr::core::vector2di(twodPos.Y + 1, twodPos.X)) == Map::Cell::Breakable
 		|| map.getCell(irr::core::vector2di(twodPos.Y, twodPos.X -1)) == Map::Cell::Breakable
 		|| map.getCell(irr::core::vector2di(twodPos.Y - 1, twodPos.X)) == Map::Cell::Breakable)) {
 		this->_nbBomb--;
-		map.setCell(irr::core::vector2di(((pos.Z / 10)), pos.X / 10), Map::Cell::Bomb);
+		map.setCell(irr::core::vector2di(pos.Z / 10 + 0.5, pos.X / 10 + 0.5), Map::Cell::Bomb);
 		bomb.push_back(new Bomb(*this, smgr));
 		twodPos = this->defend(map, twodPos);
 		this->updatePos(twodPos, map);
@@ -167,8 +167,8 @@ bool	AI::isInDanger(Map &map)
 	irr::core::vector3df iaPos = this->_anode->getPosition();
 	irr::core::vector2di pos;
 
-	pos.X = (int) (iaPos.X / 10);
-	pos.Y = (int) (iaPos.Z / 10);
+	pos.X = (int) (iaPos.X / 10 + 0.5);
+	pos.Y = (int) (iaPos.Z / 10 + 0.5);
 	for (int i = 1; i < size - 1; i++) {
 		if (map.getCell(irr::core::vector2di(i, pos.X)) == Map::Cell::Wall) {
 			break ;
@@ -176,7 +176,7 @@ bool	AI::isInDanger(Map &map)
 		if (map.getCell(irr::core::vector2di(i, pos.X)) == Map::Cell::Bomb)
 			return true;
 	}
-	pos.Y = (int) (iaPos.Z / 10);
+	pos.Y = (int) (iaPos.Z / 10 + 0.5);
 	for (int y = 1; y < size - 1; y++) {
 		if (map.getCell(irr::core::vector2di(pos.Y, y)) == Map::Cell::Wall) {
 			break ;
@@ -192,8 +192,8 @@ void	AI::update(__attribute__((unused)) ActionManager &actionManager, GraphicMan
 	irr::core::vector3df modPos = this->_anode->getPosition();
 	irr::core::vector2di pos;
 
-	pos.X = modPos.X / 10;
-	pos.Y = modPos.Z / 10;
+	pos.X = modPos.X / 10 + 0.5;
+	pos.Y = modPos.Z / 10 + 0.5;
 	if (this->isInDanger(map)) {
 		//std::cout << "danger" << std::endl;
 		pos = this->defend(map, pos);
