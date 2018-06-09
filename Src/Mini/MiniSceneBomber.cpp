@@ -45,9 +45,10 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	(void)core;
 	(void)action;
 	(void)audio;
+	(void)clock;
 
 	GraphicManager graphics(core->getVideoDevice());
-	SoundManager sounds(core->getAudioDevice());
+	SoundManager sounds(core->getAudioDevice(), audio->getMasterVolume() > 0.0f);
 
 	graphics.createSkybox("Assets/Textures/skyfield.jpg");
 
@@ -62,12 +63,13 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	if (playerNb <= 1)
 		game.setSkyView(false);
 
-	//sounds.playBgm(SOUND("GroSonSaRace.ogg"));
 	while (graphics.isActive() && game.isOnGoing() && !action->isKeyPressed(irr::KEY_ESCAPE)) {
 		game.display(graphics);
 		game.update(*(ActionManager *)action, graphics, sounds);
 		graphics.render();
 	}
+
+	graphics.clear();
 	//launchVictory(game.winnerNbr());
 
 	core->pop();
@@ -108,4 +110,5 @@ void MiniSceneBomber::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	(void)core;
 	(void)video;
 	(void)audio;
+	(void)clock;
 }

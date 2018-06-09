@@ -10,14 +10,14 @@
 SoundManager::SoundManager() :
 _engine(nullptr),
 _bgm(nullptr),
-_audio(true)
+_audio(false)
 {
 }
 
-SoundManager::SoundManager(irrklang::ISoundEngine *engine) :
+SoundManager::SoundManager(irrklang::ISoundEngine *engine, bool audio) :
 _engine(engine),
 _bgm(nullptr),
-_audio(true)
+_audio(audio)
 {
 }
 
