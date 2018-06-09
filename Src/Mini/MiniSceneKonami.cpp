@@ -55,16 +55,16 @@ void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 		core->pop();
 	}
 
-	if (action->isKeyPressed(irr::KEY_UP)) {
+	if (action->isKeyDown(irr::KEY_UP)) {
 		_player.destination.y -= 10;
 	}
-	else if (action->isKeyPressed(irr::KEY_DOWN)) {
+	else if (action->isKeyDown(irr::KEY_DOWN)) {
 		_player.destination.y += 10;
 	}
-	else if (action->isKeyPressed(irr::KEY_LEFT)) {
+	else if (action->isKeyDown(irr::KEY_LEFT)) {
 		_player.destination.x -= 10;
 	}
-	else if (action->isKeyPressed(irr::KEY_RIGHT)) {
+	else if (action->isKeyDown(irr::KEY_RIGHT)) {
 		_player.destination.x += 10;
 	}
 }
