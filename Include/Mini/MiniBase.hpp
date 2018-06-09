@@ -20,6 +20,7 @@
 #include <map>
 #include <stack>
 #include <iostream>
+#include <vector>
 
 #include "Clock.hpp"
 
