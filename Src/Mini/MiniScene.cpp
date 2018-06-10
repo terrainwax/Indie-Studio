@@ -7,8 +7,8 @@
 
 #include "MiniScene.hpp"
 
-MiniScene::MiniScene(const std::string &name, bool simple)
-	: _name(name), _simple(simple)
+MiniScene::MiniScene(const std::string &name, bool simple, bool flush)
+	: _name(name), _simple(simple), _flush(flush)
 {
 
 }
@@ -47,5 +47,10 @@ bool MiniScene::isRunning()
 bool MiniScene::isSimple()
 {
 	return _simple;
+}
+
+bool MiniScene::needFlush()
+{
+	return _flush;
 }
 

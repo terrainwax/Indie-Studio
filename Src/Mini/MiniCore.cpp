@@ -69,7 +69,8 @@ void MiniCore::enter()
 			if (scene->isSimple())
 				_video.present();
 
-			_action.flush();
+			if (scene->needFlush())
+				_action.flush();
 		}
 		else
 			quit();
