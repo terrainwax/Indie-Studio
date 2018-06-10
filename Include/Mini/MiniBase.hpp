@@ -26,9 +26,15 @@
 
 #define MENU_PATH "Assets/Menus/"
 #define MUSIC_PATH "Assets/Music/"
+#define SPRITE_PATH "Assets/Sprites/"
 
 #define OK MENU_PATH "OK.jpg"
 #define KO MENU_PATH "KO.jpg"
+
+// sprites
+#define BACKGROUND SPRITE_PATH "MiniGameBackground.jpg"
+#define PLAYER_WHITE SPRITE_PATH "BombermanWhite.png"
+#define PLAYER_BLACK SPRITE_PATH "BombermanBlack.png"
 
 // musics
 #define MENU_MUSIC MUSIC_PATH "Menu.ogg"

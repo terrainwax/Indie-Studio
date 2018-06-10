@@ -10,6 +10,9 @@
 #include "MiniScene.hpp"
 #include "MiniPlayer.hpp"
 
+#define PLAYER_SPEED 1.5f
+#define BOMB_SPEED 1.0f
+
 class MiniSceneKonami final : public MiniScene {
 public:
 	MiniSceneKonami();
@@ -29,5 +32,6 @@ public:
 private:
 	MiniSprite	_back;
 	MiniPlayer	_playerWhite;
+	MiniPlayer	_playerBlack;
 	bool		_gameEnded;
 };

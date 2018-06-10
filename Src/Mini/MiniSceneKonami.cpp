@@ -27,12 +27,15 @@ void MiniSceneKonami::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr
 	MiniScene::start(core, audio, video);
 	audio->playMusic(GAME_MUSIC);
 
-	_back = MiniSprite(video->loadTexture("Assets/Sprites/MiniGameBackground.jpg"));
+	_back = MiniSprite(video->loadTexture(BACKGROUND));
 
-	_playerWhite.sprite = MiniSprite(video->loadTexture("Assets/Sprites/Bomberman.png"));
+	_playerWhite.sprite = MiniSprite(video->loadTexture(PLAYER_WHITE));
+	_playerBlack.sprite = MiniSprite(video->loadTexture(PLAYER_BLACK));
 
-	_playerWhite.posx = 0;
-	_playerWhite.posy = 0;
+	_playerWhite.posx = 80;
+	_playerWhite.posy = 80;
+	_playerBlack.posx = 20;
+	_playerBlack.posy = 80;
 }
 
 void MiniSceneKonami::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video)
@@ -44,17 +47,26 @@ void MiniSceneKonami::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr 
 
 void MiniSceneKonami::playersMovements(IMiniActionMgr *action)
 {
+	// PLAYER WHITE
 	if (action->isKeyDown(irr::KEY_UP)) {
-		_playerWhite.posy -= 1.0f;
+		_playerWhite.posy -= PLAYER_SPEED;
+	} else if (action->isKeyPressed(irr::KEY_DOWN)) {
+		_playerWhite.posy += PLAYER_SPEED;
+	} else if (action->isKeyDown(irr::KEY_LEFT)) {
+		_playerWhite.posx -= PLAYER_SPEED;
+	} else if (action->isKeyDown(irr::KEY_RIGHT)) {
+		_playerWhite.posx += PLAYER_SPEED;
 	}
-	else if (action->isKeyPressed(irr::KEY_DOWN)) {
-		_playerWhite.posy += 1.0f;
-	}
-	else if (action->isKeyDown(irr::KEY_LEFT)) {
-		_playerWhite.posx -= 1.0f;
-	}
-	else if (action->isKeyDown(irr::KEY_RIGHT)) {
-		_playerWhite.posx += 1.0f;
+
+	// PLAYER BLACK
+	if (action->isKeyDown(irr::KEY_KEY_Z)) {
+		_playerBlack.posy -= PLAYER_SPEED;
+	} else if (action->isKeyPressed(irr::KEY_KEY_S)) {
+		_playerBlack.posy += PLAYER_SPEED;
+	} else if (action->isKeyDown(irr::KEY_KEY_Q)) {
+		_playerBlack.posx -= PLAYER_SPEED;
+	} else if (action->isKeyDown(irr::KEY_KEY_D)) {
+		_playerBlack.posx += PLAYER_SPEED;
 	}
 }
 
@@ -83,14 +95,24 @@ void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	_back.destination.width = video->getScreenWidth();
 	_back.destination.height = video->getScreenHeight();
 
-	_playerWhite.sprite.destination.width = (float)video->getScreenWidth() / (float)_playerWhite.sprite.getWidth() * 0.5f;
-	_playerWhite.sprite.destination.height = (float)video->getScreenHeight() / (float)_playerWhite.sprite.getHeight() * 0.5f;
+	// PLAYER WHITE RENDERING
+	_playerWhite.sprite.destination.width = (float)video->getScreenWidth() / (float)_playerWhite.sprite.getWidth() * 0.9f;
+	_playerWhite.sprite.destination.height = (float)video->getScreenHeight() / (float)_playerWhite.sprite.getHeight() * 0.9f;
 
 	_playerWhite.sprite.destination.x = (float)video->getScreenWidth() / 100.0f * _playerWhite.posx;
 	_playerWhite.sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _playerWhite.posy;
 
+	// PLAYER BLACK RENDERING
+
+	_playerBlack.sprite.destination.width = (float)video->getScreenWidth() / (float)_playerBlack.sprite.getWidth() * 0.9f;
+	_playerBlack.sprite.destination.height = (float)video->getScreenHeight() / (float)_playerBlack.sprite.getHeight() * 0.9f;
+
+	_playerBlack.sprite.destination.x = (float)video->getScreenWidth() / 100.0f * _playerBlack.posx;
+	_playerBlack.sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _playerBlack.posy;
+
 	video->drawSprite(_back);
 	video->drawSprite(_playerWhite.sprite);
+	video->drawSprite(_playerBlack.sprite);
 }
 
 bool MiniSceneKonami::isGameEnded()
