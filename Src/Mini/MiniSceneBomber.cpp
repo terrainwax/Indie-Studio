@@ -89,6 +89,12 @@ void MiniSceneBomber::addPlayer(IMiniCore *core, Game &game, GraphicManager &gra
 		mapSize - 2,
 		1
 	};
+	std::vector<std::string> models = {
+		"0112.x",
+		"0114.x",
+		"0115.x",
+		"0116.x"
+	};
 	KeySet keyMap[PLAYER_NUMBER] = {
 		KeySetUtils::dflKeySet1,
 		KeySetUtils::dflKeySet2,
@@ -97,7 +103,8 @@ void MiniSceneBomber::addPlayer(IMiniCore *core, Game &game, GraphicManager &gra
 	};
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (core->getPlayers()[i] == true)
-			game.addPlayer(new Player(spawnX[i], spawnY[i], "0112.x", "Player", graphics.getSceneManager(), keyMap[i]));
+			game.addPlayer(new Player(spawnX[i], spawnY[i], models[i], "Player", graphics.getSceneManager(), keyMap[i]));
+
 	}
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (core->getPlayers()[i] == false)
