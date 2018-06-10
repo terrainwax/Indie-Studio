@@ -8,7 +8,7 @@
 #include "MiniSceneKonami.hpp"
 
 MiniSceneKonami::MiniSceneKonami()
-	: MiniScene("Konami")
+	: MiniScene("Konami", true, false)
 {
 }
 

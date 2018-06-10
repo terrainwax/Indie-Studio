@@ -6,14 +6,11 @@
 */
 
 #include "MiniSceneBomber.hpp"
-#include "GraphicManager.hpp"
-#include "Game.hpp"
-#include "SoundManager.hpp"
 #include "Player.hpp"
 #include "AI.hpp"
 
 MiniSceneBomber::MiniSceneBomber()
-	: MiniScene("Bomber", false)
+	: MiniScene("Bomber", false, false)
 {
 }
 
@@ -30,7 +27,19 @@ void MiniSceneBomber::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr
 {
 	MiniScene::start(core, audio, video);
 
-	// Add code here
+	_graphics = GraphicManager(core->getVideoDevice());
+	_sounds = SoundManager(core->getAudioDevice(), audio->getMasterVolume() > 0.0f);
+
+	_graphics.createSkybox("Assets/Textures/skyfield.jpg");
+
+	int mapSize = 15;
+	int playerNb = 0;
+
+	this->addPlayer(core, mapSize);
+	for (int i = 0; i < PLAYER_NUMBER; i++)
+		playerNb = core->getPlayers()[i] ? playerNb + 1 : playerNb;
+	if (playerNb <= 1)
+		_game.setSkyView(false);
 }
 
 void MiniSceneBomber::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video)
@@ -47,35 +56,18 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	(void)audio;
 	(void)clock;
 
-	GraphicManager graphics(core->getVideoDevice());
-	SoundManager sounds(core->getAudioDevice(), audio->getMasterVolume() > 0.0f);
-
-	graphics.createSkybox("Assets/Textures/skyfield.jpg");
-
-	int mapSize = 15;
-	int playerNb = 0;
-
-	Game game(mapSize);
-
-	this->addPlayer(core, game, graphics, mapSize);
-	for (int i = 0; i < PLAYER_NUMBER; i++)
-		playerNb = core->getPlayers()[i] ? playerNb + 1 : playerNb;
-	if (playerNb <= 1)
-		game.setSkyView(false);
-
-	while (graphics.isActive() && game.isOnGoing() && !action->isKeyPressed(irr::KEY_ESCAPE)) {
-		graphics.render();
-		game.display(graphics);
-		game.update(*(ActionManager *)action, graphics, sounds);
+	if (action->isKeyPressed(irr::KEY_ESCAPE) || !_game.isOnGoing())
+	{
+		_graphics.clear();
+		core->setWinner(_game.winnerNbr());
+		core->pop();
+		core->push("Victory");
 	}
-
-	graphics.clear();
-	core->setWinner(game.winnerNbr());
-	core->pop();
-	core->push("Victory");
+	else
+		_game.update(*(ActionManager *)action, _graphics, _sounds);
 }
 
-void MiniSceneBomber::addPlayer(IMiniCore *core, Game &game, GraphicManager &graphics, int mapSize)
+void MiniSceneBomber::addPlayer(IMiniCore *core, int mapSize)
 {
 	int spawnX[PLAYER_NUMBER] = {
 		1,
@@ -89,6 +81,12 @@ void MiniSceneBomber::addPlayer(IMiniCore *core, Game &game, GraphicManager &gra
 		mapSize - 2,
 		1
 	};
+	std::vector<std::string> models = {
+		"0112.x",
+		"0114.x",
+		"0115.x",
+		"0116.x"
+	};
 	KeySet keyMap[PLAYER_NUMBER] = {
 		KeySetUtils::dflKeySet1,
 		KeySetUtils::dflKeySet2,
@@ -97,11 +95,12 @@ void MiniSceneBomber::addPlayer(IMiniCore *core, Game &game, GraphicManager &gra
 	};
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (core->getPlayers()[i] == true)
-			game.addPlayer(new Player(spawnX[i], spawnY[i], "0112.x", "Player", graphics.getSceneManager(), keyMap[i]));
+			_game.addPlayer(new Player(spawnX[i], spawnY[i], models[i], "Player", _graphics.getSceneManager(), keyMap[i]));
+
 	}
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (core->getPlayers()[i] == false)
-			game.addPlayer(new AI(spawnX[i], spawnY[i], "AI", graphics.getSceneManager()));
+			_game.addPlayer(new AI(spawnX[i], spawnY[i], "AI", _graphics.getSceneManager()));
 	}
 }
 
@@ -111,4 +110,7 @@ void MiniSceneBomber::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	(void)video;
 	(void)audio;
 	(void)clock;
+
+	_game.display(_graphics);
+	_graphics.render();
 }

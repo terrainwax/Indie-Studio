@@ -11,30 +11,30 @@
 				<Option working_dir="/home/leo/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 all"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="rebuild_cache">
+			<Target title="install/strip">
 				<Option working_dir="/home/leo/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 install/strip"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
-			<Target title="edit_cache">
+			<Target title="install/local">
 				<Option working_dir="/home/leo/cpp_indie_studio"/>
 				<Option type="4"/>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 edit_cache"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 install/local"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="indie">
@@ -46,13 +46,22 @@
 				<Compiler>
 					<Add directory="/usr/include/irrlicht"/>
 					<Add directory="/home/leo/cpp_indie_studio/Include"/>
+					<Add directory="/home/leo/cpp_indie_studio/Include/Mini"/>
 					<Add directory="/home/leo/cpp_indie_studio/Include/PowerUp"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 			<Target title="indie/fast">
@@ -64,16 +73,68 @@
 				<Compiler>
 					<Add directory="/usr/include/irrlicht"/>
 					<Add directory="/home/leo/cpp_indie_studio/Include"/>
+					<Add directory="/home/leo/cpp_indie_studio/Include/Mini"/>
 					<Add directory="/home/leo/cpp_indie_studio/Include/PowerUp"/>
+					<Add directory="/usr/include/c++/6"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/6"/>
+					<Add directory="/usr/include/c++/6/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/6/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
 				</Compiler>
 				<MakeCommands>
-					<Build command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie/fast"/>
-					<CompileFile command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
-					<Clean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
-					<DistClean command="/usr/bin/make -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 indie/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/home/leo/cpp_indie_studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/home/leo/cpp_indie_studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="install">
+				<Option working_dir="/home/leo/cpp_indie_studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 install"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="list_install_components">
+				<Option working_dir="/home/leo/cpp_indie_studio"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 list_install_components"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/home/leo/cpp_indie_studio/Makefile&quot;  VERBOSE=1 clean"/>
 				</MakeCommands>
 			</Target>
 		</Build>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/AI.cpp">
+			<Option target="indie"/>
+		</Unit>
 		<Unit filename="/home/leo/cpp_indie_studio/Src/APlayer.cpp">
 			<Option target="indie"/>
 		</Unit>
@@ -95,10 +156,49 @@
 		<Unit filename="/home/leo/cpp_indie_studio/Src/KeySet.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/leo/cpp_indie_studio/Src/Main.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Map.cpp">
 			<Option target="indie"/>
 		</Unit>
-		<Unit filename="/home/leo/cpp_indie_studio/Src/Map.cpp">
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniAudioMgr.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniCore.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniMain.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniRectangle.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniScene.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniSceneBomber.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniSceneIntro.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniSceneKonami.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniSceneMenu.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniSceneOptions.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniScenePlayers.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniSceneVictory.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniSprite.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/Mini/MiniVideoMgr.cpp">
 			<Option target="indie"/>
 		</Unit>
 		<Unit filename="/home/leo/cpp_indie_studio/Src/Obj/Cube.cpp">
@@ -119,6 +219,15 @@
 		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/FireUp.cpp">
 			<Option target="indie"/>
 		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/FullFire.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/LifeUp.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/PierceUp.cpp">
+			<Option target="indie"/>
+		</Unit>
 		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/PowerUpFactory.cpp">
 			<Option target="indie"/>
 		</Unit>
@@ -126,6 +235,9 @@
 			<Option target="indie"/>
 		</Unit>
 		<Unit filename="/home/leo/cpp_indie_studio/Src/PowerUp/WallPass.cpp">
+			<Option target="indie"/>
+		</Unit>
+		<Unit filename="/home/leo/cpp_indie_studio/Src/SoundManager.cpp">
 			<Option target="indie"/>
 		</Unit>
 		<Unit filename="/home/leo/cpp_indie_studio/CMakeLists.txt">

@@ -14,7 +14,7 @@
 
 class MiniScene {
 public:
-	MiniScene(const std::string &name, bool simple = true);
+	MiniScene(const std::string &name, bool simple = true, bool flush = true);
 	virtual ~MiniScene();
 
 	virtual MiniScene *clone() = 0;
@@ -28,9 +28,11 @@ public:
 	virtual std::string getName();
 	virtual bool isRunning();
 	virtual bool isSimple();
+	virtual bool needFlush();
 
 protected:
 	std::string _name;
 	bool _running;
 	bool _simple;
+	bool _flush;
 };

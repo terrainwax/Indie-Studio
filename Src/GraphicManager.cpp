@@ -7,6 +7,15 @@
 
 #include "GraphicManager.hpp"
 
+GraphicManager::GraphicManager()
+	: _device(nullptr),
+	_smgr(nullptr),
+	_driver(nullptr),
+	_camera(nullptr)
+{
+
+}
+
 GraphicManager::GraphicManager(irr::IrrlichtDevice *device):
 _device(device),
 _smgr(device->getSceneManager()),

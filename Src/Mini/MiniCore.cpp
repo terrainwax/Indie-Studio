@@ -48,28 +48,38 @@ void MiniCore::pop()
 
 void MiniCore::enter()
 {
-	Clock timeClock;
+	Clock counter;
+	size_t currentTotal = counter.totalMicroseconds();
+	size_t lastTotal = counter.totalMicroseconds();
 
 	while (_currentScenes.size() > 0)
 	{
 		if (_video.available())
 		{
-			MiniScene *scene = _currentScenes.top();
+			currentTotal = counter.totalMicroseconds();
+			if (currentTotal - lastTotal >= 1000000 / 60)
+			{
+				MiniScene *scene = _currentScenes.top();
 
-			timeClock.tick();
+				if (scene->isSimple())
+					_video.clear();
 
-			if (scene->isSimple())
-				_video.clear();
+				scene->updateFrame(this, &_action, &_audio, counter);
 
-			scene->updateFrame(this, &_action, &_audio, timeClock);
+				if (_currentScenes.size() > 0 && _currentScenes.top() == scene)
+					scene->renderFrame(this, &_video, &_audio, counter);
+				else
+					_action.flush();
 
-			if (_currentScenes.size() > 0 && _currentScenes.top() == scene)
-				scene->renderFrame(this, &_video, &_audio, timeClock);
+				if (scene->isSimple())
+					_video.present();
+				counter.frame();
 
-			if (scene->isSimple())
-				_video.present();
-
-			_action.flush();
+				if (scene->needFlush())
+					_action.flush();
+				lastTotal = currentTotal;
+			}
+			counter.tick();
 		}
 		else
 			quit();
