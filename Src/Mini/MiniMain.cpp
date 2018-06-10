@@ -19,19 +19,27 @@ int	main(int argc, char **argv)
 	(void)argc;
 	(void)argv;
 
-	MiniCore core;
+	try
+	{
+		MiniCore core;
 
-	core.add(new MiniSceneIntro());
-	core.add(new MiniSceneMenu());
-	core.add(new MiniSceneOptions());
-	core.add(new MiniScenePlayers());
-	core.add(new MiniSceneBomber());
-	core.add(new MiniSceneVictory());
-	core.add(new MiniSceneKonami());
+		core.add(new MiniSceneIntro());
+		core.add(new MiniSceneMenu());
+		core.add(new MiniSceneOptions());
+		core.add(new MiniScenePlayers());
+		core.add(new MiniSceneBomber());
+		core.add(new MiniSceneVictory());
+		core.add(new MiniSceneKonami());
 
-	core.push("Intro");
+		core.push("Intro");
 
-	core.enter();
+		core.enter();
+	}
+	catch (const std::exception &e)
+	{
+		std::cout << "An error occured. Exit 84." << std::endl;
+		return 84;
+	}
 
 	return 0;
 }

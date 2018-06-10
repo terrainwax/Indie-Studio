@@ -18,7 +18,8 @@ MiniSprite::MiniSprite(irr::video::ITexture *texture)
 	source(0, 0, texture->getOriginalSize().Width, texture->getOriginalSize().Height),
 	destination(0, 0, texture->getOriginalSize().Width, texture->getOriginalSize().Height)
 {
-
+	if (texture == nullptr)
+		throw std::runtime_error("Cannot find sprite.");
 }
 
 MiniSprite::~MiniSprite()
