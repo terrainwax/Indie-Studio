@@ -50,9 +50,9 @@ std::string Map::makeLine(int size, int lineIdx)
 
 void Map::renderMap(GraphicManager &graph)
 {
-	Cube wall(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyWall.jpg"));
-	Cube grass(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 0.1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyGrass.jpg"));
-	Cube breakable(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("fancyBreakable.jpg"));
+	Cube wall(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("darkWall.jpg"));
+	Cube grass(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 0.1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("darkGrass.jpg"));
+	Cube breakable(irr::core::vector3df(0,0,30), irr::core::vector3df(1, 1, 1), irr::core::vector3df(0, 0, 0), TEXTURE("darkBreakable.jpg"));
 
 	for (unsigned int i = 0; i < _map.size(); i++) {
 		for (unsigned int j = 0; j < _map.size(); j++) {

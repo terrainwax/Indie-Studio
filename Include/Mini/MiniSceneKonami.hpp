@@ -22,7 +22,11 @@ public:
 	void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock) override;
 	void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock) override;
 
+	void playersMovements(IMiniActionMgr *action);
+	bool isGameEnded();
+
 private:
-	MiniSprite _back;
-	MiniSprite _player;
+	MiniSprite	_back;
+	MiniSprite	_playerWhite;
+	bool		_gameEnded;
 };
