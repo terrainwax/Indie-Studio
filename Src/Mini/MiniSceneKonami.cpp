@@ -32,9 +32,9 @@ void MiniSceneKonami::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr
 	_playerWhite.sprite = MiniSprite(video->loadTexture(PLAYER_WHITE));
 	_playerBlack.sprite = MiniSprite(video->loadTexture(PLAYER_BLACK));
 
-	_playerWhite.posx = 80;
+	_playerWhite.posx = 70;
 	_playerWhite.posy = 80;
-	_playerBlack.posx = 20;
+	_playerBlack.posx = 30;
 	_playerBlack.posy = 80;
 }
 
@@ -48,24 +48,24 @@ void MiniSceneKonami::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr 
 void MiniSceneKonami::playersMovements(IMiniActionMgr *action)
 {
 	// PLAYER WHITE
-	if (action->isKeyDown(irr::KEY_UP)) {
+	if (action->isKeyDown(irr::KEY_UP) && _playerWhite.posy - 5 > 60.0f) {
 		_playerWhite.posy -= PLAYER_SPEED;
-	} else if (action->isKeyPressed(irr::KEY_DOWN)) {
+	} else if (action->isKeyPressed(irr::KEY_DOWN) && _playerWhite.posy - 5 < 80.0f) {
 		_playerWhite.posy += PLAYER_SPEED;
-	} else if (action->isKeyDown(irr::KEY_LEFT)) {
+	} else if (action->isKeyDown(irr::KEY_LEFT) && _playerWhite.posx + 5 > 10.0f) {
 		_playerWhite.posx -= PLAYER_SPEED;
-	} else if (action->isKeyDown(irr::KEY_RIGHT)) {
+	} else if (action->isKeyDown(irr::KEY_RIGHT) && _playerWhite.posx < 90.0f) {
 		_playerWhite.posx += PLAYER_SPEED;
 	}
 
 	// PLAYER BLACK
-	if (action->isKeyDown(irr::KEY_KEY_Z)) {
+	if (action->isKeyDown(irr::KEY_KEY_Z) && _playerBlack.posy - 5 > 60.0f) {
 		_playerBlack.posy -= PLAYER_SPEED;
-	} else if (action->isKeyPressed(irr::KEY_KEY_S)) {
+	} else if (action->isKeyPressed(irr::KEY_KEY_S) && _playerBlack.posy - 5 < 80.0f) {
 		_playerBlack.posy += PLAYER_SPEED;
-	} else if (action->isKeyDown(irr::KEY_KEY_Q)) {
+	} else if (action->isKeyDown(irr::KEY_KEY_Q) && _playerBlack.posx + 5 > 10.0f) {
 		_playerBlack.posx -= PLAYER_SPEED;
-	} else if (action->isKeyDown(irr::KEY_KEY_D)) {
+	} else if (action->isKeyDown(irr::KEY_KEY_D) && _playerBlack.posx < 90.0f) {
 		_playerBlack.posx += PLAYER_SPEED;
 	}
 }
