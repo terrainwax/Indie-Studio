@@ -35,7 +35,7 @@ void MiniSceneBomber::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr
 	int mapSize = 15;
 	int playerNb = 0;
 
-	this->addPlayer(core, _game, _graphics, mapSize);
+	this->addPlayer(core, mapSize);
 	for (int i = 0; i < PLAYER_NUMBER; i++)
 		playerNb = core->getPlayers()[i] ? playerNb + 1 : playerNb;
 	if (playerNb <= 1)
@@ -67,7 +67,7 @@ void MiniSceneBomber::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 		_game.update(*(ActionManager *)action, _graphics, _sounds);
 }
 
-void MiniSceneBomber::addPlayer(IMiniCore *core, Game &game, GraphicManager &graphics, int mapSize)
+void MiniSceneBomber::addPlayer(IMiniCore *core, int mapSize)
 {
 	int spawnX[PLAYER_NUMBER] = {
 		1,

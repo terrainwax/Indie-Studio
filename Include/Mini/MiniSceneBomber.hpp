@@ -25,7 +25,7 @@ public:
 	void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock) override;
 	void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock) override;
 
-	void addPlayer(IMiniCore *core, Game &game, GraphicManager &graphics, int mapSize);
+	void addPlayer(IMiniCore *core, int mapSize);
 private:
 	GraphicManager _graphics;
 	SoundManager _sounds;

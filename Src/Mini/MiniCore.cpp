@@ -79,7 +79,6 @@ void MiniCore::enter()
 					_action.flush();
 				lastTotal = currentTotal;
 			}
-
 			counter.tick();
 		}
 		else
