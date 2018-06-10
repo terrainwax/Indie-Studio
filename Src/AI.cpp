@@ -25,27 +25,22 @@ void	AI::updatePos(irr::core::vector2di safePos, Map &map)
 {
 	irr::core::vector3df pos = this->_anode->getPosition();
 
-	//std::cout << "safepos.x: " << safePos.X << " safepos.Y: " << safePos.Y << std::endl;
 	if (pos.X < safePos.X * 10 && (map.getCell(irr::core::vector2di(pos.Z / 10, (pos.X + this->_speed) / 10)) == Map::Cell::Empty
 		|| map.getCell(irr::core::vector2di(pos.Z / 10 + 0.5, (pos.X + this->_speed) / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 90, 0));
-		//std::cout << "bot right\n";
 		pos.X += this->_speed;
 	} else if (pos.X > safePos.X * 10 && (map.getCell(irr::core::vector2di(pos.Z / 10 + 0.5, (pos.X - this->_speed) / 10 + 0.5)) == Map::Cell::Empty
 		|| map.getCell(irr::core::vector2di(pos.Z / 10 + 0.5, (pos.X - this->_speed) / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 270, 0));
-		//std::cout << "bot left\n";
 		pos.X -= this->_speed;
 	}
 	if (pos.Z < safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::Empty
 		|| map.getCell(irr::core::vector2di((pos.Z + this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		this->_anode->setRotation(irr::core::vector3df(-90, 0, 0));
-		//std::cout << "bot up\n";
 		pos.Z += this->_speed;
 	} else if (pos.Z > safePos.Y * 10 && (map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::Empty
 		|| map.getCell(irr::core::vector2di((pos.Z - this->_speed) / 10 + 0.5, pos.X / 10 + 0.5)) == Map::Cell::PowerUp)) {
 		_anode->setRotation(irr::core::vector3df(-90, 180, 0));
-		//std::cout << "bot down\n";
 		pos.Z -= this->_speed;
 	}
 	if (pos.Z <= 10)
@@ -54,7 +49,6 @@ void	AI::updatePos(irr::core::vector2di safePos, Map &map)
 		pos.X = 10;
 	if (this->_isSet && (pos.Z - safePos.Y) <= 1 && (pos.Y - safePos.X) <= 1)
 		this->_isSet = false;
-	//std::cout << "pos.X: " << pos.X << " pos.Y: " << pos.Z << std::endl;
 	this->_anode->setPosition(pos);
 }
 
@@ -91,7 +85,6 @@ irr::core::vector2di	AI::defend(Map &map, irr::core::vector2di safePos)
 		}
 		d++;
 	}
-	//std::cout << "tu veux bouger ?\n" << "x: " << safePos.X << " y: " << safePos.Y << std::endl;
 	return safePos;
 }
 
