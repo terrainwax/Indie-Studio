@@ -8,6 +8,7 @@
 #pragma once
 
 #include "MiniScene.hpp"
+#include "MiniPlayer.hpp"
 
 class MiniSceneKonami final : public MiniScene {
 public:
@@ -27,6 +28,6 @@ public:
 
 private:
 	MiniSprite	_back;
-	MiniSprite	_playerWhite;
+	MiniPlayer	_playerWhite;
 	bool		_gameEnded;
 };
