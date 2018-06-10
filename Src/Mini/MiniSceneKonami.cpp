@@ -45,16 +45,16 @@ void MiniSceneKonami::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr 
 void MiniSceneKonami::playersMovements(IMiniActionMgr *action)
 {
 	if (action->isKeyDown(irr::KEY_UP)) {
-		_playerWhite.posy -= 10;
+		_playerWhite.posy -= 1.0f;
 	}
 	else if (action->isKeyPressed(irr::KEY_DOWN)) {
-		_playerWhite.posy += 10;
+		_playerWhite.posy += 1.0f;
 	}
 	else if (action->isKeyDown(irr::KEY_LEFT)) {
-		_playerWhite.posx -= 10;
+		_playerWhite.posx -= 1.0f;
 	}
 	else if (action->isKeyDown(irr::KEY_RIGHT)) {
-		_playerWhite.posx += 10;
+		_playerWhite.posx += 1.0f;
 	}
 }
 
@@ -83,8 +83,8 @@ void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	_back.destination.width = video->getScreenWidth();
 	_back.destination.height = video->getScreenHeight();
 
-	_playerWhite.sprite.destination.width = (float)video->getScreenWidth() / (float)_playerWhite.sprite.getWidth() * 1.0f;
-	_playerWhite.sprite.destination.height = (float)video->getScreenHeight() / (float)_playerWhite.sprite.getHeight() * 1.0f;
+	_playerWhite.sprite.destination.width = (float)video->getScreenWidth() / (float)_playerWhite.sprite.getWidth() * 0.5f;
+	_playerWhite.sprite.destination.height = (float)video->getScreenHeight() / (float)_playerWhite.sprite.getHeight() * 0.5f;
 
 	_playerWhite.sprite.destination.x = (float)video->getScreenWidth() / 100.0f * _playerWhite.posx;
 	_playerWhite.sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _playerWhite.posy;
