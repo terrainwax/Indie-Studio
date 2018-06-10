@@ -75,7 +75,7 @@ bool Game::isOnGoing() const
 			aliveBot++;
 		}
 	}
-	return !(alive <= 1 || alivePlayers == 0);
+	return !(alive <= 1);
 }
 
 void Game::setPlayers(std::vector<APlayer*> players)
