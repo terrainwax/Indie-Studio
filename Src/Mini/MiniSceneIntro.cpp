@@ -63,7 +63,7 @@ void MiniSceneIntro::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAud
 	(void)audio;
 	(void)clock;
 
-	MiniSprite sprite = (clock.elapsedMilliseconds() % 1000 > 500) ? _blue : _red;
+	MiniSprite sprite = (clock.totalMilliseconds() % 1000 > 500) ? _blue : _red;
 	sprite.destination.width = video->getScreenWidth();
 	sprite.destination.height = video->getScreenHeight();
 	video->drawSprite(sprite);
