@@ -39,6 +39,7 @@ private:
 	irr::video::IVideoDriver *_driver;
 	irr::scene::ICameraSceneNode *_camera;
 public:
+	GraphicManager();
 	GraphicManager(irr::IrrlichtDevice *device);
 	~GraphicManager();
 

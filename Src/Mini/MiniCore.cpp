@@ -65,6 +65,8 @@ void MiniCore::enter()
 
 			if (_currentScenes.size() > 0 && _currentScenes.top() == scene)
 				scene->renderFrame(this, &_video, &_audio, timeClock);
+			else
+				_action.flush();
 
 			if (scene->isSimple())
 				_video.present();
