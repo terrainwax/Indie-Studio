@@ -103,7 +103,6 @@ void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	_playerWhite.sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _playerWhite.posy;
 
 	// PLAYER BLACK RENDERING
-
 	_playerBlack.sprite.destination.width = (float)video->getScreenWidth() / (float)_playerBlack.sprite.getWidth() * 0.9f;
 	_playerBlack.sprite.destination.height = (float)video->getScreenHeight() / (float)_playerBlack.sprite.getHeight() * 0.9f;
 
