@@ -24,6 +24,7 @@ AI::~AI()
 void	AI::updatePos(irr::core::vector2di safePos, Map &map)
 {
 	irr::core::vector3df pos = this->_anode->getPosition();
+	static char block = 0;
 
 	if (pos.X < safePos.X * 10 && (map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)((pos.X + this->_speed) / 10 + 0.5))) == Map::Cell::Empty
 		|| map.getCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)((pos.X + this->_speed) / 10 + 0.5))) == Map::Cell::PowerUp)) {
