@@ -36,7 +36,10 @@ std::size_t MiniVideoMgr::getScreenHeight()
 
 irr::video::ITexture *MiniVideoMgr::loadTexture(const std::string &textureFile)
 {
-	return _videoDevice->getVideoDriver()->getTexture(textureFile.c_str());
+	irr::video::ITexture *texture = _videoDevice->getVideoDriver()->getTexture(textureFile.c_str());
+	if (texture == nullptr || texture == 0)
+		throw new std::runtime_error("Cannot find sprite.");
+	return texture;
 }
 
 void MiniVideoMgr::drawSprite(MiniSprite &sprite)

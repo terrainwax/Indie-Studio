@@ -40,6 +40,11 @@ int	main(int argc, char **argv)
 		std::cout << "An error occured. Exit 84." << std::endl;
 		return 84;
 	}
+	catch (const std::runtime_error *e)
+	{
+		std::cout << "An error occured. Exit 84." << std::endl;
+		return 84;
+	}
 
 	return 0;
 }
