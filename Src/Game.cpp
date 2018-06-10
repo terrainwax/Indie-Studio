@@ -130,7 +130,7 @@ void Game::explodeBomb(int idx)
 	Bomb *bomb = _bomb[idx];
 	_bomb.erase(_bomb.begin() + idx);
 	_map.setCell(irr::core::vector2di(bomb->getYMapPos() / 10, bomb->getXMapPos() / 10), Map::Cell::Empty);
-	bomb->explode(_map, _players, _bomb);
+	bomb->explode(_map, _players, _bomb, particles);
 	int posX = bomb->getXMapPos() / 10;
 	int posY = bomb->getYMapPos() / 10;
 	int radius = bomb->getRadius();
@@ -168,6 +168,13 @@ void Game::update(ActionManager& action, GraphicManager& graph, SoundManager &so
 		this->pickUpBonus(*_players[i]);
 	}
 	this->triggerBomb(sound);
+	for (int j = 0; j < particles.size(); ++j) {
+		if (particles[j]->update())
+		{
+			particles.erase(particles.begin() + j);
+			j = 0;
+		}
+	}
 	updateMap();
 }
 

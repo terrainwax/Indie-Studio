@@ -21,6 +21,7 @@ private:
 	PowerUpFactory		_factory;
 	std::vector<std::unique_ptr<APowerUp>> _powersUp;
 	std::vector<Bomb *> _bomb;
+	std::vector<ParticleFire *> particles;
 	irr::scene::ISceneNode* skydome;
 	bool 	_skyView;
 

@@ -10,8 +10,8 @@
 #include "Player.hpp"
 #include "GraphicManager.hpp"
 
-Player::Player(int posX, int posY, std::string model, std::string name, irr::scene::ISceneManager *smgr, KeySet keyset) :
-APlayer(smgr, name),
+Player::Player(int posX, int posY, std::string model, std::string name, irr::scene::ISceneManager *smgr, KeySet keyset, GraphicManager graph) :
+APlayer(smgr, name, graph),
 _keySet(keyset)
 {
 	_mesh = _smgr->getMesh(MODEL(model).c_str());
@@ -114,6 +114,6 @@ void	Player::update(ActionManager &actionManager, GraphicManager &graphic, Map &
 		_anode->setAnimationSpeed(60);
 		_anode->setFrameLoop(200, 258);
 		map.setCell(irr::core::vector2di((((pos.Z / 10) + 0.5)), (pos.X / 10) + 0.5), Map::Cell::Bomb);
-		bomb.push_back(new Bomb(*this, _smgr));
+		bomb.push_back(new Bomb(*this, _smgr, _graph));
 	}
 }

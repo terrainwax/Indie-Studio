@@ -7,12 +7,13 @@
 
 #include "APlayer.hpp"
 
-APlayer::APlayer(irr::scene::ISceneManager *smgr, std::string name, int nbBomb, int fire, float speed, bool wallPass) :
+APlayer::APlayer(irr::scene::ISceneManager *smgr, std::string name,GraphicManager graph, int nbBomb, int fire, float speed, bool wallPass) :
 _smgr(smgr),
 _name(name),
 _speed(speed),
 _nbBomb(nbBomb),
 _fire(fire),
+	_graph(graph),
 _wallPass(wallPass),
 _nbLife(0),
 _alive(true),

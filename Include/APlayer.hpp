@@ -29,13 +29,14 @@ protected:
 	irr::scene::IAnimatedMeshSceneNode* _anode;
 	irr::scene::IAnimatedMesh* _mesh;
 	irr::scene::ISceneManager *_smgr;
+	GraphicManager	_graph;
 	char 		_nbLife;
 	bool 		_alive;
 	bool		_pierce;
 
 public:
 	APlayer(irr::scene::ISceneManager *_smgr,
-		std::string name = "APlayer", int nbBomb = 1, int fire = 1,
+		std::string name = "APlayer",GraphicManager graph = nullptr, int nbBomb = 1, int fire = 1,
 		float speed = 0.5, bool wallPass = false);
 	~APlayer();
 

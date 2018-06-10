@@ -71,7 +71,9 @@ ADD_EXECUTABLE(indie WIN32 MACOSX_BUNDLE ${SOURCE}
         Src/PowerUp/FullFire.cpp
         Src/PowerUp/PierceUp.cpp
         Src/PowerUp/WallPass.cpp
-        Src/PowerUp/PowerUpFactory.cpp)
+        Src/PowerUp/PowerUpFactory.cpp
+        Src/ParticleFire.cpp
+        Include/ParticleFire.hpp)
 TARGET_LINK_LIBRARIES(indie ${IRRLICHT_LIBRARY}
         ${OPENGL_LIBRARIES} ${OSX_LIBRARIES})
 

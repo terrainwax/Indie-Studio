@@ -95,12 +95,12 @@ void MiniSceneBomber::addPlayer(IMiniCore *core, int mapSize)
 	};
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (core->getPlayers()[i] == true)
-			_game.addPlayer(new Player(spawnX[i], spawnY[i], models[i], "Player", _graphics.getSceneManager(), keyMap[i]));
+			_game.addPlayer(new Player(spawnX[i], spawnY[i], models[i], "Player", _graphics.getSceneManager(), keyMap[i], _graphics));
 
 	}
 	for (int i = 0; i < PLAYER_NUMBER; i++) {
 		if (core->getPlayers()[i] == false)
-			_game.addPlayer(new AI(spawnX[i], spawnY[i], "AI", _graphics.getSceneManager()));
+			_game.addPlayer(new AI(spawnX[i], spawnY[i], "AI", _graphics.getSceneManager(), _graphics));
 	}
 }
 

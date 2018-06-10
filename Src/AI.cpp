@@ -2,8 +2,8 @@
 
 #include "AI.hpp"
 
-AI::AI(int posX, int posY, std::string name, irr::scene::ISceneManager *smgr) :
-APlayer(smgr, name)
+AI::AI(int posX, int posY, std::string name, irr::scene::ISceneManager *smgr, GraphicManager graph) :
+	APlayer(smgr, name, graph)
 {
 	this->_mesh = smgr->getMesh("./Assets/Models/0113.x");
 	if (this->_mesh == nullptr)
@@ -140,7 +140,7 @@ void	AI::attack(Map &map, std::vector<Bomb *> &bomb, irr::core::vector3df pos, G
 		|| map.getCell(irr::core::vector2di(twodPos.Y - 1, twodPos.X)) == Map::Cell::Breakable)) {
 		this->_nbBomb--;
 		map.setCell(irr::core::vector2di((int)(pos.Z / 10 + 0.5), (int)(pos.X / 10 + 0.5)), Map::Cell::Bomb);
-		bomb.push_back(new Bomb(*this, smgr));
+		bomb.push_back(new Bomb(*this, smgr, graph));
 	//	twodPos = this->defend(map, twodPos);
 	//	this->updatePos(twodPos, map);
 	}

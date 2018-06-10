@@ -13,6 +13,7 @@
 
 #include "Clock.hpp"
 #include "APlayer.hpp"
+#include "ParticleFire.hpp"
 
 class Map;
 class APlayer;
@@ -28,13 +29,14 @@ private:
 	int		_yMapPos;
 	Clock		_clock;
 	irr::scene::ISceneNode *_node;
+	GraphicManager	_graph;
 
-	void lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &);
+	void lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &, std::vector<ParticleFire*> &particles);
 	void playersExplosion(std::vector<APlayer *> &players, int posX, int posY);
 
 
 	public:
-	Bomb(APlayer &player, irr::scene::ISceneManager *);
+	Bomb(APlayer &player, irr::scene::ISceneManager *, GraphicManager graph);
 	~Bomb();
 
 	//getters
@@ -50,5 +52,5 @@ private:
 
 
 	int		update();
-	void		explode(Map&, std::vector<APlayer *> &players, std::vector<Bomb *> &bomb);
+	void		explode(Map&, std::vector<APlayer *> &players, std::vector<Bomb *> &bomb, std::vector<ParticleFire*> &particles);
 };

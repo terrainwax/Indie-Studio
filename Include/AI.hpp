@@ -9,7 +9,7 @@
 class AI : public APlayer
 {
 public:
-	AI(int posX, int posy ,std::string name, irr::scene::ISceneManager *smgr);
+	AI(int posX, int posy ,std::string name, irr::scene::ISceneManager *smgr, GraphicManager graph);
 	~AI();
 	
 	void	update(ActionManager &actionManager, GraphicManager &graph, Map &map, std::vector<Bomb *> &bomb);

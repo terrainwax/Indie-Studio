@@ -7,18 +7,20 @@
 
 #include <sstream>
 #include <iostream>
+#include <ParticleFire.hpp>
 #include "Bomb.hpp"
 #include "Clock.hpp"
 #include "Map.hpp"
 
 # define PI           3.14159265358979323846
 
-Bomb::Bomb(APlayer &player, irr::scene::ISceneManager *smgr) :
+Bomb::Bomb(APlayer &player, irr::scene::ISceneManager *smgr, GraphicManager graph) :
 _smgr(smgr),
 _player(player),
 _radius(player.getFire()),
 _pierce(player.getPierce()),
 _xMapPos((int)((player.getPos().X / 10) + 0.5) * 10),
+	_graph(graph),
 _yMapPos((int)((player.getPos().Z / 10) + 0.5) * 10)
 {
 	_node = _smgr->addMeshSceneNode(_smgr->getMesh("./Assets/Models/bombtext.obj"));
@@ -86,7 +88,7 @@ int		Bomb::update()
 	return 0;
 }
 
-void Bomb::lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &players)
+void Bomb::lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &players, std::vector<ParticleFire*> &particles)
 {
 	int posX = _xMapPos / 10;
 	int posY = _yMapPos / 10;
@@ -97,13 +99,16 @@ void Bomb::lineExplosion(Map &map, int incX, int incY, std::vector<APlayer *> &p
 		posX += incX;
 		posY += incY;
 		this->playersExplosion(players, posX, posY);
+
 		if (map.getCell(irr::core::vector2di(posY, posX)) == Map::Cell::Breakable) {
 			map.setCell(irr::core::vector2di(posY, posX), Map::Cell::PowerUp);
+			particles.push_back(new ParticleFire(_smgr, irr::core::vector3df(posX * 10, -2, posY * 10), _graph, 20));
 			if (_pierce == false)
 				return;
 		}
 		if (map.getCell(irr::core::vector2di(posY, posX)) == Map::Cell::Wall)
 			return;
+		particles.push_back(new ParticleFire(_smgr, irr::core::vector3df(posX * 10, -2, posY * 10), _graph, 20));
 	}
 }
 
@@ -118,13 +123,13 @@ void Bomb::playersExplosion(std::vector<APlayer *> &players, int posX, int posY)
 	}
 }
 
-void	Bomb::explode(Map &map, std::vector<APlayer *> &players, std::vector<Bomb *> &bomb)
+void	Bomb::explode(Map &map, std::vector<APlayer *> &players, std::vector<Bomb *> &bomb, std::vector<ParticleFire*> &particles)
 {
 	(void)bomb;
-	this->lineExplosion(map,  1,  0, players);
-	this->lineExplosion(map, -1,  0, players);
-	this->lineExplosion(map,  0,  1, players);
-	this->lineExplosion(map,  0, -1, players);
+	this->lineExplosion(map,  1,  0, players, particles);
+	this->lineExplosion(map, -1,  0, players, particles);
+	this->lineExplosion(map,  0,  1, players, particles);
+	this->lineExplosion(map,  0, -1, players, particles);
 }
 
 irr::scene::ISceneNode *Bomb::getNode()
