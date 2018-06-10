@@ -27,6 +27,7 @@
 #define MENU_PATH "Assets/Menus/"
 #define MUSIC_PATH "Assets/Music/"
 #define SPRITE_PATH "Assets/Sprites/"
+#define TEXTURE_PATH "Assets/Textures/"
 
 #define OK MENU_PATH "OK.jpg"
 #define KO MENU_PATH "KO.jpg"
@@ -35,6 +36,8 @@
 #define BACKGROUND SPRITE_PATH "MiniGameBackground.jpg"
 #define PLAYER_WHITE SPRITE_PATH "BombermanWhite.png"
 #define PLAYER_BLACK SPRITE_PATH "BombermanBlack.png"
+#define DINO SPRITE_PATH "Dino.png"
+#define BLOCK TEXTURE_PATH "fancyBreakable.jpg"
 
 // musics
 #define MENU_MUSIC MUSIC_PATH "Menu.ogg"

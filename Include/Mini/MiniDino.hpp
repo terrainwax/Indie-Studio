@@ -15,6 +15,9 @@ public:
 	~MiniDino() = default;
 
 	MiniSprite sprite;
-	float posx;
-	float posy;
+	int	id;
+	float	posx;
+	float	posy;
+	bool	alive;
+	bool	onMap;
 };

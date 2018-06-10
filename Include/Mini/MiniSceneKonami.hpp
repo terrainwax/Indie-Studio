@@ -9,9 +9,13 @@
 
 #include "MiniScene.hpp"
 #include "MiniPlayer.hpp"
+#include "MiniDino.hpp"
 
-#define PLAYER_SPEED 1.5f
+#define PLAYER_SPEED 1.0f
 #define BOMB_SPEED 1.0f
+
+#define DINO_NBR 6
+#define DINOS_ON_MAP 3
 
 class MiniSceneKonami final : public MiniScene {
 public:
@@ -26,12 +30,17 @@ public:
 	void updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock) override;
 	void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock) override;
 
-	void playersMovements(IMiniActionMgr *action);
+	void updatePlayers(IMiniActionMgr *action);
+	void updateDinos();
 	bool isGameEnded();
 
 private:
 	MiniSprite	_back;
+	MiniSprite	_block;
 	MiniPlayer	_playerWhite;
 	MiniPlayer	_playerBlack;
 	bool		_gameEnded;
+
+	MiniDino	_dinos[DINO_NBR];
+	int		_dinosOnMap;
 };

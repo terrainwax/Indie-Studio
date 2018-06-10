@@ -11,6 +11,7 @@ MiniSceneKonami::MiniSceneKonami()
 	: MiniScene("Konami", true, false)
 {
 	_gameEnded = false;
+	_dinosOnMap = 0;
 }
 
 MiniSceneKonami::~MiniSceneKonami()
@@ -31,11 +32,20 @@ void MiniSceneKonami::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr
 
 	_playerWhite.sprite = MiniSprite(video->loadTexture(PLAYER_WHITE));
 	_playerBlack.sprite = MiniSprite(video->loadTexture(PLAYER_BLACK));
+	for (int i = 0; i < DINO_NBR; i++) {
+		_dinos[i].sprite = MiniSprite(video->loadTexture(DINO));
+		_dinos[i].posx = 10 + rand() % 80;
+		_dinos[i].posy = 5 + rand() % 30;
+	}
+	_block = MiniSprite(video->loadTexture(BLOCK));
 
 	_playerWhite.posx = 70;
 	_playerWhite.posy = 80;
 	_playerBlack.posx = 30;
 	_playerBlack.posy = 80;
+
+	_block.destination.x = 80;
+	_block.destination.y = 80;
 }
 
 void MiniSceneKonami::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video)
@@ -45,7 +55,7 @@ void MiniSceneKonami::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr 
 	MiniScene::stop(core, audio, video);
 }
 
-void MiniSceneKonami::playersMovements(IMiniActionMgr *action)
+void MiniSceneKonami::updatePlayers(IMiniActionMgr *action)
 {
 	// PLAYER WHITE
 	if (action->isKeyDown(irr::KEY_UP) && _playerWhite.posy - 5 > 60.0f) {
@@ -70,6 +80,10 @@ void MiniSceneKonami::playersMovements(IMiniActionMgr *action)
 	}
 }
 
+void MiniSceneKonami::updateDinos()
+{
+}
+
 void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock)
 {
 	(void)core;
@@ -82,7 +96,8 @@ void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 		audio->playMusic(MENU_MUSIC);
 		core->pop();
 	}
-	playersMovements(action);
+	updatePlayers(action);
+	updateDinos();
 }
 
 void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)
@@ -109,9 +124,21 @@ void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	_playerBlack.sprite.destination.x = (float)video->getScreenWidth() / 100.0f * _playerBlack.posx;
 	_playerBlack.sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _playerBlack.posy;
 
+	// DINOS RENDERING
+	for (int i = 0; i < DINO_NBR; i++) {
+		_dinos[i].sprite.destination.width = (float)video->getScreenWidth() / (float)_dinos[i].sprite.getWidth() * 4.0f;
+		_dinos[i].sprite.destination.height = (float)video->getScreenHeight() / (float)_dinos[i].sprite.getHeight() * 6.0f;
+
+		_dinos[i].sprite.destination.x = (float)video->getScreenWidth() / 100.0f * _dinos[i].posx;
+		_dinos[i].sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _dinos[i].posy;
+	}
+
 	video->drawSprite(_back);
 	video->drawSprite(_playerWhite.sprite);
 	video->drawSprite(_playerBlack.sprite);
+	for (int i = 0; i < DINO_NBR; i++)
+		video->drawSprite(_dinos[i].sprite);
+	video->drawSprite(_block);
 }
 
 bool MiniSceneKonami::isGameEnded()
