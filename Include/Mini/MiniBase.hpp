@@ -39,6 +39,7 @@
 #define DINO SPRITE_PATH "Dino.png"
 #define BOMB SPRITE_PATH "BombAsc.png"
 #define BLOCK TEXTURE_PATH "fancyBreakable.jpg"
+#define EXPLOSION_SPRITE SPRITE_PATH "Explosion.png"
 
 // musics
 #define MENU_MUSIC MUSIC_PATH "Menu.ogg"
@@ -53,5 +54,6 @@
 #define TRANSITION MUSIC_PATH "Transition.ogg"
 #define VICTORY MUSIC_PATH "Victory.ogg"
 #define KONAMI_ACTIVATED MUSIC_PATH "KonamiActivated.ogg"
+#define EXPLOSION_SOUND MUSIC_PATH "Explosion.ogg"
 
 #define PLAYER_NUMBER 4

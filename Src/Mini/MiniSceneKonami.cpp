@@ -36,6 +36,7 @@ void MiniSceneKonami::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr
 		_dinos[i].sprite = MiniSprite(video->loadTexture(DINO));
 		_dinos[i].posx = 10 + rand() % 80;
 		_dinos[i].posy = 5 + rand() % 30;
+		_dinos[i].alive = true;
 	}
 	_block = MiniSprite(video->loadTexture(BLOCK));
 
@@ -85,8 +86,21 @@ void MiniSceneKonami::updatePlayers(IMiniActionMgr *action)
 	}
 }
 
-void MiniSceneKonami::updateDinos()
+void MiniSceneKonami::updateDinos(IMiniCore *core)
 {
+	int alive = 0;
+
+	for (int i = 0; i < DINO_NBR; i++) {
+		if (_dinos[i].alive == false) {
+			_dinos[i].posx = 100;
+			_dinos[i].posy = 0;
+		} else {
+			alive++;
+		}
+	}
+
+	if (alive == 0)
+		core->pop();
 }
 
 void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMiniAudioMgr *audio, const Clock &clock)
@@ -103,9 +117,9 @@ void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	}
 
 	updatePlayers(action);
-	updateDinos();
+	updateDinos(core);
 
-	if (action->isKeyPressed(irr::KEY_SPACE))
+	if (action->isKeyPressed(irr::KEY_SPACE) && (clock.totalMilliseconds() / 100 % 10) < 2)
 	{
 		MiniBomb bomb = _base_bomb;
 
@@ -118,6 +132,7 @@ void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 		bomb.dstx = _playerWhite.posx;
 		bomb.dsty = _playerWhite.posy - 50;
 
+		action->flush();
 		_bombs.push_back(bomb);
 	}
 
@@ -125,8 +140,14 @@ void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 	{
 		_bombs[x].posy -= 1.0f;
 
-		if (_bombs[x].posy < _bombs[x].dsty)
+		if (_bombs[x].posy < _bombs[x].dsty) {
+			for (int i = 0; i < DINO_NBR; i++) {
+				if (_bombs[x].posy <= _dinos[i].posy + 10 && _bombs[x].posy >= _dinos[i].posy - 5 && _bombs[x].posx <= _dinos[i].posx + 10 && _bombs[x].posx >= _dinos[i].posx - 5)
+					_dinos[i].alive = false;
+				audio->playSound(EXPLOSION_SOUND);
+			}
 			_bombs[x].explode = true;
+		}
 	}
 
 	for (auto it = _bombs.begin(); it != _bombs.end();)
@@ -179,8 +200,11 @@ void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	video->drawSprite(_block);
 
 	for (int i = 0; i < _bombs.size(); i++) {
-		_bombs[i].sprite.destination.width = (float)video->getScreenWidth() / (float)_bombs[i].sprite.getWidth() * 0.5f;
-		_bombs[i].sprite.destination.height = (float)video->getScreenHeight() / (float)_bombs[i].sprite.getHeight() * 0.8f;
+		float coefx = ((_bombs[i].posy - _bombs[i].dsty) / 50.0f * 2.0f) - 1.0f;
+		float coefy = lePolynome(coefx);
+
+		_bombs[i].sprite.destination.width = (float)video->getScreenWidth() / (float)_bombs[i].sprite.getWidth() * 0.5f * coefy;
+		_bombs[i].sprite.destination.height = (float)video->getScreenHeight() / (float)_bombs[i].sprite.getHeight() * 0.8f * coefy;
 
 		_bombs[i].sprite.destination.x = (float)video->getScreenWidth() / 100.0f * _bombs[i].posx;
 		_bombs[i].sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _bombs[i].posy;
@@ -192,4 +216,9 @@ void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 bool MiniSceneKonami::isGameEnded()
 {
 	return _gameEnded;
+}
+
+float MiniSceneKonami::lePolynome(float x)
+{
+	return (-(x * x) + 2.0f);
 }

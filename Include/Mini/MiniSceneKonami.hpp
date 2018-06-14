@@ -32,8 +32,10 @@ public:
 	void renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock) override;
 
 	void updatePlayers(IMiniActionMgr *action);
-	void updateDinos();
+	void updateDinos(IMiniCore *core);
 	bool isGameEnded();
+	float lePolynome(float size);
+
 
 private:
 	MiniSprite	_back;

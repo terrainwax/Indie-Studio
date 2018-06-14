@@ -22,7 +22,7 @@ public:
 	bool isKeyReleased(irr::EKEY_CODE key) override;
 	virtual bool OnEvent(const irr::SEvent& event) override;
 	bool isKonami() override;
-	void flush();
+	void flush() override;
 private:
 	bool _currentState[irr::KEY_KEY_CODES_COUNT];
 	bool _previousState[irr::KEY_KEY_CODES_COUNT];

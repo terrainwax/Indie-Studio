@@ -18,6 +18,7 @@ public:
 	virtual bool isKeyDown(irr::EKEY_CODE key) = 0;
 	virtual bool isKeyPressed(irr::EKEY_CODE key) = 0;
 	virtual bool isKeyReleased(irr::EKEY_CODE key) = 0;
+	virtual void flush() = 0;
 
 	virtual bool isKonami() = 0;
 
