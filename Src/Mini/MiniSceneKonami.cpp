@@ -46,6 +46,11 @@ void MiniSceneKonami::start(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr
 
 	_block.destination.x = 80;
 	_block.destination.y = 80;
+
+	_base_bomb.sprite = MiniSprite(video->loadTexture(BOMB));
+	_base_bomb.explode = false;
+
+	_bombs.clear();
 }
 
 void MiniSceneKonami::stop(IMiniCore *core, IMiniAudioMgr *audio, IMiniVideoMgr *video)
@@ -96,8 +101,41 @@ void MiniSceneKonami::updateFrame(IMiniCore *core, IMiniActionMgr *action, IMini
 		audio->playMusic(MENU_MUSIC);
 		core->pop();
 	}
+
 	updatePlayers(action);
 	updateDinos();
+
+	if (action->isKeyPressed(irr::KEY_SPACE))
+	{
+		MiniBomb bomb = _base_bomb;
+
+		bomb.srcx = _playerWhite.posx;
+		bomb.srcy = _playerWhite.posy;
+
+		bomb.posx = _playerWhite.posx;
+		bomb.posy = _playerWhite.posy;
+
+		bomb.dstx = _playerWhite.posx;
+		bomb.dsty = _playerWhite.posy - 50;
+
+		_bombs.push_back(bomb);
+	}
+
+	for (std::size_t x = 0; x < _bombs.size(); x++)
+	{
+		_bombs[x].posy -= 1.0f;
+
+		if (_bombs[x].posy < _bombs[x].dsty)
+			_bombs[x].explode = true;
+	}
+
+	for (auto it = _bombs.begin(); it != _bombs.end();)
+	{
+		if (it->explode)
+			it = _bombs.erase(it);
+		else
+			++it;
+	}
 }
 
 void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAudioMgr *audio, const Clock &clock)
@@ -139,6 +177,16 @@ void MiniSceneKonami::renderFrame(IMiniCore *core, IMiniVideoMgr *video, IMiniAu
 	for (int i = 0; i < DINO_NBR; i++)
 		video->drawSprite(_dinos[i].sprite);
 	video->drawSprite(_block);
+
+	for (int i = 0; i < _bombs.size(); i++) {
+		_bombs[i].sprite.destination.width = (float)video->getScreenWidth() / (float)_bombs[i].sprite.getWidth() * 0.5f;
+		_bombs[i].sprite.destination.height = (float)video->getScreenHeight() / (float)_bombs[i].sprite.getHeight() * 0.8f;
+
+		_bombs[i].sprite.destination.x = (float)video->getScreenWidth() / 100.0f * _bombs[i].posx;
+		_bombs[i].sprite.destination.y = (float)video->getScreenHeight() / 100.0f * _bombs[i].posy;
+
+		video->drawSprite(_bombs[i].sprite);
+	}
 }
 
 bool MiniSceneKonami::isGameEnded()

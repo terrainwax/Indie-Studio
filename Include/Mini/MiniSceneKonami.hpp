@@ -10,6 +10,7 @@
 #include "MiniScene.hpp"
 #include "MiniPlayer.hpp"
 #include "MiniDino.hpp"
+#include "MiniBomb.hpp"
 
 #define PLAYER_SPEED 1.0f
 #define BOMB_SPEED 1.0f
@@ -39,8 +40,11 @@ private:
 	MiniSprite	_block;
 	MiniPlayer	_playerWhite;
 	MiniPlayer	_playerBlack;
+	MiniBomb	_base_bomb;
 	bool		_gameEnded;
 
 	MiniDino	_dinos[DINO_NBR];
 	int		_dinosOnMap;
+
+	std::vector<MiniBomb> _bombs;
 };

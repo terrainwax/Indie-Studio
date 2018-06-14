@@ -37,6 +37,7 @@
 #define PLAYER_WHITE SPRITE_PATH "BombermanWhite.png"
 #define PLAYER_BLACK SPRITE_PATH "BombermanBlack.png"
 #define DINO SPRITE_PATH "Dino.png"
+#define BOMB SPRITE_PATH "BombAsc.png"
 #define BLOCK TEXTURE_PATH "fancyBreakable.jpg"
 
 // musics
